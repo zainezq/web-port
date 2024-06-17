@@ -1,6 +1,6 @@
 package project.com.Ilm_Learn.web.rest;
 
-import project.com.Ilm_Learn.User;
+import project.com.Ilm_Learn.entities.User;
 import project.com.Ilm_Learn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

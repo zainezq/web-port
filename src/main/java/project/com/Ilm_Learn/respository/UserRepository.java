@@ -1,6 +1,6 @@
 package project.com.Ilm_Learn.respository;
 
-import project.com.Ilm_Learn.User;
+import project.com.Ilm_Learn.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

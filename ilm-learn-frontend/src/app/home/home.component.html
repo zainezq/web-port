@@ -1,6 +1,8 @@
-<div>
-  <button class="button-test" (click)="clickMe()">
-    this is a test button
-  </button>
+<div *ngIf="isLoggedIn; else homepageTemplate">
+  <app-dashboard></app-dashboard>
 </div>
+<ng-template #homepageTemplate>
+  <app-homepage></app-homepage>
+</ng-template>
+
 
