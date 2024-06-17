@@ -1,7 +1,6 @@
 package project.com.Ilm_Learn.web.rest;
 import io.jsonwebtoken.Jwt;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,7 +18,6 @@ import project.com.Ilm_Learn.service.UserService;
 
 @RestController
 @RequestMapping("/api/auth")
-@Api(tags = "Auth Controller", description = "Sample API operations")
 public class AuthController {
 
     private AuthenticationManager authenticationManager;
@@ -32,7 +30,6 @@ public class AuthController {
     private JwtUtil jwtUtil;
 
     @PostMapping("/login")
-    @ApiOperation("Returns a sample greeting")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody User user) throws Exception {
         try {
             authenticationManager.authenticate(

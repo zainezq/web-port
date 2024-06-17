@@ -1,10 +1,10 @@
 package project.com.Ilm_Learn.respository;
 
-import project.com.Ilm_Learn.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import project.com.Ilm_Learn.entities.User;
 
 import java.util.List;
 
@@ -22,13 +22,13 @@ public class UserRepository {
     }
 
     public int save(User user) {
-        return jdbcTemplate.update("INSERT INTO users (name, email) VALUES (?, ?)",
-                user.getName(), user.getEmail());
+        return jdbcTemplate.update("INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
+                user.getName(), user.getEmail(), user.getPassword());
     }
 
     public int update(User user) {
         return jdbcTemplate.update("UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?",
-                user.getName(), user.getEmail(), user.getId());
+                user.getName(), user.getEmail(), user.getPassword(), user.getId());
     }
 
     public int deleteById(Long id) {
