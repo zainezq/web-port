@@ -29,7 +29,7 @@ public class UserController {
 
     @PutMapping("/{id}")
     public void updateUser(@PathVariable Long id, @RequestBody User userDetails) {
-        userService.updateUser(id, userDetails);
+        userService.updateUser(id, userDetails); //currently does nothing
     }
 
     @DeleteMapping("/{id}")

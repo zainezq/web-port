@@ -20,25 +20,27 @@ import project.com.Ilm_Learn.service.UserService;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    private AuthenticationManager authenticationManager;
-
-
-    @Autowired
-    private UserService userService;
+    private final AuthenticationManager authenticationManager;
+    private final UserService userService;
+    private final JwtUtil jwtUtil;
 
     @Autowired
-    private JwtUtil jwtUtil;
-
+    public AuthController(AuthenticationManager authenticationManager, UserService userService, JwtUtil jwtUtil) {
+        this.authenticationManager = authenticationManager;
+        this.userService = userService;
+        this.jwtUtil = jwtUtil;
+    }
     @PostMapping("/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody User user) throws Exception {
         try {
+            System.out.println("im inside here");
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(user.getName(), user.getPassword())
             );
         } catch (AuthenticationException e) {
             throw new Exception("Incorrect username or password", e);
         }
-
+        System.out.println("User found with name: " + user.getName());
         final UserDetails userDetails = userService
                 .loadUserByUsername(user.getName());
 

@@ -1,5 +1,6 @@
 package project.com.Ilm_Learn.service;
 
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -8,6 +9,7 @@ import project.com.Ilm_Learn.respository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,19 +17,21 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // Replace this with your user retrieval logic
-        if ("user".equals(username)) {
-            return org.springframework.security.core.userdetails.User
-                    .withUsername("user")
-                    .password("{noop}password") // {noop} indicates no password encoding for demo purposes
-                    .authorities("USER")
-                    .build();
-        } else {
-            throw new UsernameNotFoundException("User not found");
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
         }
+        return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), new ArrayList<>());
+
     }
+
 
 
     public List<User> getAllUsers() {
@@ -35,23 +39,18 @@ public class UserService implements UserDetailsService {
     }
 
     public User getUserById(Long id) {
-        return userRepository.findById(id);
+        return userRepository.findById(id).get();
     }
 
     public void createUser(User user) {
         userRepository.save(user);
     }
 
-    public void updateUser(Long id, User userDetails) {
-        User user = userRepository.findById(id);
-        if (user != null) {
-            user.setName(userDetails.getName());
-            user.setEmail(userDetails.getEmail());
-            userRepository.update(user);
-        }
-    }
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+    public void updateUser(Long id, User userDetails) {
+         // Replace this with user update logic
     }
 }
