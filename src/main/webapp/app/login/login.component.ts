@@ -65,7 +65,6 @@ export class LoginComponent {
       this.loginRequestToSend.username = username;
       this.loginRequestToSend.password = password;
       this.loginRequestToSend.rememberMe = rememberMe;
-      this.loginService.login(this.loginRequestToSend);
     }
     this.loginService.login(this.loginRequestToSend).subscribe({
       next: (data) => {
