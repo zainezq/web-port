@@ -32,6 +32,7 @@ public class AuthController {
     }
     @PostMapping("/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody User user) throws Exception {
+
         try {
             System.out.println("im inside here");
             authenticationManager.authenticate(
