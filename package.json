@@ -2,12 +2,13 @@
   "name": "ilm-learn-frontend",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:ilm-learn-frontend": "node dist/ilm-learn-frontend/server/server.mjs"
+    "ng": "node_modules/.bin/ng",
+    "start": "node_modules/.bin/ng serve",
+    "build": "node_modules/.bin/ng build",
+    "build:ssr": "ng build && ng run ilm-learn-frontend:server:production",
+    "watch": "node_modules/.bin/ng build --watch --configuration development",
+    "test": "node_modules/.bin/ng test",
+    "serve:ssr:": "node dist//server/server.mjs"
   },
   "private": true,
   "dependencies": {

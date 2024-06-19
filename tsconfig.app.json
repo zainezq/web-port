@@ -9,8 +9,8 @@
     ]
   },
   "files": [
-    "../src/main/webapp/main.ts",
-    "../src/main/webapp/main.server.ts",
+    "./src/main/webapp/main.ts",
+    "./src/main/webapp/main.server.ts",
     "server.ts"
   ],
   "include": [

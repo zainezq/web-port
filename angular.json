@@ -11,15 +11,15 @@
         }
       },
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "src/main/webapp",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ilm-learn-frontend",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
+            "outputPath": "target/classes/static/",
+            "index": "src/main/webapp/index.html",
+            "browser": "src/main/webapp/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -32,10 +32,10 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/main/webapp/styles.scss"
             ],
             "scripts": [],
-            "server": "src/main.server.ts",
+            "server": "src/main/webapp/main.server.ts",
             "prerender": true,
             "ssr": {
               "entry": "server.ts"
@@ -96,7 +96,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/main/webapp/styles.scss"
             ],
             "scripts": []
           }
