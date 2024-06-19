@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import project.com.Ilm_Learn.entities.User;
+import project.com.Ilm_Learn.security.AuthenticationRequest;
 import project.com.Ilm_Learn.security.AuthenticationResponse;
 import project.com.Ilm_Learn.security.JwtUtil;
 import project.com.Ilm_Learn.service.UserService;
@@ -21,30 +22,31 @@ import project.com.Ilm_Learn.service.UserService;
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
-    private final UserService userService;
+    private final UserDetailsService userDetailsService;
     private final JwtUtil jwtUtil;
 
-    @Autowired
-    public AuthController(AuthenticationManager authenticationManager, UserService userService, JwtUtil jwtUtil) {
+    public AuthController(AuthenticationManager authenticationManager, UserDetailsService userDetailsService, JwtUtil jwtUtil) {
         this.authenticationManager = authenticationManager;
-        this.userService = userService;
+        this.userDetailsService = userDetailsService;
         this.jwtUtil = jwtUtil;
     }
+
     @PostMapping("/login")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody User user) throws Exception {
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
 
         try {
-            System.out.println("im inside here");
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(user.getName(), user.getPassword())
+            System.out.println("im inside here: " + authenticationRequest.getUsername() + " also password: " + authenticationRequest.getPassword());
+            Authentication authenticate = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
             );
+            System.out.println(" authenticate: " + authenticate);
         } catch (AuthenticationException e) {
             throw new Exception("Incorrect username or password", e);
         }
-        System.out.println("User found with name: " + user.getName());
-        final UserDetails userDetails = userService
-                .loadUserByUsername(user.getName());
-
+        System.out.println("User found with name: " + authenticationRequest.getUsername());
+        final UserDetails userDetails = userDetailsService
+                .loadUserByUsername(authenticationRequest.getUsername());
+        System.out.println("did this work?" + userDetails.getUsername() + " " + userDetails.getPassword() + " " + userDetails.getAuthorities() + " " + userDetails.isEnabled());
         final String jwt = jwtUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new AuthenticationResponse(jwt));

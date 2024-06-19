@@ -29,6 +29,7 @@ public class RegisterController {
                 new BCryptPasswordEncoder(strength, new SecureRandom());
         String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword()); //hashes the password
         user.setPassword(encodedPassword); //stores the hashed password in the database
+        user.setConfirmPassword(encodedPassword); //stores the hashed password in the confirm password field
         System.out.println(user.getPassword());
         // Save the user to the database
         userService.createUser(user);
