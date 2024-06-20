@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -12,10 +12,11 @@ import {MatCard, MatCardContent, MatCardTitle} from "@angular/material/card";
 import {MatFormField} from "@angular/material/form-field";
 import {MatInput, MatInputModule} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
-import { LoginService } from './login.service';
+import {LoginService } from './login.service';
 import {Login} from "./login.model";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {Router} from "@angular/router";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-login',
@@ -35,7 +36,7 @@ import {Router} from "@angular/router";
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required]),
     //password: new FormControl('', [Validators.required, Validators.minLength(6)]), //commented out for now
@@ -44,17 +45,11 @@ export class LoginComponent {
   });
 
   constructor(private fb: FormBuilder, private loginService: LoginService,
-              private router: Router) { }
+              private router: Router, private authService: AuthService) { }
   loginRequestToSend: Login = new Login('', '', false);
 
   ngOnInit(): void {
-    this.loginService.test();
-    this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
-      //password: ['', [Validators.required, Validators.minLength(6)]]
-      password: ['', [Validators.required]],
-      rememberMe: [false]
-    });
+
   }
   submitButton(): void {
     if (this.loginForm.valid) {
@@ -71,6 +66,8 @@ export class LoginComponent {
         console.log(data);
         const token = data.jwt;
         console.log(token);
+        this.authService.login();
+        console.log(this.authService.isLoggedInStatus);
         if (this.loginRequestToSend.rememberMe) {
           localStorage.setItem('jwtToken', token);
         } else {

@@ -1,0 +1,31 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.register-title {
+  padding: 1em;
+}
+mat-card {
+  width: 400px;
+  padding: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+/* login.component.css */
+mat-form-field {
+  display: block;
+  margin-bottom: 16px;
+}
+
+mat-checkbox {
+  margin-top: 16px;
+}
+
+button {
+  margin-top: 16px;
+}

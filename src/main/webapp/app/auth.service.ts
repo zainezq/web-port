@@ -7,14 +7,20 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private isLoggedInStatus = false;
+  public isLoggedInStatus = false;
   constructor() {}
 
   getToken() {
     return localStorage.getItem('jwtToken') || sessionStorage.getItem('jwtToken');
   }
+
+  login() {
+    this.isLoggedInStatus = true; //once a user logs in the status is true
+  }
+  setLoginStatus(status: boolean) {
+    status = this.isLoggedInStatus;
+  }
   isLoggedIn(): boolean {
-    this.isLoggedInStatus = true;
     return this.getToken() !== null;
     //if the token is not null,
     // it means the user is logged in, and the function returns true,

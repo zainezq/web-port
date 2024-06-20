@@ -20,6 +20,10 @@ export class HomeComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+    if (this.authService.isLoggedInStatus) {
+      this.isLoggedIn = true;
 
+    }
+    console.log(this.authService.isLoggedInStatus);
   }
 }

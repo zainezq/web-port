@@ -13,6 +13,8 @@ import project.com.Ilm_Learn.entities.User;
 import project.com.Ilm_Learn.service.UserService;
 
 import java.security.SecureRandom;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/register")
@@ -21,7 +23,7 @@ public class RegisterController {
     private UserService userService;
 
     @PostMapping("/")
-    public ResponseEntity register(@RequestBody User user) {
+    public ResponseEntity<?> register(@RequestBody User user) {
 
         // work factor of bcrypt
         int strength = 10;
@@ -33,6 +35,10 @@ public class RegisterController {
         System.out.println(user.getPassword());
         // Save the user to the database
         userService.createUser(user);
-        return ResponseEntity.ok("User created successfully");
+
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "User created successfully");
+
+        return ResponseEntity.ok(response);
     }
 }
