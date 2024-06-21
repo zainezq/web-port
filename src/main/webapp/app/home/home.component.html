@@ -1,8 +1,11 @@
-<div *ngIf="isLoggedIn; else homepageTemplate">
-  <app-dashboard></app-dashboard>
+<div class="homepage">
+  <h1>Welcome to the Homepage</h1>
+  <p>Please log in or register to access your dashboard.</p>
+  <div class="button-container">
+    <button class="login-button" routerLink="/login">Log in!</button>
+    <button class="register-button" routerLink="/register">Register!</button>
+  </div>
 </div>
-<ng-template #homepageTemplate>
-  <app-homepage></app-homepage>
-</ng-template>
+
 
 

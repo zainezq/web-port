@@ -16,7 +16,7 @@ import {LoginService } from './login.service';
 import {Login} from "./login.model";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {Router} from "@angular/router";
-import {AuthService} from "../auth.service";
+import {AuthService} from "../core/auth/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -66,12 +66,17 @@ export class LoginComponent implements OnInit {
         console.log(data);
         const token = data.jwt;
         console.log(token);
-        this.authService.login();
         console.log(this.authService.isLoggedInStatus);
         if (this.loginRequestToSend.rememberMe) {
-          localStorage.setItem('jwtToken', token);
+          if (localStorage === null)
+            console.log("local storage is null");
+          else
+            localStorage.setItem('jwtToken', token);
         } else {
-          sessionStorage.setItem('jwtToken', token);
+          if (sessionStorage === null)
+            console.log("session storage is null");
+          else
+            sessionStorage.setItem('jwtToken', token);
         }
         this.router.navigate(['/home']).then(r => '/login');
       },
