@@ -41,12 +41,10 @@ public class SecurityConfig {
     }
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        System.out.println("this is the authentication manager");
         return authenticationConfiguration.getAuthenticationManager();
     }
     @Bean
     public PasswordEncoder passwordEncoder() {
-        System.out.println("this is the password encoder");
         return new BCryptPasswordEncoder();
     }
 

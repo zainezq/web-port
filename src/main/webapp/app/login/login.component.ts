@@ -54,36 +54,31 @@ export class LoginComponent implements OnInit {
   submitButton(): void {
     if (this.loginForm.valid) {
       const { username, password, rememberMe } = this.loginForm.value;
-      console.log(this.loginForm.value.username)
-      console.log(this.loginForm.value.password)
-      console.log(this.loginForm.value.rememberMe)
+      console.log(this.loginForm.value.username);
+      console.log(this.loginForm.value.password);
+      console.log(this.loginForm.value.rememberMe);
       this.loginRequestToSend.username = username;
       this.loginRequestToSend.password = password;
       this.loginRequestToSend.rememberMe = rememberMe;
     }
+
     this.loginService.login(this.loginRequestToSend).subscribe({
       next: (data) => {
         console.log(data);
         const token = data.jwt;
         console.log(token);
-        console.log(this.authService.isLoggedInStatus);
-        if (this.loginRequestToSend.rememberMe) {
-          if (localStorage === null)
-            console.log("local storage is null");
-          else
-            localStorage.setItem('jwtToken', token);
-        } else {
-          if (sessionStorage === null)
-            console.log("session storage is null");
-          else
-            sessionStorage.setItem('jwtToken', token);
-        }
+
+        // Use AuthService to set the token
+        this.authService.setToken(token, this.loginRequestToSend.rememberMe);
+        console.log(this.authService.isAuthenticated());
+
         this.router.navigate(['/home']).then(r => '/login');
       },
       error: (error) => {
         console.log(error);
       }
-      })
+    });
   }
+
 
 }
