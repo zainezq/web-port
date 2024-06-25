@@ -4,6 +4,7 @@ import { DashboardComponent } from './loggedIn/dashboard.component';
 import { NgIf } from '@angular/common';
 import {routes} from "../app.routes";
 import {Router, RouterLink} from "@angular/router";
+import {LoadingSpinnerComponent} from "../core/loading-spinner/loading-spinner.component";
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ import {Router, RouterLink} from "@angular/router";
   imports: [
     DashboardComponent,
     NgIf,
-    RouterLink
+    RouterLink,
+    LoadingSpinnerComponent
   ],
   styleUrls: ['./home.component.scss']
 })

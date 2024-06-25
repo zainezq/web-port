@@ -17,6 +17,8 @@ import {Login} from "./login.model";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {Router} from "@angular/router";
 import {AuthService} from "../core/auth/auth.service";
+import {LoadingSpinnerComponent} from "../core/loading-spinner/loading-spinner.component";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-login',
@@ -32,6 +34,8 @@ import {AuthService} from "../core/auth/auth.service";
     MatButton,
     MatInputModule,
     MatCheckbox,
+    LoadingSpinnerComponent,
+    NgIf,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -43,6 +47,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
     rememberMe: new FormControl(false)
   });
+  isLoading = false;
 
   constructor(private fb: FormBuilder, private loginService: LoginService,
               private router: Router, private authService: AuthService) { }
@@ -60,6 +65,8 @@ export class LoginComponent implements OnInit {
       this.loginRequestToSend.username = username;
       this.loginRequestToSend.password = password;
       this.loginRequestToSend.rememberMe = rememberMe;
+      this.isLoading = true;
+
     }
 
     this.loginService.login(this.loginRequestToSend).subscribe({
@@ -72,10 +79,15 @@ export class LoginComponent implements OnInit {
         this.authService.setToken(token, this.loginRequestToSend.rememberMe);
         console.log(this.authService.isAuthenticated());
 
-        this.router.navigate(['/home']).then(r => '/login');
+        this.router.navigate(['/home']).then(
+          () => {
+            this.isLoading = false;
+          }
+        );
       },
       error: (error) => {
         console.log(error);
+        this.isLoading = false;
       }
     });
   }
