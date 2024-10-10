@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import {delay, Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,8 @@ export class AuthService {
   // Call this method to log out
   clearToken(): void {
     this.cookieService.delete(this.tokenKey);
+  }
+  isAuthenticatedAsync(): Observable<boolean> {
+    return of(true).pipe(delay(2000)); // Simulate a delay (replace with real logic)
   }
 }

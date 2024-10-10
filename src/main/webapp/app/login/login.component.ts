@@ -17,7 +17,6 @@ import {Login} from "./login.model";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {Router} from "@angular/router";
 import {AuthService} from "../core/auth/auth.service";
-import {LoadingSpinnerComponent} from "../core/loading-spinner/loading-spinner.component";
 import {NgIf} from "@angular/common";
 
 @Component({
@@ -34,7 +33,6 @@ import {NgIf} from "@angular/common";
     MatButton,
     MatInputModule,
     MatCheckbox,
-    LoadingSpinnerComponent,
     NgIf,
   ],
   templateUrl: './login.component.html',
