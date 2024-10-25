@@ -8,10 +8,10 @@
 		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sharp-study</groupId>
-	<artifactId>sharp-study</artifactId>
+	<groupId>com.ilm-learn</groupId>
+	<artifactId>ilm-learn</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sharp-study</name>
+	<name>ilm-learn</name>
 	<description>Spring Boot </description>
 	<url/>
 	<licenses>

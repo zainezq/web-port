@@ -1,1 +1,3 @@
-project/com/Ilm_Learn/IlmLearnApplicationTests.class
+com/ilm_learn/RegisterControllerTest.class
+com/ilm_learn/AuthControllerTest.class
+com/ilm_learn/IlmLearnApplicationTests.class

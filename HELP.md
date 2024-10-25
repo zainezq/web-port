@@ -1,7 +1,6 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.sharp-study.sharp-study' is invalid and this project uses 'com.sharp_study.sharp_study' instead.
 
 # Getting Started
 
