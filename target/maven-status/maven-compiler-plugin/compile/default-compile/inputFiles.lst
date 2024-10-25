@@ -1,0 +1,15 @@
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/SharpStudyApplication.java
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/entities/User.java
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/repository/UserRepository.java
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/security/AuthenticationRequest.java
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/security/AuthenticationResponse.java
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/security/JwtAspect.java
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/security/JwtRequestFilter.java
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/security/JwtRequired.java
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/security/JwtUtil.java
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/security/SecurityConfig.java
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/security/WebConfig.java
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/service/UserService.java
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/web/rest/AuthController.java
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/web/rest/RegisterController.java
+/home/zaine/Documents/sharp-study/src/main/java/com/sharp_study/sharp_study/web/rest/UserController.java
