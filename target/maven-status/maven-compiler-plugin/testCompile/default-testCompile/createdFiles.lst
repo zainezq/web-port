@@ -1,3 +1,2 @@
-com/ilm_learn/RegisterControllerTest.class
-com/ilm_learn/AuthControllerTest.class
-com/ilm_learn/IlmLearnApplicationTests.class
+com/web_port/AuthControllerTest.class
+com/web_port/WebPortApplicationTests.class
