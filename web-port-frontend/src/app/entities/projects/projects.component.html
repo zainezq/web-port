@@ -1,0 +1,24 @@
+<div class="projects">
+  <h2>My GitHub Projects</h2>
+
+  <!-- Display Repositories -->
+  <div *ngIf="visibleRepositories.length > 0; else loading">
+    <div *ngFor="let repo of visibleRepositories" class="project-card">
+      <h3>{{ repo.name }}</h3>
+      <p>{{ repo.description || 'No description available.' }}</p>
+      <a [href]="repo.html_url" target="_blank">View on GitHub</a>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <ng-template #loading>
+    <p>Loading repositories...</p>
+  </ng-template>
+
+  <!-- Pagination Controls -->
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage * reposPerPage >= repositories.length">Next</button>
+  </div>
+</div>

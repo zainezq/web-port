@@ -1,0 +1,104 @@
+$dark-gray: #333;
+$white: #fff;
+$highlight-color: #007BFF;
+
+.portfolio-container {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;  // Prevent layout from overflowing when zoomed in
+  flex-wrap: wrap; // Allow the container to wrap in case of overflow
+
+  .sidebar {
+    width: 20%;  // Set sidebar width to 20% of the container width
+    min-width: 200px; // Prevent shrinking below a readable size
+    max-width: 300px; // Max width, to prevent it from expanding too much
+    background-color: $dark-gray;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem; // Push the menu slightly down from the top
+    overflow-y: auto; // Allow vertical scrolling if sidebar content exceeds height
+    box-sizing: border-box;
+
+    h2 {
+      margin: 0 0 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      margin: 0;
+      flex-direction: column;
+      gap: 1.5rem; // Spacing between menu items
+
+      li {
+        margin-bottom: 15px;
+
+        a {
+          text-decoration: none;
+          color: $white;
+          font-size: 16px;
+          transition: color 0.3s;
+
+          &:hover,
+          &.active {
+            color: $highlight-color;
+          }
+        }
+      }
+    }
+  }
+
+  .content {
+    flex-grow: 1;
+    background-color: $white;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;  // Prevent horizontal overflow
+
+    h1 {
+      font-size: 24px;
+      margin: 0 0 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Media queries for responsive handling
+@media (max-width: 1024px) {
+  .portfolio-container {
+    flex-direction: column;  // Stack sidebar and content on smaller screens
+    height: auto; // Allow for content height to adjust based on screen size
+    overflow: auto; // Allow overflow handling if needed
+  }
+
+  .sidebar {
+    width: 100%;  // Sidebar takes full width on small screens
+    height: auto;
+    min-width: 0;  // Allow it to shrink as needed
+    padding-top: 1.5rem;
+    max-width: none; // Allow the sidebar to fill the width
+  }
+
+  .content {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-container {
+    flex-direction: column; // Stack elements vertically on even smaller screens
+  }
+
+  .sidebar {
+    width: 100%;  // Full width for sidebar in small screens
+    height: auto;
+  }
+}

@@ -16,25 +16,13 @@ public class User implements Serializable {
     @Column(name = "roles")
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> roles;
-    @Column(name = "first_name")
-    @NotEmpty(message = "firstName must not be empty")
-    private String firstName;
-    @Column(name = "last_name")
-    @NotEmpty(message = "lastName must not be empty")
-    private String lastName;
-    @Column(name = "user_name")
     @NotEmpty(message = "username must not be empty")
     private String username;
     @Column(name = "password")
     @NotEmpty(message = "password must not be empty")
     private String password;
-    @Column(name = "confirm_password")
-    @NotEmpty(message = "confirmPassword must not be empty")
-    private String confirmPassword;
     @Column(name = "email")
     private String email;
-    @Column(name = "phone_number")
-    private String phoneNumber;
 
     public User() {
 
@@ -46,22 +34,6 @@ public class User implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getUsername() {
@@ -80,13 +52,6 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
 
     public String getEmail() {
         return email;
@@ -94,14 +59,6 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public Set<String> getRoles() {

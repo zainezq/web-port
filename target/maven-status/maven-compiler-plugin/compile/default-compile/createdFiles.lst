@@ -11,4 +11,5 @@ com/web_port/security/JwtRequestFilter.class
 com/web_port/security/WebConfig.class
 com/web_port/web/rest/AuthController.class
 com/web_port/service/UserService.class
+com/web_port/web/rest/GitHubController.class
 com/web_port/security/AuthenticationRequest.class

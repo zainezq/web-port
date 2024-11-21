@@ -11,4 +11,5 @@
 /home/zaine/Documents/web-port/src/main/java/com/web_port/security/WebConfig.java
 /home/zaine/Documents/web-port/src/main/java/com/web_port/service/UserService.java
 /home/zaine/Documents/web-port/src/main/java/com/web_port/web/rest/AuthController.java
+/home/zaine/Documents/web-port/src/main/java/com/web_port/web/rest/GitHubController.java
 /home/zaine/Documents/web-port/src/main/java/com/web_port/web/rest/UserController.java

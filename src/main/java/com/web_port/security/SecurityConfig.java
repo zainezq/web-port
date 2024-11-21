@@ -36,11 +36,11 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for REST APIs
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll() // Public endpoints
+                        .requestMatchers("/api/**").permitAll()
                         .requestMatchers("/public/**").permitAll() // Other public endpoints
                         .requestMatchers("/user/**").permitAll()
                         .requestMatchers("/register/**").permitAll()
                         .requestMatchers("/**").permitAll()
-                        .requestMatchers("/api/files/upload").authenticated()
                         .anyRequest().authenticated() // All other endpoints require authentication
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Stateless sessions
