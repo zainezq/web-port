@@ -1,45 +1,113 @@
+$retro-font: 'Press Start 2P', cursive; // Nostalgic font
+$highlight-color: #ff8c42; // Retro orange accent
+$secondary-color: #6c63ff; // Nostalgic deep blue
+$text-light: #f5f5f5; // Light text for dark backgrounds
+$text-dark: #333; // Dark text for light backgrounds
+$card-bg: #2c3e50; // Dark retro card background
+$card-hover-bg: #34495e; // Darker hover state
+$border-color: #7f8c8d; // Subtle border color
+$dark-bg: #1b1b2f; // Nostalgic dark tone
+
 .projects {
-  padding: 20px;
-}
+  font-family: $retro-font, sans-serif;
+  background: linear-gradient(145deg, $secondary-color, $dark-bg); // Gradient for nostalgic effect
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 2rem;
+  overflow: hidden;
 
-.project-card {
-  margin: 10px 0;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+  h2 {
+    font-size: 2rem;
+    color: $highlight-color;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid $highlight-color;
+    padding-bottom: 1rem;
+  }
 
-.project-card h3 {
-  margin: 0;
-}
+  .project-card {
+    background-color: $card-bg;
+    border: 1px solid $border-color;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
 
-.project-card a {
-  color: blue;
-  text-decoration: underline;
-}
+    h3 {
+      font-size: 1.6rem;
+      color: $text-light;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-.pagination {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    p {
+      font-size: 1.1rem;
+      color: $text-light;
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+    }
 
-.pagination button {
-  padding: 10px 20px;
-  margin: 0 10px;
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
+    a {
+      text-decoration: none;
+      color: $highlight-color;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1rem;
+      border: 2px solid $highlight-color;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
 
-.pagination button[disabled] {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
+      &:hover {
+        background-color: $highlight-color;
+        color: $dark-bg;
+      }
+    }
 
-.pagination span {
-  font-size: 18px;
+    &:hover {
+      background-color: $card-hover-bg;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+
+    button {
+      background-color: $secondary-color;
+      color: $text-light;
+      border: 2px solid $secondary-color;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin: 0 10px;
+
+      &:disabled {
+        background-color: $border-color;
+        cursor: not-allowed;
+      }
+
+      &:hover {
+        background-color: $highlight-color;
+        color: $dark-bg;
+      }
+    }
+
+    span {
+      color: $text-light;
+      font-size: 1.2rem;
+    }
+  }
 }
