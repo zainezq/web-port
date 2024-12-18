@@ -1,0 +1,93 @@
+/* General Container - Dark Background */
+.blog-list {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: 'Courier New', Courier, monospace; /* Retro typewriter font */
+  background-color: #111; /* Deep dark background */
+  color: #d3d3d3; /* Soft gray text */
+  border: 2px solid #444; /* Subtle gray border */
+  box-shadow: 5px 5px 0px #000;
+}
+
+/* Nostalgic Header */
+.blog-header {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #39ff14; /* Neon green text */
+  text-shadow: 0 0 8px #39ff14; /* Green glow */
+  border-bottom: 2px solid #555;
+  padding-bottom: 1em;
+  margin-bottom: 20px;
+}
+
+/* Blog Row */
+.blog-row {
+  margin-bottom: 15px;
+}
+
+/* Blog Card */
+.blog-card {
+  background-color: #222; /* Dark gray */
+  border: 2px solid #333;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 3px 3px 0px #000;
+  transition: all 0.2s ease-in-out;
+}
+
+.blog-card:hover {
+  box-shadow: 0 0 8px #39ff14; /* Neon green glow on hover */
+  transform: scale(1.02);
+}
+
+/* Blog Title */
+.blog-title {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.blog-title-link {
+  text-decoration: none;
+  color: #ffcc00; /* Retro orange */
+  transition: color 0.2s ease-in-out, text-shadow 0.2s;
+}
+
+.blog-title-link:hover {
+  color: #39ff14; /* Neon green on hover */
+  text-shadow: 0 0 6px #39ff14;
+}
+
+/* Blog Summary */
+.blog-summary {
+  font-size: 1rem;
+  color: #bbb; /* Light gray */
+  margin-bottom: 10px;
+}
+
+/* Blog Date */
+.blog-date {
+  font-size: 0.9rem;
+  color: #888; /* Dim gray */
+}
+
+/* Footer with Button */
+.blog-footer {
+  text-align: right;
+}
+
+.read-more-btn {
+  text-decoration: none;
+  color: #00bfff; /* Retro blue */
+  border: 1px solid #00bfff;
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 3px;
+  transition: all 0.2s ease-in-out;
+}
+
+.read-more-btn:hover {
+  background-color: #00bfff; /* Fill background */
+  color: #111; /* Text turns dark */
+  box-shadow: 0 0 8px #00bfff; /* Neon blue glow */
+}

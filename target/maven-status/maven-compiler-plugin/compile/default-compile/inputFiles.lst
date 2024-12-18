@@ -1,15 +1,4 @@
 /home/zaine/Documents/web-port/src/main/java/com/web_port/WebPortApplication.java
-/home/zaine/Documents/web-port/src/main/java/com/web_port/entities/User.java
-/home/zaine/Documents/web-port/src/main/java/com/web_port/repository/UserRepository.java
-/home/zaine/Documents/web-port/src/main/java/com/web_port/security/AuthenticationRequest.java
-/home/zaine/Documents/web-port/src/main/java/com/web_port/security/AuthenticationResponse.java
-/home/zaine/Documents/web-port/src/main/java/com/web_port/security/JwtAspect.java
-/home/zaine/Documents/web-port/src/main/java/com/web_port/security/JwtRequestFilter.java
-/home/zaine/Documents/web-port/src/main/java/com/web_port/security/JwtRequired.java
-/home/zaine/Documents/web-port/src/main/java/com/web_port/security/JwtUtil.java
 /home/zaine/Documents/web-port/src/main/java/com/web_port/security/SecurityConfig.java
 /home/zaine/Documents/web-port/src/main/java/com/web_port/security/WebConfig.java
-/home/zaine/Documents/web-port/src/main/java/com/web_port/service/UserService.java
-/home/zaine/Documents/web-port/src/main/java/com/web_port/web/rest/AuthController.java
 /home/zaine/Documents/web-port/src/main/java/com/web_port/web/rest/GitHubController.java
-/home/zaine/Documents/web-port/src/main/java/com/web_port/web/rest/UserController.java

@@ -1,0 +1,17 @@
+.blog-detail {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+}
+
+.blog-detail h1 {
+  margin-bottom: 0.5em;
+}
+.blog-content, .blog-detail  {
+// make it easy to read the blog content
+    color: #d3d3d3;
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 1em;
+    text-align: justify;
+}
