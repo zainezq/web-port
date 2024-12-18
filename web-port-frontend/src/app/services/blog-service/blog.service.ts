@@ -7,7 +7,6 @@ export interface BlogPost {
   slug: string;
   title: string;
   summary: string;
-  content: string;
   date: string;
 }
 
@@ -24,8 +23,9 @@ export class BlogService {
     return this.http.get<BlogPost[]>(`${this.blogsPath}index.json`);
   }
 
-  // Fetch a single blog by its slug
-  getBlogBySlug(slug: string): Observable<BlogPost> {
-    return this.http.get<BlogPost>(`${this.blogsPath}${slug}.json`);
+  // Fetch an individual blog post
+  getBlogContent(slug: string): Observable<string> {
+    return this.http.get(`assets/blogs/${slug}.md`, { responseType: 'text' });
   }
+
 }

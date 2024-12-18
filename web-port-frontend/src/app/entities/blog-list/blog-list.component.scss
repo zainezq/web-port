@@ -1,14 +1,28 @@
 /* General Container - Dark Background */
+/* General Container - Dark Background */
 .blog-list {
-  max-width: 800px;
-  margin: 30px auto;
-  padding: 20px;
+  margin: 1.5em 1.5em;
+  padding: 1em;
   font-family: 'Courier New', Courier, monospace; /* Retro typewriter font */
-  background-color: #111; /* Deep dark background */
   color: #d3d3d3; /* Soft gray text */
-  border: 2px solid #444; /* Subtle gray border */
-  box-shadow: 5px 5px 0px #000;
 }
+
+/* Blog Card */
+.blog-card {
+  width: 100%; /* Full width */
+  background-color: #222; /* Dark gray */
+  border: 2px solid #333;
+  border-radius: 5px;
+  padding: 20px;
+  //margin-right: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.blog-card:hover {
+  box-shadow: 0 0 8px #39ff14; /* Neon green glow on hover */
+  transform: scale(1.02);
+}
+
 
 /* Nostalgic Header */
 .blog-header {
@@ -26,20 +40,6 @@
   margin-bottom: 15px;
 }
 
-/* Blog Card */
-.blog-card {
-  background-color: #222; /* Dark gray */
-  border: 2px solid #333;
-  border-radius: 5px;
-  padding: 15px;
-  box-shadow: 3px 3px 0px #000;
-  transition: all 0.2s ease-in-out;
-}
-
-.blog-card:hover {
-  box-shadow: 0 0 8px #39ff14; /* Neon green glow on hover */
-  transform: scale(1.02);
-}
 
 /* Blog Title */
 .blog-title {

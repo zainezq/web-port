@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {BlogPost, BlogService} from '../../services/blog.service';
+import {BlogPost, BlogService} from '../../services/blog-service/blog.service';
 import {RouterLink} from '@angular/router';
 import {NgForOf} from '@angular/common';
 
