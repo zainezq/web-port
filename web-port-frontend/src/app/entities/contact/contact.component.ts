@@ -14,28 +14,19 @@ import { Observable } from 'rxjs';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent {
-  private apiUrl = 'http://localhost:9000/api/email';
-
+  private apiUrl = 'http://localhost:9000/api/contact';
   constructor(private http: HttpClient) {}
 
-  onSubmit(contactForm: NgForm) {
-    if (contactForm.valid) {
-      const { to, subject, message } = contactForm.value;
-      const emailData = { to, subject, message };
-
-      this.http.post(this.apiUrl, emailData)
-        .subscribe({
-          next: (response) => {
-            console.log('Email sent successfully:', response);
-            alert('Your message has been sent!');
-            contactForm.reset();
-          },
-          error: (error) => {
-            console.error('Error sending email:', error);
-            alert('Failed to send the email. Please try again.');
-          }
-        });
-
-    }
+  onSubmit(contactForm: any): void {
+    const formData = contactForm.value;
+    this.http.post(this.apiUrl, formData).subscribe({
+      next: (response) => {
+        alert('Message sent successfully!');
+        contactForm.reset();
+      },
+      error: (error) => {
+        alert('Failed to send message: ' + error.message);
+      }
+    });
   }
 }

@@ -1,7 +1,7 @@
-com/web_port/web/rest/EmailController.class
+com/web_port/email/ContactController.class
 com/web_port/security/WebConfig.class
 com/web_port/WebPortApplication.class
 com/web_port/web/rest/GitHubController.class
-com/web_port/service/EmailService.class
+com/web_port/email/EmailTest.class
+com/web_port/email/ContactForm.class
 com/web_port/security/SecurityConfig.class
-com/web_port/web/rest/EmailRequest.class
