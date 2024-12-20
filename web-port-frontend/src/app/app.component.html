@@ -3,7 +3,17 @@
     <app-sidebar></app-sidebar> <!-- Sidebar Component -->
   </div>
 
-  <div class="main-content">
-    <router-outlet></router-outlet> <!-- Main Content Area -->
+
+  <div *ngIf="loading" >
+    <app-loading *ngIf="loading"></app-loading>
   </div>
+
+  <div *ngIf="!loading" class="main-content">
+    <router-outlet></router-outlet> <!-- Main Content Area -->
+
+  </div>
+
+<!--  <div class="main-content">-->
+<!--    <router-outlet></router-outlet> &lt;!&ndash; Main Content Area &ndash;&gt;-->
+<!--  </div>-->
 </div>

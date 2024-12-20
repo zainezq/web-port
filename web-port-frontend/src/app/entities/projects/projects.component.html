@@ -4,9 +4,11 @@
   <!-- Display Repositories -->
   <div *ngIf="visibleRepositories.length > 0; else loading">
     <div *ngFor="let repo of visibleRepositories" class="project-card">
-      <h3>{{ repo.name }}</h3>
+      <h3 class="github-title">
+        <a class="github-title-link" [href]="repo.html_url" target="_blank"> {{ repo.name }}</a>
+      </h3>
       <p>{{ repo.description || 'No description available.' }}</p>
-      <a [href]="repo.html_url" target="_blank">View on GitHub</a>
+      <a class="github-link" [href]="repo.html_url" target="_blank">View on GitHub</a>
     </div>
   </div>
 

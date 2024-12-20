@@ -1,4 +1,6 @@
 /home/zaine/Documents/web-port/src/main/java/com/web_port/WebPortApplication.java
 /home/zaine/Documents/web-port/src/main/java/com/web_port/security/SecurityConfig.java
 /home/zaine/Documents/web-port/src/main/java/com/web_port/security/WebConfig.java
+/home/zaine/Documents/web-port/src/main/java/com/web_port/service/EmailService.java
+/home/zaine/Documents/web-port/src/main/java/com/web_port/web/rest/EmailController.java
 /home/zaine/Documents/web-port/src/main/java/com/web_port/web/rest/GitHubController.java

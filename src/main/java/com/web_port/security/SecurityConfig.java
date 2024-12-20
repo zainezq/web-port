@@ -24,9 +24,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll() // Public endpoints
                         .requestMatchers("/api/**").permitAll()
-                        .requestMatchers("/public/**").permitAll() // Other public endpoints
-                        .requestMatchers("/user/**").permitAll()
-                        .requestMatchers("/register/**").permitAll()
+                        .requestMatchers("/api/email").permitAll()
                         .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated() // All other endpoints require authentication
                 )

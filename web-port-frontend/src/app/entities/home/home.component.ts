@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +7,7 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
   ],
   templateUrl: './home.component.html',
   standalone: true,
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
 
