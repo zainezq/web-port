@@ -1,7 +1,6 @@
-/home/zaine/Documents/projects/web-port/src/main/java/com/web_port/WebPortApplication.java
-/home/zaine/Documents/projects/web-port/src/main/java/com/web_port/email/ContactController.java
-/home/zaine/Documents/projects/web-port/src/main/java/com/web_port/email/ContactForm.java
-/home/zaine/Documents/projects/web-port/src/main/java/com/web_port/email/EmailTest.java
-/home/zaine/Documents/projects/web-port/src/main/java/com/web_port/security/SecurityConfig.java
-/home/zaine/Documents/projects/web-port/src/main/java/com/web_port/security/WebConfig.java
-/home/zaine/Documents/projects/web-port/src/main/java/com/web_port/web/rest/GitHubController.java
+/home/zaine/Documents/web-port/src/main/java/com/web_port/WebPortApplication.java
+/home/zaine/Documents/web-port/src/main/java/com/web_port/email/ContactController.java
+/home/zaine/Documents/web-port/src/main/java/com/web_port/email/EmailService.java
+/home/zaine/Documents/web-port/src/main/java/com/web_port/security/SecurityConfig.java
+/home/zaine/Documents/web-port/src/main/java/com/web_port/security/WebConfig.java
+/home/zaine/Documents/web-port/src/main/java/com/web_port/web/rest/GitHubController.java

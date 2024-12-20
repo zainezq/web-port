@@ -109,3 +109,39 @@
   //background-color: #ccc;
   cursor: not-allowed;
 }
+
+
+/* Success Message */
+.success-message {
+  color: #39ff14; /* Neon green */
+  background-color: #222; /* Dark background */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.1rem;
+  animation: fadeIn 0.5s ease-in-out, fadeOut 0.5s ease-in-out 2.5s forwards;
+}
+
+/* Error Message */
+.error-message {
+  color: #ff4d4d; /* Bright red */
+  background-color: #2b0000; /* Dark red background */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.1rem;
+  animation: fadeIn 0.5s ease-in-out, fadeOut 0.5s ease-in-out 2.5s forwards;
+}
+
+/* Animation for transition */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
