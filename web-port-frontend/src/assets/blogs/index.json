@@ -1,5 +1,5 @@
 [
-  { "id": 1, "title": "First Blog Post", "slug": "first-blog-post", "summary": "Short summary...", "date": "2024-06-17" },
+  { "id": 1, "title": "My Emacs Config", "slug": "emacs_config", "summary": "Short summary...", "date": "2024-06-17" },
   { "id": 2, "title": "Second Blog Post", "slug": "car", "summary": "Short summary...", "date": "2024-06-17" },
   { "id": 3, "title": "Third Blog Post", "slug": "third-blog-post", "summary": "Short summary...", "date": "2024-06-17" },
   { "id": 4, "title": "Fourth Blog Post", "slug": "fourth-blog-post", "summary": "Short summary...", "date": "2024-06-17" },
