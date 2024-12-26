@@ -1,0 +1,18 @@
+<div class="blog-list">
+  <h1 class="blog-header">~ The Blorg ~</h1>
+  <div *ngFor="let blog of blogs" class="blog-row">
+    <div class="blog-card">
+      <div class="blog-content">
+        <h2 class="blog-title">
+          <a class="blog-title-link" [routerLink]="['/blogs', blog.slug]">{{ blog.title }}</a>
+        </h2>
+        <p class="blog-summary">{{ blog.summary }}</p>
+        <p class="blog-date">📅 {{ blog.date }}</p>
+      </div>
+      <div class="blog-footer">
+        <!-- Pass the slug as a parameter here too -->
+        <a [routerLink]="['/blogs', blog.slug]" class="read-more-btn">Read Full Article →</a>
+      </div>
+    </div>
+  </div>
+</div>
