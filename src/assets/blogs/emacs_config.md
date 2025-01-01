@@ -215,3 +215,25 @@ For quick testing of changes:
 ```
 
 ---
+
+## **11. Scripts**
+
+As previously mentioned, I’ve kept scripts in a `~/.emacs.d/scripts/` directory:
+
+```elisp
+(add-to-list 'load-path "~/.emacs.d/scripts/")
+(require 'displays)
+(require 'shells)
+(require 'auto-comp)
+(require 'window)
+(require 'keyboard)
+(require 'custom-agenda)
+```
+
+Each of these can be found in my GitHub repository: [emacs-config](https://github.com/zainezq/emacs-config)
+
+---
+
+## **12. Conclusion**
+
+This is the end of my customised Emacs configuration, for more details I would recommend checking out this YouTube series: [DistroTube  - Configuring Emacs](https://www.youtube.com/playlist?list=PL5--8gKSku15e8lXf7aLICFmAHQVo0KXX). I hope you find it useful :)

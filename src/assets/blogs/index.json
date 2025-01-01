@@ -1,5 +1,4 @@
 [
-  { "id": 1, "title": "My Emacs Config", "slug": "emacs_config", "summary": "A quick summary of my current Emacs configuration", "date": "20-12-2024" },
-  { "id": 2, "title": "Second Blog Post", "slug": "car", "summary": "Short summary...", "date": "2024-06-17" }
+  { "id": 1, "title": "My Emacs Config", "slug": "emacs_config", "summary": "A quick summary of my current Emacs configuration", "date": "20-12-2024" }
 
 ]
