@@ -16,7 +16,7 @@ import 'prismjs/components/prism-markup';    // For HTML/markup
   templateUrl: './blog-detail.component.html',
   standalone: true,
   imports: [
-    NgIf
+
   ],
   styleUrls: ['./blog-detail.component.scss'],
   encapsulation: ViewEncapsulation.None  // Disable encapsulation

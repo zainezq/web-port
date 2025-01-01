@@ -1,76 +1,58 @@
 import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
-
-import {ContactService} from './service/contact.service';
-import {NgClass, NgIf} from '@angular/common';
+import emailjs from '@emailjs/browser';
+import {FormsModule} from '@angular/forms';
+import {CommonModule, NgIf} from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  standalone: true,
+  styleUrls: ['./contact.component.scss'],
   imports: [
     FormsModule,
-    NgIf,
-    NgClass,
+    NgIf
   ],
-  styleUrls: ['./contact.component.scss'],
+  standalone: true
 })
 export class ContactComponent {
   successMessage = false;
   errorMessage = false;
-  constructor(private contactService: ContactService) {}
 
-  onSubmit(contactForm: NgForm) {
-    if (contactForm.valid) {
-      const { email, subject, message } = contactForm.value;
+  // Replace these with your actual EmailJS user ID and template/service IDs
+  private serviceId = 'service_s1lpqyn';
+  private templateId = 'template_8n9ih8j';
+  private publicKey = 'SmPb33DB3RySZOfPu';
 
-      this.contactService.sendEmail({ userEmail: email, subject, message }).subscribe({
-        next: (response) => {
-          console.log('Response from server:', response);
+  onSubmit(contactForm: any) {
+    console.log('Form submitted:', contactForm.value);
+
+    const templateParams = {
+      email: contactForm.value.email, // Maps to {{email}}
+      subject: contactForm.value.subject, // Maps to {{subject}}
+      message: contactForm.value.message, // Maps to {{message}}
+    };
+
+
+    emailjs
+      .send(this.serviceId, this.templateId, templateParams, this.publicKey)
+      .then(
+        (response) => {
+          console.log('Email sent successfully!', response.status, response.text);
           this.successMessage = true;
-
-          // Hide the message after 3 seconds
           setTimeout(() => {
             this.successMessage = false;
           }, 3000);
         },
-        error: (error) => {
-          console.error('Error occurred:', error);
+        (error) => {
+          console.error('Failed to send email:', error);
           this.errorMessage = true;
-
-          // Hide the message after 3 seconds
           setTimeout(() => {
             this.errorMessage = false;
           }, 3000);
-        },
-      });
-
-      contactForm.reset();
-    }
-  }
-
-/*  onSubmit(contactForm: any) {
-    console.log('Form submitted:', contactForm.value);
-
-    // Example: Simulate form validation or server response
-    const isFormValid = Math.random() > 0.5; // Randomly simulate success or error
-
-    if (isFormValid) {
-      // Display success message
-      this.successMessage = true;
-      setTimeout(() => {
-        this.successMessage = false;
-      }, 3000);
-    } else {
-      // Display error message
-      this.errorMessage = true;
-      setTimeout(() => {
-        this.errorMessage = false;
-      }, 3000);
-    }
+        }
+      );
 
     // Reset the form
     contactForm.reset();
-  }*/
-
+  }
 }
