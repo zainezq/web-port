@@ -5,10 +5,14 @@
 }
 
 .sidebar-logo {
-  width: 100px;
-  height: auto;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
 }
+
 
 .sidebar-nav {
   margin-top: 5em;
@@ -39,5 +43,38 @@
   .active {
     font-weight: bold;
     color: #39ff14;
+  }
+}
+
+/* New styles for responsiveness */
+.hamburger-menu {
+  display: none;
+  font-size: 2em;
+  color: white;
+  cursor: pointer;
+  margin: 1em;
+}
+
+@media (max-width: 768px) {
+  .sidebar-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #222;
+    z-index: 1000;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+  }
+
+  .sidebar-nav.visible {
+    transform: translateX(0);
+  }
+
+  .hamburger-menu {
+    display: block;
   }
 }
