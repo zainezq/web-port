@@ -12,8 +12,11 @@
   padding: 1em;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease;
 }
-
+.sidebar.closed {
+  transform: translateX(-100%);
+}
 .main-content {
   flex: 1;
   padding: 20px;
@@ -52,5 +55,28 @@
 
   .active {
     font-weight: bold;
+  }
+}
+/* Mobile styles */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%; /* Full width on mobile */
+  }
+
+  .sidebar-toggle {
+    display: block; /* Show the toggle button */
+  }
+
+  /* When the sidebar is closed, hide it */
+  .sidebar.closed {
+    transform: translateX(-100%);
+  }
+
+  .main-content {
+    margin-left: 0; /* No space on left when sidebar is hidden */
   }
 }
