@@ -57,6 +57,8 @@
     font-weight: bold;
   }
 }
+
+
 /* Mobile styles */
 @media (max-width: 768px) {
   .app-container {
@@ -65,6 +67,13 @@
 
   .sidebar {
     width: 100%; /* Full width on mobile */
+    position: fixed; /* Fix sidebar on top in mobile mode */
+
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure the sidebar is on top */
+    transition: transform 0.3s ease; /* Smooth transition when toggling */
   }
 
   .sidebar-toggle {
@@ -77,6 +86,7 @@
   }
 
   .main-content {
+    margin-top: 8rem; /* Space for the sidebar toggle button */
     margin-left: 0; /* No space on left when sidebar is hidden */
   }
 }
