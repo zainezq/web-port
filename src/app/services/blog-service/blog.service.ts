@@ -8,6 +8,7 @@ export interface BlogPost {
   title: string;
   summary: string;
   date: string;
+  readingTime?: string;
 }
 
 @Injectable({

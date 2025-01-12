@@ -1,5 +1,4 @@
 [
-  { "id": 1, "title": "My Emacs Config", "slug": "emacs_config", "summary": "A quick summary of my current Emacs configuration", "date": "20-12-2024" },
-  { "id": 2, "title": "The Brain's Self-Discipline Blueprint: Examining the Prefrontal Cortex and Other Areas", "slug": "prefront_cortex", "summary": "An analysis of the role of the prefrontal cortex in self-discipline and motivation.", "date": "12-01-2025" }
-
+  { "id": 1, "title": "My Emacs Config", "slug": "emacs_config", "summary": "A quick summary of my current Emacs configuration", "date": "20-12-2024", "readingTime": "4 minutes" },
+  { "id": 2, "title": "The Brain's Self-Discipline Blueprint: Examining the Prefrontal Cortex and Other Areas", "slug": "prefrontal_cortex", "summary": "An analysis of the role of the prefrontal cortex in self-discipline and motivation.", "date": "12-01-2025", "readingTime": "5 minutes" }
 ]

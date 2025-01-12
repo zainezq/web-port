@@ -7,7 +7,7 @@
           <a class="blog-title-link" [routerLink]="['/blogs', blog.slug]">{{ blog.title }}</a>
         </h2>
         <p class="blog-summary">{{ blog.summary }}</p>
-        <p class="blog-date">📅 {{ blog.date }}</p>
+        <p class="blog-date">📅 {{ blog.date }} | ⏱ {{ blog.readingTime }}</p>
       </div>
       <div class="blog-footer">
         <!-- Pass the slug as a parameter here too -->

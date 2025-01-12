@@ -47,11 +47,11 @@ The brain will naturally prioritise short term rewards, hence techniques like vi
 
 The following are some methods to improve self-discipline that have scientific support:
 
-**Mindfulness Practices**: Mindfulness enhances the PFC and decreases amygdala activity. Inhaling for four seconds, holding for four, and expelling for six is a basic breathing technique that helps one focus and relax.
+- **Mindfulness Practices**: Mindfulness enhances the PFC and decreases amygdala activity. Inhaling for four seconds, holding for four, and expelling for six is a basic breathing technique that helps one focus and relax.
 
 - **Developing Positive Habits**: Apply the "cue-routine-reward" cycle. For instance, put your running shoes by the door (trigger), jog (routine), and then take a cool shower (reward). A good starting place to learn more about habit formation and the intricate science behind it is the famous book of James Clear titled "Atomic Habits"
 
-**Managing Stress**: Excessive stress might impair the PFC's ability to regulate. The parasympathetic nervous system can be activated by methods such as splashing cold water to ones face or practicing progressive muscle relaxation, which will help maintain ones composure.
+- **Managing Stress**: Excessive stress might impair the PFC's ability to regulate. The parasympathetic nervous system can be activated by methods such as splashing cold water to ones face or practicing progressive muscle relaxation, which will help maintain ones composure.
 
 - **Dopamine Detox**: As mentionned before, this is a double edged sword, one can reduce overstimulation by avoiding social media, binge-watching, or sugary snacks for a set period. This resets the brain’s reward system, making it easier to focus on meaningful tasks.
 
