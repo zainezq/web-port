@@ -1,5 +1,9 @@
 # Crafting a Customised Emacs Configuration for Productivity and Aesthetics
 
+By Zaine Qayyum
+
+---
+
 Emacs is a powerhouse editor that can be tailored to your specific needs, and this blog showcases how I built my Emacs configuration to enhance my productivity and enjoyment. I primarily use Emacs to organise my notes, applications, books, projects and various other things. 
 
 ---
