@@ -10,7 +10,6 @@
         <p class="blog-date">📅 {{ blog.date }} | ⏱ {{ blog.readingTime }}</p>
       </div>
       <div class="blog-footer">
-        <!-- Pass the slug as a parameter here too -->
         <a [routerLink]="['/blogs', blog.slug]" class="read-more-btn">Read Full Article →</a>
       </div>
     </div>
