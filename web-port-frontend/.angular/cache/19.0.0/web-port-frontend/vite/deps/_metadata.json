@@ -1,0 +1,97 @@
+{
+  "hash": "ba35d23e",
+  "configHash": "3f74dfb5",
+  "lockfileHash": "5bc602b2",
+  "browserHash": "a9194f58",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "80464760",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "636ff335",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "ddab5fd2",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "741efb70",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "23cf8161",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "6f10bc28",
+      "needsInterop": false
+    },
+    "marked": {
+      "src": "../../../../../../node_modules/marked/lib/marked.esm.js",
+      "file": "marked.js",
+      "fileHash": "d6dc487f",
+      "needsInterop": false
+    },
+    "prismjs": {
+      "src": "../../../../../../node_modules/prismjs/prism.js",
+      "file": "prismjs.js",
+      "fileHash": "93dbbfba",
+      "needsInterop": true
+    },
+    "prismjs/components/prism-css": {
+      "src": "../../../../../../node_modules/prismjs/components/prism-css.js",
+      "file": "prismjs_components_prism-css.js",
+      "fileHash": "165b73e0",
+      "needsInterop": true
+    },
+    "prismjs/components/prism-javascript": {
+      "src": "../../../../../../node_modules/prismjs/components/prism-javascript.js",
+      "file": "prismjs_components_prism-javascript.js",
+      "fileHash": "dd759eb3",
+      "needsInterop": true
+    },
+    "prismjs/components/prism-markup": {
+      "src": "../../../../../../node_modules/prismjs/components/prism-markup.js",
+      "file": "prismjs_components_prism-markup.js",
+      "fileHash": "a23b81a1",
+      "needsInterop": true
+    },
+    "prismjs/components/prism-typescript": {
+      "src": "../../../../../../node_modules/prismjs/components/prism-typescript.js",
+      "file": "prismjs_components_prism-typescript.js",
+      "fileHash": "9e094f92",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-WC7ZOOXZ": {
+      "file": "chunk-WC7ZOOXZ.js"
+    },
+    "chunk-4BTEFTRW": {
+      "file": "chunk-4BTEFTRW.js"
+    },
+    "chunk-P5NOGU2U": {
+      "file": "chunk-P5NOGU2U.js"
+    },
+    "chunk-6MZ7IL4G": {
+      "file": "chunk-6MZ7IL4G.js"
+    },
+    "chunk-3OV72XIM": {
+      "file": "chunk-3OV72XIM.js"
+    }
+  }
+}
