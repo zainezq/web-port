@@ -1,5 +1,6 @@
 [
   { "id": 1, "title": "My Emacs Config", "slug": "emacs_config", "summary": "A quick summary of my current Emacs configuration", "date": "20-12-2024", "readingTime": "4 minutes" },
   { "id": 2, "title": "The Brain's Self-Discipline Blueprint: Examining the Prefrontal Cortex and Other Areas", "slug": "prefrontal_cortex", "summary": "An analysis of the role of the prefrontal cortex in self-discipline and motivation.", "date": "12-01-2025", "readingTime": "5 minutes" },
-  { "id": 3, "title": "Introduction to Nginx", "slug": "nginx", "summary": "What Nginx is, how it's used and how you can install it.", "date": "19-01-2025", "readingTime": "4 minutes" }
+  { "id": 3, "title": "Introduction to Nginx", "slug": "nginx", "summary": "What Nginx is, how it's used and how you can install it.", "date": "19-01-2025", "readingTime": "4 minutes" },
+  { "id": 4, "title": "A brief introduction to Agda?", "slug": "intro-to-agda", "summary": "An overview of what Agda is with examples, and how it can be used to prove mathematical theorems.", "date": "26-01-2025", "readingTime": "5 minutes" }
 ]
