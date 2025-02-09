@@ -1,5 +1,10 @@
 # What is Agda? A Beginner's Guide
 
+By Zaine Qayyum
+
+---
+
+
 Agda is a dependently typed functional programming language and proof assistant. It is widely used in academia and research for writing verified programs and proving mathematical theorems. While it might seem intimidating at first, Agda is both powerful and rewarding once you get the hang of it. In this blog we'll explore what makes Agda special and why you might want to learn it.
 
 ## Why Agda?

@@ -1,6 +1,10 @@
 
 # Guide to SSH Keys and GitLab
 
+By Zaine Qayyum
+
+---
+
 ## What are SSH Keys?
 
 SSH (Secure Shell) keys are a pair of cryptographic keys that can be used to secure communication between two parties. One key is private, and it should be kept secure on your local machine, while the other key is public and can be shared with others. SSH keys are commonly used for authentication, allowing secure access to remote servers and services without the need for a password.

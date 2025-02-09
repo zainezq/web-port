@@ -1,147 +1,112 @@
+$primary-bg: #121212;
+$secondary-bg: #1a1a1a;
+$primary-text: #e0e0e0;
+$secondary-text: #b0b0b0;
+$accent-color: #ffcc00;
+
 .blog-content {
-  font-family: 'Courier New', monospace;
+  background: $secondary-bg;
+  padding: 1.5rem;
+  border-left: 4px solid $accent-color;
+  font-size: 1.1rem;
   line-height: 1.6;
-  color: #f4f4f4;
-  padding: 2rem;
-  //border-radius: 10px;
-  //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+  word-wrap: break-word;
+  color: $primary-text;
 
-/* Style for tables */
-.blog-content table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 1rem;
-}
+  h1, h2, h3, h4 {
+    color: $accent-color;
+    text-shadow: 2px 2px 0 rgba(255, 204, 0, 0.2);
+  }
 
-.blog-content table th,
-.blog-content table td {
-  border: 1px solid #444;
-  padding: 10px;
-  text-align: left;
-}
+  p {
+    margin-bottom: 1rem;
+    color: $secondary-text;
+  }
 
-.blog-content table th {
-  background-color: #333;
-  color: #f4f4f4;
-}
+  a {
+    color: $accent-color;
+    text-decoration: none;
+    font-weight: bold;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 
-.blog-content table tr:nth-child(even) {
-  background-color: #3a3a3a;
-}
+  p code,
+  li code,
+  span code {
+    background: rgba(255, 204, 0, 0.1);
+    color: $accent-color;
+    font-family: "Courier New", monospace;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.95em;
+    white-space: nowrap; // Prevents wrapping issues
+    display: inline; // Ensures it remains in-line
+  }
 
-/* Inline code */
-.blog-content code {
-  background-color: #444;
-  padding: 0.2rem 0.4rem;
-  border-radius: 5px;
-  font-family: 'Courier New', monospace;
-  color: #f4f4f4;
-}
+  blockquote {
+    background: rgba(255, 204, 0, 0.1);
+    border-left: 4px solid $accent-color;
+    padding: 1rem;
+    font-style: italic;
+    color: $primary-text;
+  }
 
-/* Style for the code blocks */
-.blog-content pre {
-  position: relative;
-  overflow: auto;
-  background-color: #2d2d2d; /* Dark background */
-  color: #f4f4f4; /* Light text color */
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
+  // Code Blocks Styling
+  pre {
+    background: #000;
+    color: #0f0; // Classic green terminal text
+    font-family: "Courier New", monospace;
+    padding: 1rem;
+    border-radius: 4px;
+    position: relative;
+    overflow: auto;
+    border: 1px solid $accent-color;
+    margin-bottom: 1rem;
+  }
+  pre code {
+    background: transparent;
+    color: inherit;
+    font-family: "Courier New", monospace;
+    display: block; // Block-level for code blocks
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
 
-/* Style for the copy button */
-.blog-content .copy-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  font-size: 0.875rem;
-  cursor: pointer;
-  border-radius: 5px;
-  opacity: 0.7;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
+  code {
+    background: transparent;
+    color: inherit;
+    font-family: "Courier New", monospace;
+    display: block;
+    white-space: pre-wrap; // Ensures long lines break properly
+    word-wrap: break-word;
+  }
 
-.blog-content .copy-btn:hover {
-  opacity: 1;
-  transform: scale(1.05);
-}
+  // Copy Button Styling
+  .copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: $accent-color;
+    color: #000;
+    border: none;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 6px rgba(255, 204, 0, 0.5);
+    transition: background 0.3s ease-in-out, transform 0.1s;
 
-/* Optionally style the "Copied!" button appearance */
-.blog-content .copy-btn.copied {
-  background-color: #4caf50; /* Green background to indicate success */
-}
+    &:hover {
+      background: darken($accent-color, 10%);
+      transform: scale(1.05);
+    }
 
-
-/* Remove bold from code blocks */
-.blog-content pre code {
-  font-weight: normal; /* Ensure text is not bold */
-  font-size: 1rem;
-  background: none;
-  padding: 0;
-}
-
-/* Unordered list */
-.blog-content ul {
-  list-style-type: square;
-  margin-left: 1.5rem;
-}
-
-.blog-content ul li {
-  margin-bottom: 0.5rem;
-}
-
-/* Ordered list */
-.blog-content ol {
-  margin-left: 1.5rem;
-}
-
-.blog-content ol li {
-  margin-bottom: 0.5rem;
-}
-
-/* Blockquote */
-.blog-content blockquote {
-  background-color: #333;
-  border-left: 5px solid #f4f4f4;
-  padding: 1rem;
-  margin: 1rem 0;
-  font-style: italic;
-}
-
-/* Headers */
-.blog-content h1,
-.blog-content h2,
-.blog-content h3,
-.blog-content h4,
-.blog-content h5,
-.blog-content h6 {
-  color: #e0e0e0;
-  font-weight: bold;
-}
-
-.blog-content h1 {
-  font-size: 2.5rem;
-}
-
-.blog-content h2 {
-  font-size: 2rem;
-}
-
-.blog-content h3 {
-  font-size: 1.75rem;
-}
-
-/* Links */
-.blog-content a {
-  color: #0099cc;
-  text-decoration: none;
-}
-
-.blog-content a:hover {
-  text-decoration: underline;
+    &:active {
+      transform: scale(0.95);
+    }
+  }
 }

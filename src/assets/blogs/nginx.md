@@ -1,5 +1,10 @@
 # Understanding Nginx: What It Is and How to Use It
 
+By Zaine Qayyum
+
+---
+
+
 In the world of server management, you’ve probably come across **Nginx** (pronounced "engine-x"). But what exactly is Nginx, and why is it such a popular tool among developers and system administrators? In this blog, we’ll break down the basics of Nginx, explore its key features, and guide you on how to use it effectively.
 
 ---
@@ -66,7 +71,8 @@ sudo systemctl start nginx
 To confirm that Nginx is running, open your browser and visit `http://localhost` or your server’s IP address. You should see the default Nginx welcome page.
 
 ### Step 3: Configure Nginx
-The configuration files for Nginx are located in `/etc/nginx/`. The main file is `nginx.conf`, but you’ll typically work with configuration files under `/etc/nginx/sites-available/` and `/etc/nginx/sites-enabled/`.
+The configuration files for Nginx are located in `/etc/nginx/`. 
+The main file is `nginx.conf`, but you’ll typically work with configuration files under `/etc/nginx/sites-available/` and `/etc/nginx/sites-enabled/`.
 
 #### Example: Serving a Static Website
 1. Create a new configuration file:
