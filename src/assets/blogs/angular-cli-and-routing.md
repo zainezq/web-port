@@ -23,7 +23,7 @@ To install Angular CLI, you can use the following command:
 npm install -g @angular/cli
 ```
 
-Now to understand Angular in JHipster, navigate to the `/src/main/webapp/app` directory, where you will find directories and files. This is where the front-end work is done.
+Now to understand Angular files and directories, the structure below is what is generally stored in the `/src/main/webapp/app` directory. This is where the front-end work is done.
 
 - `/src/main/webapp/app/shared`: Shared components, services, and utilities used across the application.  
 - `/src/main/webapp/app/entities`: Subdirectories for each entity in the application, with components, services, and models specific to that entity.  
