@@ -1,5 +1,9 @@
 # Angular CLI and Routing
 
+By Zaine Qayyum
+
+---
+
 ## Introduction
 
 Angular is a popular open-source web application framework developed and maintained by Google. It is written in TypeScript and allows developers to build dynamic, single-page web applications (SPAs) with a modular and component-based architecture. Angular provides a powerful set of tools and features for building robust and scalable web applications.
