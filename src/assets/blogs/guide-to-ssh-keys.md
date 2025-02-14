@@ -90,7 +90,7 @@ If you use multiple SSH keys for different services, you can configure them in t
         IdentityFile ~/.ssh/id_rsa_github
     ```
     
-3.  Save and exit the file. This allows you to use different SSH keys for different services.
+3.  Save and exit the file. What this allows you to do is to use different SSH keys for different services.
     
 
 ## Troubleshooting SSH Issues

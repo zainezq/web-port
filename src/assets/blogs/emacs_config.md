@@ -45,7 +45,7 @@ Each of these are `.el` files, and are being loaded into my main `init.el`
 
 ## **3. General Settings**
 
-### Startup Optimization
+### Startup Optimisation
 
 ```elisp
 (setq inhibit-startup-screen t)
@@ -77,7 +77,7 @@ These settings remove clutter like scrollbars and enable essential features such
 
 ---
 
-## **4. Org Mode for Organization**
+## **4. Org Mode for Organisation**
 
 ### Agenda and File Management
 
@@ -234,7 +234,7 @@ As previously mentioned, I’ve kept scripts in a `~/.emacs.d/scripts/` director
 (require 'custom-agenda)
 ```
 
-Each of these can be found in my GitHub repository: [emacs-config](https://github.com/zainezq/emacs-config)
+Each of these can be found in my GitHub repository: [emacs-config](https://github.com/zainezq/dot-files)
 
 ---
 

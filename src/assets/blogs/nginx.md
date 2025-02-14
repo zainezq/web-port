@@ -5,17 +5,20 @@ By Zaine Qayyum
 ---
 
 
-In the world of server management, you’ve probably come across **Nginx** (pronounced "engine-x"). But what exactly is Nginx, and why is it such a popular tool among developers and system administrators? In this blog, we’ll break down the basics of Nginx, explore its key features, and guide you on how to use it effectively.
+In the world of server management, you’ve probably come across **Nginx** (pronounced "engine-x"). But what exactly is Nginx? And why is it such a popular tool among developers and system administrators? 
+As I was setting up my own server, I began to use Nginx for reverse proxying, and realised just how useful it can be in devops. I'll break down the basics of Nginx, explore its key features, and guide you on how to use it effectively.
 
 ---
 
 ## What Is Nginx?
 
-Nginx is an open source web server that can also function as a reverse proxy, load balancer, and HTTP cache. It was originally created in 2004 by Igor Sysoev to address the **C10K problem**; a challenge related to handling 10,000 concurrent connections on a single server.
+Nginx is an open source web server that can also function as a reverse proxy, load balancer, and HTTP cache. 
+It was originally created in 2004 by Igor Sysoev to address the **C10K problem**; a challenge related to handling 10,000 concurrent connections on a single server.
 
-What makes Nginx stand out is its event driven (more on this later), asynchronous architecture, which allows it to handle a large number of simultaneous connections efficiently. This has made it a go to choice for high performance websites and applications.
+What makes Nginx stand out is its event driven (more on this later), asynchronous architecture, which allows it to handle a large number of simultaneous connections efficiently. 
+'Simultaneous' connections refer to the number of incoming requests that can be processed at the same time, kind of like multi-threading. And in this day and age, being able to handle multiple requests at the same time is essential.
 
-Some of the most popular companies, like Netflix, Airbnb, and GitHub, use Nginx to serve their web traffic, due to it being lightweight, fast and reliable
+Some of the most popular companies, like Netflix, Airbnb, and GitHub, use Nginx to serve their web traffic, due to it being lightweight, fast and reliable.
 
 ---
 
@@ -28,6 +31,7 @@ Nginx serves static content like HTML, CSS, JavaScript, and images.
 
 ### 2. **Reverse Proxy**
 Nginx can act as a middleman, forwarding client requests to backend servers. 
+For instance, let's you have a docker service running on `localhost:4000` and you want to make it so that it routes to your website, Nginx will do the work for you, and you'll be able to access that service on: `yourwebsite.com:4000`.
 
 ### 3. **Load Balancing**
 For applications that rely on multiple servers, Nginx distributes incoming traffic evenly across them, which ensures smooth performance even during high traffics.
@@ -128,7 +132,7 @@ Save the file, reload Nginx, and you’re good to go!
 
 ---
 
-## Why Choose Nginx?
+## Closing Thoughts
 
-Not only is it a web server, its also a powerful tool that can really optimise your website's performance, as well as improving scalability and enhancing security. It doesn't matter if you are just hosting a simple static website, Nginx will have you covered.
+It's true when people say that you learn by doing, and Nginx is no exception. The more you expose yourself to it, the more you'll realise the capabilities it offers. 
 

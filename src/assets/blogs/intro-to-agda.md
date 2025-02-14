@@ -5,7 +5,8 @@ By Zaine Qayyum
 ---
 
 
-Agda is a dependently typed functional programming language and proof assistant. It is widely used in academia and research for writing verified programs and proving mathematical theorems. While it might seem intimidating at first, Agda is both powerful and rewarding once you get the hang of it. In this blog we'll explore what makes Agda special and why you might want to learn it.
+Agda is a dependently typed functional programming language and proof assistant. It is widely used in academia and research for writing verified programs and proving mathematical theorems. While it might seem intimidating at first, Agda is both powerful and rewarding once you get the hang of it. 
+This was my chosen module for my Final Year as a Computer Science student, (module titled: *Advanced Functional Programming*), and so to reinforce my understanding I wanted to write a little about it.
 
 ## Why Agda?
 
@@ -14,9 +15,7 @@ Agda combines programming and theorem proving in a seamless way. Here are some o
 - **Dependent Types:** Agda allows types to depend on values, which means you can encode intricate properties of data directly into your types, ultimately making it easier to write correct programs.
 - **Interactive Development:** Agda comes with an interactive environment that helps you construct proofs and debug code incrementally (emacs).
 - **Strong Typing:** The type system in Agda catches many errors at compile time.
-- **Extensibility:** Agda has support for Unicode characters and custom operators, proving its flexibility.
-
-Let’s explore Agda in more detail with some examples.
+- **Extensibility:** Agda has support for Unicode characters and custom operators.
 
 ---
 
@@ -163,4 +162,5 @@ Learning Agda can be challenging, especially if you’re new to dependent types 
 
 ## Conclusion
 
-Agda is a powerful tool for writing correct programs and proving mathematical theorems. While it has a steep learning curve, the benefits of using a dependently typed language are immense. Whether you’re a researcher, a programmer, or a mathematician, Agda offers a unique way to reason about your code and ideas.
+As with any programming language, it takes time to get used to the syntax and the nitty-gritties of the language itself- Agda is no exception. But once you start to write programs and proofs, you get more used to it, and you’ll find that it’s a powerful tool for solving complex problems.
+
