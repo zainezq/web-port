@@ -1,27 +1,32 @@
 /* Projects Container */
 .projects {
   padding: 20px;
-  font-family: 'Courier New', Courier, monospace; /* Retro typewriter font */
-  color: #d3d3d3; /* Soft gray text */
-  //background-color: #111; /* Dark background */
+  font-family: 'Courier New', Courier, monospace;
+  color: #d3d3d3;
   border-radius: 5px;
-  //box-shadow: 0 0 10px #333; /* Subtle shadow */
 }
 
 /* Projects Header */
 .projects h2 {
   text-align: center;
   font-size: 2rem;
-  color: #39ff14; /* Neon green text */
-  text-shadow: 0 0 8px #39ff14; /* Green glow */
+  color: #39ff14;
+  text-shadow: 0 0 8px #39ff14;
   border-bottom: 2px solid #555;
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
 
+.manual-projects h3 {
+  font-size: 1.8rem;
+  color: #39ff14;
+  margin-bottom: 15px;
+}
+
+
 /* Project Card */
 .project-card {
-  background-color: #222; /* Dark gray */
+  background-color: #222;
   border: 2px solid #333;
   border-radius: 5px;
   padding: 15px;
@@ -34,7 +39,61 @@
   transform: scale(1.02);
 }
 
+/* Project Title */
+.project-title {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
 
+.project-title-link {
+  text-decoration: none;
+  color: #ffcc00;
+  transition: color 0.2s ease-in-out, text-shadow 0.2s;
+}
+
+.project-title-link:hover {
+  color: #39ff14;
+  text-shadow: 0 0 6px #39ff14;
+}
+.project-card p {
+  font-size: 1rem;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+
+/* Project Link */
+.project-link {
+  text-decoration: none;
+  color: #00bfff;
+  border: 1px solid #00bfff;
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 3px;
+  transition: all 0.2s ease-in-out;
+}
+
+.project-link:hover {
+  background-color: #00bfff;
+  color: #111;
+  box-shadow: 0 0 8px #00bfff;
+}
+
+.github-projects h3 {
+  font-size: 1.8rem;
+  color: #39ff14;
+  margin-bottom: 15px;
+}
+
+.git-text {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+.git-text a {
+  text-decoration: none;
+  color: #ffcc00;
+  transition: color 0.2s ease-in-out, text-shadow 0.2s;
+}
 
 /* Blog Title */
 .github-title {
@@ -54,12 +113,7 @@
 }
 
 
-/* Project Description */
-.project-card p {
-  font-size: 1rem;
-  color: #bbb; /* Light gray */
-  margin-bottom: 10px;
-}
+
 
 /* GitHub Link */
 

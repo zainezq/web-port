@@ -1,26 +1,42 @@
 <div class="projects">
-  <h2>My GitHub Projects</h2>
+  <h2>My Projects</h2>
 
-  <!-- Display Repositories -->
-  <div *ngIf="visibleRepositories.length > 0; else loading">
-    <div *ngFor="let repo of visibleRepositories" class="project-card">
-      <h3 class="github-title">
-        <a class="github-title-link" [href]="repo.html_url" target="_blank"> {{ repo.name }}</a>
+  <!-- Manual Projects Section -->
+  <div class="manual-projects">
+    <h3>Personal Projects</h3>
+    <div *ngFor="let project of manualProjects" class="project-card">
+      <h3 class="project-title">
+        <a class="project-title-link"  routerLink="/projects/{{ project.name }}" routerLinkActive="active">{{ project.name }}</a>
       </h3>
-      <p>{{ repo.description || 'No description available.' }}</p>
-      <a class="github-link" [href]="repo.html_url" target="_blank">View on GitHub</a>
+      <p>{{ project.description }}</p>
+      <a class="project-link" routerLink="/projects/{{ project.name }}" routerLinkActive="active" >View Project</a>
     </div>
   </div>
 
-  <!-- Loading State -->
-  <ng-template #loading>
-    <p>Loading repositories...</p>
-  </ng-template>
+  <!-- GitHub Projects Section -->
+  <div class="github-projects">
+    <h3>GitHub Repositories</h3>
+    <p class="git-text">Check out my GitHub profile for more projects and contributions: <a href="https://github.com/zainezq" target="_blank">zainezq</a></p>
+    <div *ngIf="visibleGithubRepos.length > 0; else loading">
+      <div *ngFor="let repo of visibleGithubRepos" class="project-card">
+        <h3 class="github-title">
+          <a class="github-title-link" [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+        </h3>
+        <p>{{ repo.description || 'No description available.' }}</p>
+        <a class="github-link" [href]="repo.html_url" target="_blank">View on GitHub</a>
+      </div>
+    </div>
 
-  <!-- Pagination Controls -->
-  <div class="pagination">
-    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
-    <span>Page {{ currentPage }}</span>
-    <button (click)="nextPage()" [disabled]="currentPage * reposPerPage >= repositories.length">Next</button>
+    <!-- Loading State -->
+    <ng-template #loading>
+      <p>Loading GitHub repositories...</p>
+    </ng-template>
+
+    <!-- Pagination Controls -->
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+      <span>Page {{ currentPage }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage * reposPerPage >= githubRepositories.length">Next</button>
+    </div>
   </div>
 </div>
