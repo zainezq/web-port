@@ -1,27 +1,35 @@
+$bg-color: #f4f1de;
+$text-color: #3d3d3d;
+$primary-color: #e07a5f;
+$secondary-color: #81b29a;
+$accent-color: #f2cc8f;
+$tag-bg: #8d99ae;
+$tag-text: #edf2f4;
+$font-stack: 'Courier New', Courier, monospace;
 
-/* home-section */
+
+/* Home Section */
 .home-section {
   padding: 20px;
-  font-family: 'Courier New', Courier, monospace; /* Retro typewriter font */
-  color: #d3d3d3; /* Soft gray text */
-  //background-color: #111; /* Dark background */
+  font-family: $font-stack;
+  color: $text-color;
+  background-color: lighten($bg-color, 5%);
   border-radius: 5px;
-  //box-shadow: 0 0 10px #333; /* Subtle shadow */
-
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .home-section h1 {
-  color: #39ff14;
+  color: $primary-color;
   font-size: 2.5rem;
   text-align: center;
-  border-bottom: 2px solid #555;
+  border-bottom: 2px solid darken($secondary-color, 20%);
   padding-bottom: 0.7em;
 }
 
 .home-section p {
   font-size: 1.2rem;
   line-height: 1.6;
-  color: #bbb; /* Light gray text */
+  color: darken($text-color, 15%);
   margin-bottom: 20px;
 }
 
@@ -33,14 +41,14 @@
 
 .home-section li {
   margin-bottom: 10px;
-  color: #ffcc00; /* Retro orange */
+  color: $tag-bg;
   position: relative;
   padding-left: 20px;
 }
 
 .home-section li::before {
   content: "•";
-  color: #39ff14; /* Neon green */
+  color: $primary-color;
   position: absolute;
   left: 0;
 }

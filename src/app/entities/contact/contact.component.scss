@@ -1,14 +1,26 @@
+$bg-color: #f4f1de;
+$text-color: #3d3d3d;
+$primary-color: #e07a5f;
+$secondary-color: #81b29a;
+$accent-color: #f2cc8f;
+$tag-bg: #8d99ae;
+$tag-text: #edf2f4;
+$font-stack: 'Courier New', Courier, monospace;
+
+/* Contact Section */
 .contact {
   padding: 20px;
-  color: #d3d3d3;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: $font-stack;
+  color: $text-color;
+  background-color: lighten($bg-color, 5%);
+  border-radius: 5px;
 }
 
 .contact h2 {
   text-align: center;
   font-size: 2.2rem;
-  color: #39ff14;
-  border-bottom: 2px solid #555;
+  color: $primary-color;
+  border-bottom: 2px solid darken($secondary-color, 20%);
   padding-bottom: 1em;
   margin-bottom: 20px;
 }
@@ -23,37 +35,35 @@
 
 .contact-item h3 {
   font-size: 1.6rem;
-  color: #ffcc00; /* Retro orange */
+  color: $accent-color;
   margin-bottom: 5px;
 }
 
 .contact-item p {
   font-size: 1.1rem;
-  color: #bbb;
+  color: darken($text-color, 15%);
 }
 
 .contact-item a {
-  color: #00bfff; /* Retro blue */
+  color: $secondary-color;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
 }
 
 .contact-item a:hover {
-  color: #39ff14; /* Neon green on hover */
-  text-shadow: 0 0 6px #39ff14;
+  color: $primary-color;
+  text-shadow: 0 0 6px $primary-color;
 }
 
 /* Contact Form Styles */
 .contact-form {
   margin-top: 40px;
   padding: 20px;
-  //background-color: #222;
-  //border-radius: 5px;
-  border-top: 2px solid #555;
+  border-top: 2px solid darken($secondary-color, 20%);
 }
 
 .contact-form h3 {
-  color: #39ff14;
+  color: $primary-color;
   font-size: 1.8rem;
   margin-bottom: 15px;
   text-align: center;
@@ -65,7 +75,7 @@
 
 .form-group label {
   font-size: 1.2rem;
-  color: #ffcc00;
+  color: $accent-color;
   margin-bottom: 5px;
   display: block;
 }
@@ -75,23 +85,22 @@
   width: 100%;
   padding: 10px;
   font-size: 1rem;
-  border: 1px solid #444;
+  border: 1px solid darken($bg-color, 20%);
   border-radius: 3px;
-  background-color: #333;
-  color: #bbb;
+  background-color: white;
+  color: $text-color;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border: 1px solid #39ff14; /* Neon green focus */
+  border: 1px solid $primary-color;
 }
 
 .submit-btn {
   display: block;
-  //width: 100%;
   padding: 10px;
-  background-color: #003c5e;
+  background-color: $secondary-color;
   color: white;
   font-size: 1.1rem;
   border: none;
@@ -101,19 +110,18 @@
 }
 
 .submit-btn:hover {
-  background-color: #39ff14; /* Neon green on hover */
+  background-color: $primary-color;
 }
 
 .submit-btn:disabled {
-  //background-color: #ccc;
+  background-color: lighten($bg-color, 10%);
   cursor: not-allowed;
 }
 
-
 /* Success Message */
 .success-message {
-  color: #39ff14; /* Neon green */
-  background-color: #222; /* Dark background */
+  color: $primary-color;
+  background-color: lighten($bg-color, 10%);
   padding: 10px;
   border-radius: 5px;
   margin-top: 20px;
@@ -124,8 +132,8 @@
 
 /* Error Message */
 .error-message {
-  color: #ff4d4d; /* Bright red */
-  background-color: #2b0000; /* Dark red background */
+  color: #ff4d4d;
+  background-color: lighten($primary-color, 10%);
   padding: 10px;
   border-radius: 5px;
   margin-top: 20px;
@@ -134,7 +142,6 @@
   animation: fadeIn 0.5s ease-in-out, fadeOut 0.5s ease-in-out 2.5s forwards;
 }
 
-/* Animation for transition */
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }

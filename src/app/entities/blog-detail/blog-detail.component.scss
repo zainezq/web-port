@@ -1,30 +1,34 @@
-$primary-bg: #121212;
-$secondary-bg: #1a1a1a;
-$primary-text: #e0e0e0;
-$secondary-text: #b0b0b0;
-$accent-color: #ffcc00;
+$bg-color: #f4f1de;
+$text-color: #3d3d3d;
+$primary-color: #e07a5f;
+$secondary-color: #81b29a;
+$accent-color: #f2cc8f;
+$tag-bg: #8d99ae;
+$tag-text: #edf2f4;
+$font-stack: 'Courier New', Courier, monospace;
 
+/* Blog Content */
 .blog-content {
-  background: $secondary-bg;
+  background: lighten($bg-color, 5%);
   padding: 1.5rem;
   border-left: 4px solid $accent-color;
   font-size: 1.1rem;
   line-height: 1.6;
   word-wrap: break-word;
-  color: $primary-text;
+  color: $text-color;
 
   h1, h2, h3, h4 {
-    color: $accent-color;
-    text-shadow: 2px 2px 0 rgba(255, 204, 0, 0.2);
+    color: $primary-color;
+    text-shadow: 2px 2px 0 rgba(224, 122, 95, 0.2);
   }
 
   p {
     margin-bottom: 1rem;
-    color: $secondary-text;
+    color: darken($text-color, 15%);
   }
 
   a {
-    color: $accent-color;
+    color: $primary-color;
     text-decoration: none;
     font-weight: bold;
     &:hover {
@@ -35,41 +39,41 @@ $accent-color: #ffcc00;
   p code,
   li code,
   span code {
-    background: rgba(255, 204, 0, 0.1);
-    color: $accent-color;
-    font-family: "Courier New", monospace;
+    background: rgba(224, 122, 95, 0.1);
+    color: $primary-color;
+    font-family: $font-stack;
     padding: 2px 5px;
     border-radius: 3px;
     font-size: 0.95em;
-    white-space: nowrap; // Prevents wrapping issues
-    display: inline; // Ensures it remains in-line
+    white-space: nowrap;
+    display: inline;
   }
 
   blockquote {
-    background: rgba(255, 204, 0, 0.1);
-    border-left: 4px solid $accent-color;
+    background: rgba(224, 122, 95, 0.1);
+    border-left: 4px solid $primary-color;
     padding: 1rem;
     font-style: italic;
-    color: $primary-text;
+    color: $text-color;
   }
 
-  // Code Blocks Styling
   pre {
-    background: #000;
-    color: #0f0; // Classic green terminal text
-    font-family: "Courier New", monospace;
+    background: darken($bg-color, 10%);
+    color: $secondary-color;
+    font-family: $font-stack;
     padding: 1rem;
     border-radius: 4px;
     position: relative;
     overflow: auto;
-    border: 1px solid $accent-color;
+    border: 1px solid $primary-color;
     margin-bottom: 1rem;
   }
+
   pre code {
     background: transparent;
     color: inherit;
-    font-family: "Courier New", monospace;
-    display: block; // Block-level for code blocks
+    font-family: $font-stack;
+    display: block;
     white-space: pre-wrap;
     word-wrap: break-word;
   }
@@ -77,19 +81,18 @@ $accent-color: #ffcc00;
   code {
     background: transparent;
     color: inherit;
-    font-family: "Courier New", monospace;
+    font-family: $font-stack;
     display: block;
-    white-space: pre-wrap; // Ensures long lines break properly
+    white-space: pre-wrap;
     word-wrap: break-word;
   }
 
-  // Copy Button Styling
   .copy-btn {
     position: absolute;
     top: 8px;
     right: 8px;
     background: $accent-color;
-    color: #000;
+    color: $text-color;
     border: none;
     font-size: 0.8rem;
     padding: 4px 8px;
@@ -97,7 +100,7 @@ $accent-color: #ffcc00;
     border-radius: 3px;
     font-weight: bold;
     text-transform: uppercase;
-    box-shadow: 0px 0px 6px rgba(255, 204, 0, 0.5);
+    box-shadow: 0px 0px 6px rgba(242, 204, 143, 0.5);
     transition: background 0.3s ease-in-out, transform 0.1s;
 
     &:hover {

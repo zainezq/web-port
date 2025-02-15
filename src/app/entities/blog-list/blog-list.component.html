@@ -1,6 +1,15 @@
 <div class="blog-list">
   <h1 class="blog-header">~ The Blorg ~</h1>
-  <div *ngFor="let blog of blogs" class="blog-row">
+
+  <!-- Tag Filter -->
+  <div class="tag-filter">
+    <button *ngFor="let tag of tags" (click)="selectTag(tag)" [class.active]="selectedTag === tag">
+      {{ tag }}
+    </button>
+  </div>
+
+  <!-- Blog List -->
+  <div *ngFor="let blog of filteredBlogs" class="blog-row">
     <div class="blog-card">
       <div class="blog-content">
         <h2 class="blog-title">
@@ -8,6 +17,11 @@
         </h2>
         <p class="blog-summary">{{ blog.summary }}</p>
         <p class="blog-date">📅 {{ blog.date }} | ⏱ {{ blog.readingTime }}</p>
+
+        <!-- Blog Tags -->
+        <div class="blog-tags">
+          <span *ngFor="let tag of blog.tags" class="tag">{{ tag }}</span>
+        </div>
       </div>
       <div class="blog-footer">
         <a [routerLink]="['/blogs', blog.slug]" class="read-more-btn">Read Full Article →</a>

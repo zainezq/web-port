@@ -16,7 +16,8 @@ import {NgForOf} from '@angular/common';
 })
 export class BlogListComponent implements OnInit {
   blogs: BlogPost[] = [];
-
+  tags = ['All', 'Technology', 'AI', 'Health', 'Wellness', 'Education'];
+  selectedTag = 'All';
   constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {
@@ -25,5 +26,11 @@ export class BlogListComponent implements OnInit {
     });
 
   }
+  get filteredBlogs() {
+    return this.selectedTag === 'All' ? this.blogs : this.blogs.filter(blog => blog.tags?.includes(this.selectedTag));
+  }
 
+  selectTag(tag: string) {
+    this.selectedTag = tag;
+  }
 }
