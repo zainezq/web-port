@@ -14,9 +14,8 @@ $font-stack: 'Courier New', Courier, monospace;
   font-family: $font-stack;
   color: $text-color;
   background-color: lighten($bg-color, 5%);
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 
 .home-section h1 {
   color: $primary-color;
