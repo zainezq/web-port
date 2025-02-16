@@ -29,19 +29,25 @@ $font-stack: 'Courier New', Courier, monospace;
   margin-top: 20px;
 }
 
+.contact-info p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
 .contact-item {
   margin-bottom: 15px;
 }
 
 .contact-item h3 {
   font-size: 1.6rem;
-  color: $accent-color;
+  color: darken($primary-color, 10%);
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .contact-item p {
   font-size: 1.1rem;
-  color: darken($text-color, 15%);
+  font-weight: bold;
 }
 
 .contact-item a {
@@ -75,9 +81,10 @@ $font-stack: 'Courier New', Courier, monospace;
 
 .form-group label {
   font-size: 1.2rem;
-  color: $accent-color;
+  color: darken($primary-color, 10%);
   margin-bottom: 5px;
   display: block;
+  font-weight: bold;
 }
 
 .form-group input,
@@ -114,7 +121,6 @@ $font-stack: 'Courier New', Courier, monospace;
 }
 
 .submit-btn:disabled {
-  background-color: lighten($bg-color, 10%);
   cursor: not-allowed;
 }
 

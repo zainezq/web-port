@@ -39,9 +39,10 @@ $font-stack: 'Courier New', Courier, monospace;
   p code,
   li code,
   span code {
-    background: rgba(224, 122, 95, 0.1);
-    color: $primary-color;
+    background: darken($bg-color, 5%);
+    color: $text-color;
     font-family: $font-stack;
+    font-weight: bold;
     padding: 2px 5px;
     border-radius: 3px;
     font-size: 0.95em;
@@ -58,9 +59,10 @@ $font-stack: 'Courier New', Courier, monospace;
   }
 
   pre {
-    background: darken($bg-color, 10%);
-    color: $secondary-color;
+    background: darken($bg-color, 5%);
+    color: $text-color;
     font-family: $font-stack;
+    font-weight: bold;
     padding: 1rem;
     border-radius: 4px;
     position: relative;

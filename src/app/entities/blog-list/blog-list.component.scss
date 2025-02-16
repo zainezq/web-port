@@ -26,14 +26,23 @@ $font-stack: 'Courier New', Courier, monospace;
   .tag-filter {
     display: flex;
     justify-content: flex-start;
-    overflow-x: auto; // Enables horizontal scrolling
-    white-space: nowrap; // Prevents wrapping
-    gap: 0.5rem; // Adds spacing between buttons
-    padding-bottom: 0.5rem; // Avoids cutting off shadow effects
-    max-width: 100%; // Ensures it does not exceed its parent width
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+    max-width: 100%;
+    position: sticky;
+    top: 25px;
+    z-index: 10;
+
+    &::before,
+    &::after {
+      content: "";
+      flex-grow: 1;
+    }
 
     &::-webkit-scrollbar {
-      height: 6px; // Custom scrollbar height
+      height: 6px;
     }
 
     &::-webkit-scrollbar-thumb {
@@ -42,7 +51,7 @@ $font-stack: 'Courier New', Courier, monospace;
     }
 
     button {
-      flex-shrink: 0; // Prevents buttons from shrinking
+      flex-shrink: 0;
       background: $secondary-color;
       color: white;
       border: none;
@@ -57,6 +66,7 @@ $font-stack: 'Courier New', Courier, monospace;
       }
     }
   }
+
 
   .blog-row {
     background: white;

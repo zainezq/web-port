@@ -1,14 +1,52 @@
+$bg-color: #f4f1de;
+$text-color: #3d3d3d;
+$primary-color: #e07a5f;
+$secondary-color: #81b29a;
+$accent-color: #f2cc8f;
+$tag-bg: #8d99ae;
+$tag-text: #edf2f4;
+$font-stack: 'Courier New', Courier, monospace;
 .loading-screen {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full height of the viewport */
-  background-color: #111;
-  color: #39ff14; /* Neon green */
-  font-family: 'Courier New', Courier, monospace;
-  position: fixed;
+  height: 100vh;
   width: 100%;
+  position: fixed;
   top: 0;
   left: 0;
+  background-color: darken($bg-color, 15%);
+  color: $text-color;
+  font-family: $font-stack;
+  font-size: 1.5rem;
+  font-weight: bold;
   z-index: 1000;
+  text-shadow: 0 0 8px rgba($accent-color, 0.6);
+
+  /* Loading animation */
+  .loading-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  /* Blinking dots effect */
+  .dot {
+    animation: blink 1.5s infinite ease-in-out;
+  }
+
+  .dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes blink {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+  }
 }
