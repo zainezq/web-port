@@ -25,15 +25,28 @@ $font-stack: 'Courier New', Courier, monospace;
 
   .tag-filter {
     display: flex;
-    justify-content: center;
-    margin: 1rem 0;
+    justify-content: flex-start;
+    overflow-x: auto; // Enables horizontal scrolling
+    white-space: nowrap; // Prevents wrapping
+    gap: 0.5rem; // Adds spacing between buttons
+    padding-bottom: 0.5rem; // Avoids cutting off shadow effects
+    max-width: 100%; // Ensures it does not exceed its parent width
+
+    &::-webkit-scrollbar {
+      height: 6px; // Custom scrollbar height
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $primary-color;
+      border-radius: 3px;
+    }
 
     button {
+      flex-shrink: 0; // Prevents buttons from shrinking
       background: $secondary-color;
       color: white;
       border: none;
       padding: 0.5rem 1rem;
-      margin: 0 0.25rem;
       font-family: inherit;
       cursor: pointer;
       transition: 0.3s;
