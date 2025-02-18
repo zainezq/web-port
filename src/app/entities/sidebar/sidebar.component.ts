@@ -15,8 +15,8 @@ import {NgClass, NgOptimizedImage} from '@angular/common';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent implements OnInit, OnDestroy {
-  showSidebar = false;  // Default to false for small screens
-  isLargeScreen = window.innerWidth >= 1024;  // Check if screen width is larger than 1024px (adjust as needed)
+  showSidebar = true;  // Default to false for small screens
+  isLargeScreen = window.innerWidth >= 768;
   private resizeListener: any;
 
   constructor(private router: Router) {}
@@ -24,6 +24,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (this.isLargeScreen) {
       this.showSidebar = true;  // Keep sidebar visible on large screens
+    }
+    if (!this.isLargeScreen) {
+      //this.showSidebar = false;  // Hide sidebar on small screens
+      console.log('Hide sidebar');
     }
 
     // Listen for route changes and hide the sidebar on small screens
