@@ -1,15 +1,13 @@
 import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BlogPost, BlogService } from '../../services/blog-service/blog.service';
-import { NgIf } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { BlogService } from '../../services/blog-service/blog.service';
 import { marked } from 'marked';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import Prism from 'prismjs';
-import 'prismjs/components/prism-javascript'; // Add specific language support if needed
-import 'prismjs/components/prism-typescript'; // For TypeScript highlighting
-import 'prismjs/components/prism-css';       // For CSS highlighting
-import 'prismjs/components/prism-markup';    // For HTML/markup
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-markup';
 
 @Component({
   selector: 'app-blog-detail',
@@ -19,7 +17,7 @@ import 'prismjs/components/prism-markup';    // For HTML/markup
 
   ],
   styleUrls: ['./blog-detail.component.scss'],
-  encapsulation: ViewEncapsulation.None  // Disable encapsulation
+  encapsulation: ViewEncapsulation.None
 })
 export class BlogDetailComponent implements OnInit, AfterViewChecked {
   blogContent: SafeHtml = '';

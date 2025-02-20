@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GithubService } from '../../services/github.service';
 import { NgForOf, NgIf } from '@angular/common';
 import {RouterLink, RouterLinkActive} from '@angular/router';
+import {ProjectPost, ProjectServiceService} from '../../services/project-service/project-service.service';
 
 @Component({
   selector: 'app-projects',
@@ -11,31 +12,21 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
   styleUrl: './projects.component.scss'
 })
 export class ProjectsComponent implements OnInit {
-  manualProjects: any[] = [
-    {
-      name: 'Database handler - CLI Interface Written in Python',
-      description: 'A project that handles database operations using a CLI interface written in Python.',
-    },
-    {
-      name: 'Project Beta',
-      description: 'A machine learning project using TensorFlow.',
-      link: 'https://example.com/project-beta'
-    },
-    {
-      name: 'Project Gamma',
-      description: 'A full-stack application with Node.js and React.',
-      link: 'https://example.com/project-gamma'
-    }
-  ];
+  projects : ProjectPost[] = [];
 
   githubRepositories: any[] = [];
   visibleGithubRepos: any[] = []; // Paginated GitHub repositories
   currentPage: number = 1;
   reposPerPage: number = 5; // Limit number of GitHub repositories per page
 
-  constructor(private githubService: GithubService) {}
+  constructor(private githubService: GithubService, private projectService: ProjectServiceService) {}
 
   ngOnInit(): void {
+    this.projectService.getProjectList().subscribe(data => {
+      this.projects = data;
+    })
+
+    console.log('projects component initialized' + this.projects);
     this.githubService.fetchRepositories().subscribe({
       next: (data) => {
         this.githubRepositories = data;
