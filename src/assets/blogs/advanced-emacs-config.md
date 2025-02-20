@@ -117,7 +117,7 @@ If any issues arise, check `*Messages*` buffer (`M-x view-echo-area-messages`) o
 ## Final Notes
 
 This configuration optimises Emacs for efficient navigation, organisation, and shell integration. 
-Everybodies configuration will differ based on their needs, so feel free to take and leave the parts as you wish!
+Everybody's configuration will differ based on their needs, so feel free to take and leave the parts as you wish!
 
 For additional customisation, refer to the official package documentation:
 - [General.el (Keybindings)](https://github.com/noctuid/general.el)

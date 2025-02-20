@@ -8,10 +8,11 @@ import { BlogDetailComponent } from './entities/blog-detail/blog-detail.componen
 import { ProjectDetailComponent } from './entities/projects/project-detail/project-detail.component';
 
 const routerOptions: ExtraOptions = {
-  anchorScrolling: 'enabled', // Enables scrolling to anchors
-  scrollPositionRestoration: 'enabled', // Restores previous scroll position when navigating back
-  onSameUrlNavigation: 'reload', // Prevents page reload when clicking same-page links
+  anchorScrolling: 'enabled', // ✅ Enables native anchor scrolling
+  scrollPositionRestoration: 'enabled', // ✅ Restores scroll position when navigating back
+  onSameUrlNavigation: 'ignore', // ✅ Prevents full reload on fragment changes
 };
+
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },

@@ -1,15 +1,12 @@
-import {Component, NgModule, OnInit} from '@angular/core';
-import {NavigationStart, Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import {SidebarComponent} from './entities/sidebar/sidebar.component';
-import {NgIf} from '@angular/common';
-import {LoadingComponent} from './entities/shared/loading/loading.component';
-
+import { Component } from '@angular/core';
+import {NavigationStart, NavigationEnd, Router, Event, RouterOutlet} from '@angular/router';
+import { NgIf } from '@angular/common';
+import { SidebarComponent } from './entities/sidebar/sidebar.component';
+import { LoadingComponent } from './entities/shared/loading/loading.component';
 
 @Component({
   selector: 'app-root',
-  //imports: [RouterOutlet, RouterLink, RouterLinkActive, SidebarComponent],
-  imports: [RouterOutlet, SidebarComponent, NgIf, LoadingComponent],
-
+  imports: [SidebarComponent, NgIf, LoadingComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   standalone: true
@@ -19,12 +16,14 @@ export class AppComponent {
   loading = false;
 
   constructor(private router: Router) {
-    this.router.events.subscribe((event) => {
+    this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
-        this.loading = true;
-        setTimeout(() => {
-          this.loading = false;
-        }, 300); // Delay of 1 second
+        if (!event.url.includes('#')) {
+          this.loading = true;
+        }
+      }
+      if (event instanceof NavigationEnd) {
+        this.loading = false;
       }
     });
   }

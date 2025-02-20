@@ -1,21 +1,17 @@
-import {
-  AfterViewChecked,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-  ViewEncapsulation,
-  AfterViewInit
-} from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectServiceService } from '../../../services/project-service/project-service.service';
 import { marked } from 'marked';
+import { gfmHeadingId } from 'marked-gfm-heading-id'; // ✅ Import the plugin
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-markup';
+
+// ✅ Use the marked-gfm-heading-id plugin
+marked.use(gfmHeadingId());
 
 @Component({
   selector: 'app-project-detail',
@@ -29,6 +25,7 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
   projectTitle: string = '';
 
   @ViewChild('content', { static: false }) content?: ElementRef;
+  private loading: boolean | undefined;
 
   constructor(
     private projectService: ProjectServiceService,
@@ -38,109 +35,101 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
   ) {}
 
   ngOnInit(): void {
-    const slug = this.route.snapshot.paramMap.get('slug');
-    if (slug) {
-      this.projectService.getProjectContent(slug).subscribe({
-        next: (data) => {
-          const html = marked(data);
-          if (typeof html === 'string') {
-            this.projectContent = this.sanitizer.bypassSecurityTrustHtml(html);
-          }
+    this.route.paramMap.subscribe(params => {
+      const slug = params.get('slug');
+      if (slug) {
+        this.loading = true;
 
-          // Highlight code after rendering
-          setTimeout(() => Prism.highlightAll(), 0);
-        },
-        error: (err) => console.error('Error fetching project content:', err),
-      });
+        this.projectService.getProjectContent(slug).subscribe({
+          next: (data) => {
+            const html = marked(data);
+            if (typeof html === 'string') {
+              this.projectContent = this.sanitizer.bypassSecurityTrustHtml(html);
+            }
 
-      this.projectService.getProjectList().subscribe({
-        next: (data) => {
-          const project = data.find((b) => b.slug === slug);
-          if (project) this.projectTitle = project.title;
-        },
-      });
-    }
+            this.loading = false;
+            setTimeout(() => Prism.highlightAll(), 0);
+          },
+          error: (err) => {
+            console.error('Error fetching project content:', err);
+            this.loading = false;
+          },
+        });
+      }
+    });
 
-    // Listen for fragment changes and scroll accordingly
-    this.route.fragment.subscribe((fragment) => {
+
+    this.route.fragment.subscribe(fragment => {
       if (fragment) {
         this.scrollToAnchor(fragment);
       }
     });
   }
 
+
   ngAfterViewInit(): void {
-    // Handle scrolling on initial page load if a fragment exists
-    setTimeout(() => {
-      if (this.route.snapshot.fragment) {
-        this.scrollToAnchor(this.route.snapshot.fragment);
-      }
-    }, 500);
+    const fragment = this.route.snapshot.fragment;
+    if (fragment) {
+      this.scrollToAnchor(fragment);
+    }
   }
+
+
 
   ngAfterViewChecked(): void {
+    this.handleAnchorClicks();
     this.addCopyButtons();
-    this.handleAnchorClicks(); // Attach event listeners to ToC links
   }
 
   /**
-   * Smoothly scroll to the element with the given anchor (from URL fragment)
+   * Scroll smoothly to the element with the given anchor (from URL fragment)
    */
-  scrollToAnchor(anchor: string): void {
+  scrollToAnchor(anchor: string, attempts = 3): void {
     if (!anchor) return;
 
-    setTimeout(() => {
+    let attemptCount = 0;
+    const tryScroll = () => {
       const element = document.getElementById(anchor);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        // If element isn't found yet, observe and scroll when available
-        this.observeContentChange(anchor);
+      } else if (attemptCount < attempts) {
+        attemptCount++;
+        setTimeout(tryScroll, 100);
       }
-    }, 300);
+    };
+
+    tryScroll();
   }
 
-  /**
-   * Detect changes in dynamically loaded content and scroll when the element appears
-   */
-  observeContentChange(anchor: string): void {
-    const observer = new MutationObserver((mutations, obs) => {
-      const element = document.getElementById(anchor);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        obs.disconnect(); // Stop observing once element is found
-      }
-    });
-
-    observer.observe(this.content?.nativeElement, {
-      childList: true,
-      subtree: true
-    });
-  }
 
   /**
-   * Attach event listeners to prevent default ToC link behavior and ensure smooth scrolling
+   * Add smooth scrolling for ToC links inside the dynamically rendered Markdown
    */
   handleAnchorClicks(): void {
-    setTimeout(() => {
-      const links = this.content?.nativeElement.querySelectorAll('a[href^="#"]');
-      links?.forEach((link: HTMLAnchorElement) => {
-        link.addEventListener('click', (event) => {
-          event.preventDefault(); // Prevent default jump & page reload
+    if (!this.content) return;
 
-          const targetId = link.getAttribute('href')?.substring(1);
-          if (targetId) {
-            this.router.navigate([], { fragment: targetId, queryParamsHandling: 'preserve' }); // Update URL without refresh
+    const links = this.content.nativeElement.querySelectorAll('a[href^="#"]');
+    links.forEach((link: HTMLAnchorElement) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const targetId = link.getAttribute('href')?.substring(1);
+        if (targetId) {
+
+          this.router.navigate([], {
+            fragment: targetId,
+            queryParamsHandling: 'preserve',
+            replaceUrl: true
+          }).then(() => {
             this.scrollToAnchor(targetId);
-          }
-        });
+          });
+        }
       });
-    }, 500);
+    });
   }
 
-  /**
-   * Add "Copy" button to code blocks
-   */
+
+
   addCopyButtons(): void {
     const codeBlocks = this.content?.nativeElement.querySelectorAll('pre');
     codeBlocks.forEach((block: HTMLElement) => {

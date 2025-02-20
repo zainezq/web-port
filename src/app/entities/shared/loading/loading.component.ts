@@ -10,4 +10,7 @@ import { Component } from '@angular/core';
   standalone: true,
   styleUrls: ['./loading.component.scss']
 })
-export class LoadingComponent {}
+export class LoadingComponent {
+
+
+}
