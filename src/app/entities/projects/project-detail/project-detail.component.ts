@@ -1,4 +1,12 @@
-import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation, AfterViewInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+  AfterViewInit
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectServiceService } from '../../../services/project-service/project-service.service';
 import { marked } from 'marked';
@@ -53,7 +61,7 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
       });
     }
 
-    // Listen for fragment changes (when clicking on a ToC link)
+    // Listen for fragment changes and scroll accordingly
     this.route.fragment.subscribe((fragment) => {
       if (fragment) {
         this.scrollToAnchor(fragment);
@@ -62,50 +70,77 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
   }
 
   ngAfterViewInit(): void {
-    // Scroll to anchor if there’s already a hash in the URL when the page loads
+    // Handle scrolling on initial page load if a fragment exists
     setTimeout(() => {
       if (this.route.snapshot.fragment) {
         this.scrollToAnchor(this.route.snapshot.fragment);
       }
-    }, 300);
+    }, 500);
   }
 
   ngAfterViewChecked(): void {
     this.addCopyButtons();
-    this.handleAnchorClicks();
+    this.handleAnchorClicks(); // Attach event listeners to ToC links
   }
 
   /**
-   * Scroll smoothly to the element with the given anchor (from URL fragment)
+   * Smoothly scroll to the element with the given anchor (from URL fragment)
    */
   scrollToAnchor(anchor: string): void {
+    if (!anchor) return;
+
     setTimeout(() => {
       const element = document.getElementById(anchor);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        // If element isn't found yet, observe and scroll when available
+        this.observeContentChange(anchor);
       }
-    }, 200);
+    }, 300);
   }
 
   /**
-   * Add smooth scrolling for ToC links inside the dynamically rendered Markdown
+   * Detect changes in dynamically loaded content and scroll when the element appears
+   */
+  observeContentChange(anchor: string): void {
+    const observer = new MutationObserver((mutations, obs) => {
+      const element = document.getElementById(anchor);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        obs.disconnect(); // Stop observing once element is found
+      }
+    });
+
+    observer.observe(this.content?.nativeElement, {
+      childList: true,
+      subtree: true
+    });
+  }
+
+  /**
+   * Attach event listeners to prevent default ToC link behavior and ensure smooth scrolling
    */
   handleAnchorClicks(): void {
     setTimeout(() => {
       const links = this.content?.nativeElement.querySelectorAll('a[href^="#"]');
       links?.forEach((link: HTMLAnchorElement) => {
         link.addEventListener('click', (event) => {
-          event.preventDefault(); // Prevent default behavior (refresh)
+          event.preventDefault(); // Prevent default jump & page reload
+
           const targetId = link.getAttribute('href')?.substring(1);
           if (targetId) {
-            this.router.navigate([], { fragment: targetId, queryParamsHandling: 'preserve' }); // Update URL without reload
+            this.router.navigate([], { fragment: targetId, queryParamsHandling: 'preserve' }); // Update URL without refresh
             this.scrollToAnchor(targetId);
           }
         });
       });
-    }, 300);
+    }, 500);
   }
 
+  /**
+   * Add "Copy" button to code blocks
+   */
   addCopyButtons(): void {
     const codeBlocks = this.content?.nativeElement.querySelectorAll('pre');
     codeBlocks.forEach((block: HTMLElement) => {
