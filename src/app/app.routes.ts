@@ -6,11 +6,13 @@ import { ProjectsComponent } from './entities/projects/projects.component';
 import { BlogListComponent } from './entities/blog-list/blog-list.component';
 import { BlogDetailComponent } from './entities/blog-detail/blog-detail.component';
 import { ProjectDetailComponent } from './entities/projects/project-detail/project-detail.component';
+import {QuizzesDetailComponent} from './entities/quizzes/quizzes-detail/quizzes-detail.component';
+import {QuizzesComponent} from './entities/quizzes/quizzes.component';
 
 const routerOptions: ExtraOptions = {
-  anchorScrolling: 'enabled', // ✅ Enables native anchor scrolling
-  scrollPositionRestoration: 'enabled', // ✅ Restores scroll position when navigating back
-  onSameUrlNavigation: 'ignore', // ✅ Prevents full reload on fragment changes
+  anchorScrolling: 'enabled',
+  scrollPositionRestoration: 'enabled',
+  onSameUrlNavigation: 'ignore',
 };
 
 
@@ -21,6 +23,8 @@ export const routes: Routes = [
   { path: 'projects', component: ProjectsComponent },
   { path: 'projects/:slug', component: ProjectDetailComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'quizzes', component: QuizzesComponent },
+  { path: 'quizzes/:slug', component: QuizzesDetailComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' } // Wildcard route
 ];

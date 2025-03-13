@@ -1,0 +1,132 @@
+$bg-color: #f4f1de;
+$text-color: #3d3d3d;
+$primary-color: #e07a5f;
+$secondary-color: #81b29a;
+$accent-color: #f2cc8f;
+$tag-bg: #8d99ae;
+$tag-text: #edf2f4;
+$font-stack: 'Courier New', Courier, monospace;
+
+.quizzes-detail {
+  background-color: $bg-color;
+  padding: 1.5rem;
+  border: 4px solid $accent-color;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  word-wrap: break-word;
+  color: $text-color;
+
+  h1, h2, h3, h4 {
+    color: $primary-color;
+    text-shadow: 2px 2px 0 rgba(224, 122, 95, 0.2);
+  }
+
+  p {
+    margin-bottom: 1rem;
+    color: darken($text-color, 15%);
+  }
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: bold;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p code,
+  li code,
+  span code {
+    background: darken($bg-color, 5%);
+    color: $text-color;
+    font-family: $font-stack;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.95em;
+    white-space: nowrap;
+    display: inline;
+  }
+
+  blockquote {
+    background: rgba(224, 122, 95, 0.1);
+    border-left: 4px solid $primary-color;
+    padding: 1rem;
+    font-style: italic;
+    color: $text-color;
+  }
+
+  pre {
+    background: darken($bg-color, 5%);
+    color: $text-color;
+    font-family: $font-stack;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 4px;
+    position: relative;
+    overflow: auto;
+    border: 1px solid $primary-color;
+    margin-bottom: 1rem;
+  }
+
+  pre code {
+    background: transparent;
+    color: inherit;
+    font-family: $font-stack;
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  code {
+    background: transparent;
+    color: inherit;
+    font-family: $font-stack;
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: $accent-color;
+    color: $text-color;
+    border: none;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 6px rgba(242, 204, 143, 0.5);
+    transition: background 0.3s ease-in-out, transform 0.1s;
+
+    &:hover {
+      background: darken($accent-color, 10%);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+  .submit-btn {
+    display: block;
+    padding: 10px;
+    background-color: $secondary-color;
+    color: $text-color;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+    }
+  }
+}
+

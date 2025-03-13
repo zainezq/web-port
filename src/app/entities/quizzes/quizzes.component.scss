@@ -1,0 +1,80 @@
+$bg-color: #f4f1de;
+$text-color: #3d3d3d;
+$primary-color: #e07a5f;
+$secondary-color: #81b29a;
+$accent-color: #f2cc8f;
+$tag-bg: #8d99ae;
+$tag-text: #edf2f4;
+$font-stack: 'Courier New', Courier, monospace;
+
+.quiz-list {
+  background-color: $bg-color;
+  padding: 2rem;
+  font-family: $font-stack;
+  color: $text-color;
+  margin: auto;
+
+  .quiz-header {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 2px solid $primary-color;
+    padding-bottom: 0.5rem;
+  }
+  .quiz-row {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  }
+  .quiz-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .quiz-content {
+    .quiz-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $primary-color;
+      margin-bottom: 0.5rem;
+    }
+    .quiz-title-link {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+    .quiz-summary {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .quiz-date {
+      font-size: 0.875rem;
+      color: $secondary-color;
+      margin-top: 0.5rem;
+    }
+  }
+  .quiz-footer {
+    margin-top: 1rem;
+    text-align: right;
+
+    .read-more-btn {
+      background: $primary-color;
+      color: white;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      font-size: 0.875rem;
+      border-radius: 4px;
+      transition: 0.3s;
+
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
+    }
+  }
+}

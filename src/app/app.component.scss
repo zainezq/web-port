@@ -16,7 +16,7 @@ $font-stack: 'Courier New', Courier, monospace;
 .main-content {
   flex: 1;
   overflow-y: auto;
-  background-color: lighten($bg-color, 5%);
+  background-color: $bg-color;
 
 }
 
