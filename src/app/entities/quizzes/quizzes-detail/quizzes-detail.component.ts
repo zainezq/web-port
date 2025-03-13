@@ -5,13 +5,14 @@ import { marked } from 'marked';
 import * as yaml from 'js-yaml';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import {QuizzesService} from '../../../services/quizzes-service/quizzes.service';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-quizzes-detail',
   imports: [
     NgForOf,
-    NgIf
+    NgIf,
+    NgClass
   ],
   templateUrl: './quizzes-detail.component.html',
   styleUrl: './quizzes-detail.component.scss'
@@ -19,6 +20,9 @@ import {NgForOf, NgIf} from '@angular/common';
 export class QuizzesDetailComponent implements OnInit {
   quiz: any = null;
   userResponses: { [key: number]: string } = {};
+  submitted: boolean = false;
+  score: number = 0;
+  feedback: { [key: number]: string } = {};
 
   @ViewChild('content', { static: false }) content?: ElementRef;
 
@@ -50,12 +54,21 @@ export class QuizzesDetailComponent implements OnInit {
     });
   }
 
+
   submitQuiz(): void {
-    const responseText = Object.entries(this.userResponses)
-      .map(([index, answer]) => `Q${+index + 1}: ${answer}`)
-      .join('\n');
-    console.log(responseText);
-    //const mailtoLink = `mailto:your-email@example.com?subject=Quiz Submission&body=${encodeURIComponent(responseText)}`;
-    //window.location.href = mailtoLink;
+    if (!this.quiz) return;
+
+    this.score = 0;
+    this.submitted = true;
+    this.feedback = {};
+
+    this.quiz.questions.forEach((q: any, index: number) => {
+      if (this.userResponses[index] === q.answer) {
+        this.score++;
+        this.feedback[index] = "✅ Correct!";
+      } else {
+        this.feedback[index] = `❌ Wrong! Correct answer: ${q.answer}`;
+      }
+    });
   }
 }

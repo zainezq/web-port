@@ -129,4 +129,22 @@ $font-stack: 'Courier New', Courier, monospace;
     }
   }
 }
+.question-block {
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: block;
+  margin: 5px 0;
+}
+
+.correct {
+  color: green;
+  font-weight: bold;
+}
+
+.wrong {
+  color: red;
+  font-weight: bold;
+}
 

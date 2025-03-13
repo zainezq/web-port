@@ -2,13 +2,22 @@
   <h2>{{ quiz.title }}</h2>
 
   <form>
-    <div *ngFor="let q of quiz.questions; let i = index">
+    <div *ngFor="let q of quiz.questions; let i = index" class="question-block">
       <p><strong>{{ q.question }}</strong></p>
-      <label *ngFor="let option of q.options">
-        <input type="radio" [name]="'question' + i" [value]="option" (change)="userResponses[i] = option" />
+      <label *ngFor="let option of q.options" class="option-label">
+        <input type="radio" [name]="'question' + i" [value]="option" (change)="userResponses[i] = option" [disabled]="submitted" />
         {{ option }}
       </label>
+
+      <!-- Show feedback after submission -->
+      <p *ngIf="submitted" [ngClass]="{'correct': feedback[i] === '✅ Correct!', 'wrong': feedback[i].startsWith('❌')}">
+        {{ feedback[i] }}
+      </p>
     </div>
-    <button class="submit-btn" type="button" (click)="submitQuiz()">Submit Quiz</button>
+
+    <button type="button" (click)="submitQuiz()" [disabled]="submitted">Submit Quiz</button>
+
+    <!-- Display Final Score -->
+    <p *ngIf="submitted"><strong>Final Score: {{ score }} / {{ quiz.questions.length }}</strong></p>
   </form>
 </div>
