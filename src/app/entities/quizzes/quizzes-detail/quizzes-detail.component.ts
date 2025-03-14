@@ -7,6 +7,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import {QuizzesService} from '../../../services/quizzes-service/quizzes.service';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import { FirebaseService } from '../../../services/firebase-service';
 
 @Component({
   selector: 'app-quizzes-detail',
@@ -32,7 +33,8 @@ export class QuizzesDetailComponent implements OnInit {
   constructor(
     private quizService: QuizzesService,
     private route: ActivatedRoute,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private firebaseService: FirebaseService
   ) {}
 
   ngOnInit(): void {
@@ -46,7 +48,6 @@ export class QuizzesDetailComponent implements OnInit {
             const match = data.match(/^---\n([\s\S]+?)\n---\n/);
             if (match) {
               this.quiz = yaml.load(match[1]);
-              console.log("quiz", this.quiz);
             }
           },
           error: (err) => {
@@ -56,7 +57,6 @@ export class QuizzesDetailComponent implements OnInit {
       }
     });
   }
-
   submitQuiz(): void {
     if (!this.quiz) return;
 
@@ -73,13 +73,18 @@ export class QuizzesDetailComponent implements OnInit {
       }
     });
 
-    const responseText = `Score: ${this.score} / ${this.quiz.questions.length}\n\n`
-      + Object.entries(this.feedback)
-        .map(([index, msg]) => `Q${+index + 1}: ${msg}`)
-        .join("\n")
-      + `\n\nUser's Additional Feedback:\n${this.additionalFeedback}`;
+    const quizResponse = {
+      timestamp: new Date(),
+      quizTitle: this.quiz.title,
+      score: this.score,
+      responses: this.userResponses,
+      feedback: this.feedback,
+      additionalFeedback: this.additionalFeedback || "No additional feedback"
+    };
 
-
+    this.firebaseService.submitQuizResponse(quizResponse)
+      .then(() => alert("Quiz submitted successfully!"))
+      .catch(error => console.error("Error submitting quiz:", error));
   }
 
   resetForm(): void {

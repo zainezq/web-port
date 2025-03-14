@@ -22,10 +22,9 @@
                 rows="4" placeholder="Enter your comments here..." [disabled]="submitted"></textarea>
     </div>
 
-
     <button type="button" (click)="submitQuiz()" [disabled]="submitted">Submit Quiz</button>
-
     <button type="button" (click)="resetForm()" [disabled]="!submitted">Reset Quiz</button>
+
     <!-- Display Final Score -->
     <p *ngIf="submitted"><strong>Final Score: {{ score }} / {{ quiz.questions.length }}</strong></p>
   </form>
