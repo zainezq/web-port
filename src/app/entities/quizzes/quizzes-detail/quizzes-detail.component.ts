@@ -58,6 +58,7 @@ export class QuizzesDetailComponent implements OnInit {
     });
   }
   submitQuiz(): void {
+
     if (!this.quiz) return;
 
     this.score = 0;
