@@ -23,7 +23,7 @@
     </div>
 
     <div class="button-container">
-      <button class="submit-btn" type="button" (click)="submitQuiz()" [disabled]="submitted || !isQuizComplete()">Submit Quiz</button>
+      <button class="submit-btn" type="button" (click)="submitQuiz()" [disabled]="submitted">Submit Quiz</button>
       <button class="reset-btn" type="button" (click)="resetForm()" >Reset Quiz</button>
       <button class="back-btn" type="button" (click)="goBack()">Back</button>
     </div>

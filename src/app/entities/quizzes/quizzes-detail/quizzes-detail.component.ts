@@ -8,6 +8,7 @@ import {QuizzesService} from '../../../services/quizzes-service/quizzes.service'
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {FirebaseService} from '../../../services/firebase-service';
+import { environment } from '../../../../environments/environment.development';
 
 @Component({
   selector: 'app-quizzes-detail',
@@ -39,6 +40,7 @@ export class QuizzesDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log("environment", environment);
     this.submitted = false;
     this.route.paramMap.subscribe(params => {
       const slug = params.get('slug');
