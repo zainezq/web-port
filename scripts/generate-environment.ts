@@ -1,10 +1,12 @@
-import fs from 'fs';
-import path from 'path';
-import {writeFileSync} from 'node:fs';
-import {join} from '@angular/compiler-cli';
-
-const environmentContent = `
-export const environment = {
+const setEnv = () => {
+  const fs = require('fs');
+  const writeFile = fs.writeFile;
+  const targetPath = './src/environments/environment.development.ts';
+  const colors = require('colors');
+  require('dotenv').config({
+    path: 'src/.env'
+  });
+  const environmentContent = `export const environment = {
   firebase: {
     apiKey: "${process.env["FIREBASE_API_KEY"]}",
     authDomain: "${process.env["FIREBASE_AUTH_DOMAIN"]}",
@@ -15,6 +17,11 @@ export const environment = {
   },
 };
 `;
-
-const envFilePath = join(__dirname, 'src/environments/environment.development.ts');
-writeFileSync(envFilePath, environmentContent.trim());
+  writeFile(targetPath, environmentContent, (err: any) => {
+    if (err) {
+      console.error(err);
+      throw err;
+    }
+  });
+};
+setEnv();
