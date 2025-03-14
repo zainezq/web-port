@@ -63,7 +63,7 @@
                 }
               ],
               "outputHashing": "all",
-              "serviceWorker": true,
+              "serviceWorker": "true",
               "crossOrigin": "anonymous"
             },
             "development": {
