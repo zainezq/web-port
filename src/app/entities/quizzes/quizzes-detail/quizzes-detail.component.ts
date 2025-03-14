@@ -40,8 +40,6 @@ export class QuizzesDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
-    console.log("environment", environment);
     this.submitted = false;
     this.route.paramMap.subscribe(params => {
       const slug = params.get('slug');
