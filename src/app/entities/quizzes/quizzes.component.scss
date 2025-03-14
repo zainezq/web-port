@@ -14,6 +14,8 @@ $font-stack: 'Courier New', Courier, monospace;
   color: $text-color;
   margin: auto;
 
+
+
   .quiz-header {
     text-align: center;
     font-size: 2rem;
@@ -22,17 +24,34 @@ $font-stack: 'Courier New', Courier, monospace;
     border-bottom: 2px solid $primary-color;
     padding-bottom: 0.5rem;
   }
-  .quiz-row {
+
+  .quiz-grid {
+    display: grid;
+    grid-template-columns: 1fr; // Default to 1 column for small screens
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr); // Exactly 2 quizzes per row on larger screens
+    }
+  }
+
+
+  .quiz-card {
     background: white;
     padding: 1rem;
     border-radius: 8px;
-    margin-bottom: 1.5rem;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-  }
-  .quiz-card {
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      background-color: darken($bg-color, 5%);
+      transform: scale(1.05);
+    }
   }
+
   .quiz-content {
     .quiz-title {
       font-size: 1.5rem;
@@ -40,6 +59,7 @@ $font-stack: 'Courier New', Courier, monospace;
       color: $primary-color;
       margin-bottom: 0.5rem;
     }
+
     .quiz-title-link {
       text-decoration: none;
       color: inherit;
@@ -49,16 +69,28 @@ $font-stack: 'Courier New', Courier, monospace;
         color: $accent-color;
       }
     }
+
     .quiz-summary {
       font-size: 1rem;
       line-height: 1.5;
     }
-    .quiz-date {
-      font-size: 0.875rem;
-      color: $secondary-color;
-      margin-top: 0.5rem;
+  }
+
+  .quiz-tags {
+    margin-top: 0.5rem;
+
+    .tag {
+      display: inline-block;
+      background: $tag-bg;
+      color: $tag-text;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      margin-right: 0.25rem;
+      border-radius: 4px;
+      text-transform: uppercase;
     }
   }
+
   .quiz-footer {
     margin-top: 1rem;
     text-align: right;
@@ -78,3 +110,4 @@ $font-stack: 'Courier New', Courier, monospace;
     }
   }
 }
+

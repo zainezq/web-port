@@ -1,12 +1,16 @@
 <div class="quiz-list">
-  <h1 class="quiz-header">My quizzes</h1>
-  <div *ngFor="let quiz of quiz" class="quiz-row">
-    <div class="quiz-card">
+  <h1 class="quiz-header">My Quizzes</h1>
+  <div class="quiz-grid">
+    <div *ngFor="let quiz of quiz" class="quiz-card">
       <div class="quiz-content">
         <h2 class="quiz-title">
           <a class="quiz-title-link" [routerLink]="['/quizzes', quiz.slug]">{{ quiz.title }}</a>
         </h2>
         <p class="quiz-summary">{{ quiz.summary }}</p>
+
+        <div class="quiz-tags">
+          <span *ngFor="let tag of quiz.tags" class="tag">{{ tag }}</span>
+        </div>
         <div class="quiz-footer">
           <a [routerLink]="['/quizzes', quiz.slug]" class="read-more-btn">Take the Quiz →</a>
         </div>

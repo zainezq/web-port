@@ -114,4 +114,8 @@ $font-stack: 'Courier New', Courier, monospace;
       transform: scale(0.95);
     }
   }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }

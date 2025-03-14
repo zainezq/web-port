@@ -14,6 +14,7 @@ import {RouterLink} from '@angular/router';
 })
 export class QuizzesComponent {
   quiz: QuizPost[] = [];
+  tags = ['All', "Technology" , 'Productivity', 'Education', 'Programming', 'Space', 'Islamic'];
 
   constructor(private quizService: QuizzesService) {
     this.quizService.getQuizList().subscribe((data) => {

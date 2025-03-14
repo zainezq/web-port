@@ -9,8 +9,8 @@
   </div>
 
   <!-- Blog List -->
-  <div *ngFor="let blog of filteredBlogs" class="blog-row">
-    <div class="blog-card">
+  <div class="blog-grid">
+    <div *ngFor="let blog of filteredBlogs" class="blog-card">
       <div class="blog-content">
         <h2 class="blog-title">
           <a class="blog-title-link" [routerLink]="['/blogs', blog.slug]">{{ blog.title }}</a>

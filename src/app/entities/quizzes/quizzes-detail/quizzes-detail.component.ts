@@ -7,7 +7,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import {QuizzesService} from '../../../services/quizzes-service/quizzes.service';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import { FirebaseService } from '../../../services/firebase-service';
+import {FirebaseService} from '../../../services/firebase-service';
 
 @Component({
   selector: 'app-quizzes-detail',
@@ -27,6 +27,7 @@ export class QuizzesDetailComponent implements OnInit {
   score: number = 0;
   feedback: { [key: number]: string } = {};
   additionalFeedback: string = '';
+  @ViewChild('quizContainer') quizContainer!: ElementRef;
 
   @ViewChild('content', { static: false }) content?: ElementRef;
 
@@ -57,6 +58,9 @@ export class QuizzesDetailComponent implements OnInit {
       }
     });
   }
+
+
+
   submitQuiz(): void {
 
     if (!this.quiz) return;
@@ -68,9 +72,9 @@ export class QuizzesDetailComponent implements OnInit {
     this.quiz.questions.forEach((q: any, index: number) => {
       if (this.userResponses[index] === q.answer) {
         this.score++;
-        this.feedback[index] = "✅ Correct!";
+        this.feedback[index] = "Correct!";
       } else {
-        this.feedback[index] = `❌ Wrong! Correct answer: ${q.answer}`;
+        this.feedback[index] = `Wrong! Correct answer: ${q.answer}`;
       }
     });
 
@@ -84,8 +88,12 @@ export class QuizzesDetailComponent implements OnInit {
     };
 
     this.firebaseService.submitQuizResponse(quizResponse)
-      .then(() => alert("Quiz submitted successfully!"))
+      .then(() => console.log("Quiz submitted successfully!"))
       .catch(error => console.error("Error submitting quiz:", error));
+  }
+  isQuizComplete(): boolean {
+    if (!this.quiz || !this.quiz.questions) return false;
+    return this.quiz.questions.every((_: any, index: number) => this.userResponses[index] !== undefined);
   }
 
   resetForm(): void {
@@ -94,5 +102,15 @@ export class QuizzesDetailComponent implements OnInit {
     this.userResponses = {};
     this.additionalFeedback = '';
     this.feedback = {};
+    setTimeout(() => {
+      this.userResponses = {};
+    });
+    if (this.quizContainer) {
+      this.quizContainer.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  goBack(): void {
+    window.history.back();
   }
 }

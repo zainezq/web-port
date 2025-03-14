@@ -1,5 +1,5 @@
 import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { BlogService } from '../../services/blog-service/blog.service';
 import { marked } from 'marked';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -28,6 +28,7 @@ export class BlogDetailComponent implements OnInit, AfterViewChecked {
   constructor(
     private blogService: BlogService,
     private route: ActivatedRoute,
+    private router: Router,
     private sanitizer: DomSanitizer
   ) {}
 
@@ -56,11 +57,74 @@ export class BlogDetailComponent implements OnInit, AfterViewChecked {
       });
     }
 
-
+    this.route.fragment.subscribe(fragment => {
+      if (fragment) {
+        this.scrollToAnchor(fragment);
+      }
+    });
   }
+
+  ngAfterViewInit(): void {
+    const fragment = this.route.snapshot.fragment;
+    if (fragment) {
+      this.scrollToAnchor(fragment);
+    }
+  }
+
   ngAfterViewChecked(): void {
+    this.handleAnchorClicks();
     this.addCopyButtons();
   }
+
+  /**
+   * Scroll smoothly to the element with the given anchor (from URL fragment)
+   */
+  scrollToAnchor(anchor: string, attempts = 3): void {
+    if (!anchor) return;
+
+    let attemptCount = 0;
+    const tryScroll = () => {
+      const element = document.getElementById(anchor);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (attemptCount < attempts) {
+        attemptCount++;
+        setTimeout(tryScroll, 100);
+      }
+    };
+
+    tryScroll();
+  }
+
+
+  /**
+   * Add smooth scrolling for ToC links inside the dynamically rendered Markdown
+   */
+  handleAnchorClicks(): void {
+    if (!this.content) return;
+
+    const links = this.content.nativeElement.querySelectorAll('a[href^="#"]');
+    links.forEach((link: HTMLAnchorElement) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const targetId = link.getAttribute('href')?.substring(1);
+        if (targetId) {
+
+          this.router.navigate([], {
+            fragment: targetId,
+            queryParamsHandling: 'preserve',
+            replaceUrl: true
+          }).then(() => {
+            this.scrollToAnchor(targetId);
+          });
+        }
+      });
+    });
+  }
+
+
+
   addCopyButtons(): void {
     const codeBlocks = this.content?.nativeElement.querySelectorAll('pre');
     codeBlocks.forEach((block: HTMLElement) => {

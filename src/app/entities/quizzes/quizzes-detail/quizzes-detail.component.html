@@ -1,30 +1,32 @@
-<div class="quizzes-detail" *ngIf="quiz">
+<div #quizContainer class="quizzes-detail" *ngIf="quiz">
   <h2>{{ quiz.title }}</h2>
 
   <form>
     <div *ngFor="let q of quiz.questions; let i = index" class="question-block">
       <p><strong>{{ q.question }}</strong></p>
       <label *ngFor="let option of q.options" class="option-label">
-        <input type="radio" [name]="'question' + i" [value]="option" (change)="userResponses[i] = option" [disabled]="submitted" />
+        <input type="radio" [name]="'question' + i" [value]="option" [(ngModel)]="userResponses[i]" [disabled]="submitted" />
         {{ option }}
       </label>
 
       <!-- Show feedback after submission -->
-      <p *ngIf="submitted" [ngClass]="{'correct': feedback[i] === '✅ Correct!', 'wrong': feedback[i].startsWith('❌')}">
+      <p *ngIf="submitted" [ngClass]="{'correct': feedback[i] === 'Correct!', 'wrong': feedback[i].startsWith('W')}">
         {{ feedback[i] }}
       </p>
     </div>
 
     <!-- Additional Feedback Input -->
     <div class="additional-feedback">
-      <label for="additionalFeedback"><strong>Any additional feedback or comments?</strong></label>
+      <label class="feedback-label" for="additionalFeedback"><strong>Any additional feedback or comments?</strong></label>
       <textarea id="additionalFeedback" [(ngModel)]="additionalFeedback" name="additionalFeedback"
                 rows="4" placeholder="Enter your comments here..." [disabled]="submitted"></textarea>
     </div>
 
-    <button type="button" (click)="submitQuiz()" [disabled]="submitted">Submit Quiz</button>
-    <button type="button" (click)="resetForm()" [disabled]="!submitted">Reset Quiz</button>
-
+    <div class="button-container">
+      <button class="submit-btn" type="button" (click)="submitQuiz()" [disabled]="submitted || !isQuizComplete()">Submit Quiz</button>
+      <button class="reset-btn" type="button" (click)="resetForm()" >Reset Quiz</button>
+      <button class="back-btn" type="button" (click)="goBack()">Back</button>
+    </div>
     <!-- Display Final Score -->
     <p *ngIf="submitted"><strong>Final Score: {{ score }} / {{ quiz.questions.length }}</strong></p>
   </form>
