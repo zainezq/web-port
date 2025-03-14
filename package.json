@@ -1,6 +1,7 @@
 {
   "name": "web-port-frontend",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "prebuild": "node scripts/create-env.js",
     "build": "npm run prebuild && ng build",
