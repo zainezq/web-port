@@ -1,5 +1,7 @@
 import fs from 'fs';
 import path from 'path';
+import {writeFileSync} from 'node:fs';
+import {join} from '@angular/compiler-cli';
 
 const environmentContent = `
 export const environment = {
@@ -14,4 +16,5 @@ export const environment = {
 };
 `;
 
-fs.writeFileSync(path.join(__dirname, 'src/environments/environment.ts'), environmentContent);
+const envFilePath = join(__dirname, 'src/environments/environment1.ts');
+writeFileSync(envFilePath, environmentContent.trim());

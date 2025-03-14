@@ -2,7 +2,7 @@
   "name": "web-port-frontend",
   "version": "0.0.0",
   "scripts": {
-    "generate-env": "ts-node generate-environment.ts",
+    "generate-env": "ts-node scripts/generate-environment.ts",
     "ng": "ng",
     "start": "ng serve",
     "build": "npm run generate-env && ng build",
