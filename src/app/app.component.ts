@@ -5,7 +5,7 @@ import { SidebarComponent } from './entities/sidebar/sidebar.component';
 import { LoadingComponent } from './entities/shared/loading/loading.component';
 
 import { initializeApp } from 'firebase/app';
-import { environment } from '../environments/environment.prod';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
