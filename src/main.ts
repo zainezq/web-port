@@ -12,9 +12,6 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 
 inject();
 
-
-
-
 bootstrapApplication(AppComponent, {
   ...appConfig,
   providers: [
