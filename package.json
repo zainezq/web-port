@@ -2,6 +2,7 @@
   "name": "web-port-frontend",
   "version": "0.0.0",
   "scripts": {
+    "prebuild": "node scripts/create-env.js",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
