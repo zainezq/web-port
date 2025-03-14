@@ -113,7 +113,7 @@ $font-stack: 'Courier New', Courier, monospace;
       transform: scale(0.95);
     }
   }
-  .submit-btn {
+  btn {
     display: block;
     padding: 10px;
     background-color: $secondary-color;
@@ -148,3 +148,15 @@ $font-stack: 'Courier New', Courier, monospace;
   font-weight: bold;
 }
 
+.additional-feedback {
+  margin-top: 20px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+}

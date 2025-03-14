@@ -6,13 +6,15 @@ import * as yaml from 'js-yaml';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import {QuizzesService} from '../../../services/quizzes-service/quizzes.service';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-quizzes-detail',
   imports: [
     NgForOf,
     NgIf,
-    NgClass
+    NgClass,
+    FormsModule
   ],
   templateUrl: './quizzes-detail.component.html',
   styleUrl: './quizzes-detail.component.scss'
@@ -23,6 +25,7 @@ export class QuizzesDetailComponent implements OnInit {
   submitted: boolean = false;
   score: number = 0;
   feedback: { [key: number]: string } = {};
+  additionalFeedback: string = '';
 
   @ViewChild('content', { static: false }) content?: ElementRef;
 
@@ -33,13 +36,13 @@ export class QuizzesDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.submitted = false;
     this.route.paramMap.subscribe(params => {
       const slug = params.get('slug');
       console.log("slug", slug);
       if (slug) {
         this.quizService.getQuizContent(slug).subscribe({
           next: (data) => {
-            // Extract YAML frontmatter from Markdown
             const match = data.match(/^---\n([\s\S]+?)\n---\n/);
             if (match) {
               this.quiz = yaml.load(match[1]);
@@ -53,7 +56,6 @@ export class QuizzesDetailComponent implements OnInit {
       }
     });
   }
-
 
   submitQuiz(): void {
     if (!this.quiz) return;
@@ -70,5 +72,21 @@ export class QuizzesDetailComponent implements OnInit {
         this.feedback[index] = `❌ Wrong! Correct answer: ${q.answer}`;
       }
     });
+
+    const responseText = `Score: ${this.score} / ${this.quiz.questions.length}\n\n`
+      + Object.entries(this.feedback)
+        .map(([index, msg]) => `Q${+index + 1}: ${msg}`)
+        .join("\n")
+      + `\n\nUser's Additional Feedback:\n${this.additionalFeedback}`;
+
+
+  }
+
+  resetForm(): void {
+    this.submitted = false;
+    this.score = 0;
+    this.userResponses = {};
+    this.additionalFeedback = '';
+    this.feedback = {};
   }
 }
