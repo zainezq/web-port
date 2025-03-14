@@ -16,7 +16,7 @@ import {NgForOf} from '@angular/common';
 })
 export class BlogListComponent implements OnInit {
   blogs: BlogPost[] = [];
-  tags = ['All', "Technology" , 'Productivity', 'Education', 'Programming'];
+  tags = ['All', "Technology" , 'Productivity', 'Education', 'Programming', 'Self Improvement'];
   selectedTag = 'All';
   constructor(private blogService: BlogService) {}
 
