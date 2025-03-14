@@ -1,11 +1,11 @@
 {
   "name": "web-port-frontend",
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "prebuild": "node scripts/create-env.js",
-    "build": "npm run prebuild && ng build",
+    "generate-env": "ts-node generate-environment.ts",
+    "ng": "ng",
     "start": "ng serve",
+    "build": "npm run generate-env && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -22,7 +22,6 @@
     "@angular/router": "^19.0.0",
     "@emailjs/browser": "^4.4.1",
     "@vercel/analytics": "^1.5.0",
-    "dotenv": "^16.4.7",
     "emailjs": "^4.0.3",
     "emailjs-com": "^3.2.0",
     "firebase": "^11.4.0",
