@@ -2,10 +2,10 @@
   "name": "web-port-frontend",
   "version": "0.0.0",
   "scripts": {
-    "generate-env": "ts-node scripts/generate-environment.ts",
     "ng": "ng",
     "start": "ng serve",
     "build": "npm run generate-env && ng build",
+    "build:vercel": "FIREBASE_API_KEY=$FIREBASE_API_KEY FIREBASE_AUTH_DOMAIN=$FIREBASE_AUTH_DOMAIN ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
