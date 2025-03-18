@@ -8,3 +8,5 @@ This project is titled "Overcoming Cognitive Overload - Designing an AI-Based No
 ## Table of Contents
 
 1. [Introduction](#introduction)  
+
+![Home Page](./assets/ss_1.png)
