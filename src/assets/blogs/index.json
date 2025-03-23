@@ -6,6 +6,7 @@
   { "id": 5, "title": "A brief guide to SSH keys", "slug": "guide-to-ssh-keys", "summary": "An overview of what SSH keys are, how to generate them, and how to use them to automate tasks.", "date": "09-02-2025", "readingTime": "3 minutes", "tags": ["Technology"] },
   { "id": 6, "title": "Advanced Emacs Config", "slug": "advanced-emacs-config", "summary": "A deeper look at my advanced Emacs configuration", "date": "16-02-2025", "readingTime": "4 minutes", "tags": ["Productivity", "Programming", "Technology"] },
   { "id": 7, "title": "What is Urge Surfing?", "slug": "urge-surfing", "summary": "A quick summary of what urge surfing is and how it works.", "date": "02-03-2025", "readingTime": "3 minutes", "tags": ["Productivity", "Education"] },
-  { "id": 8, "title": "Building a Growth Mindset", "slug": "growth-mindset", "summary": "A guide to understanding and cultivating a growth mindset for personal and professional success.", "date": "09-03-2025", "readingTime": "3 minutes", "tags": ["Productivity", "Self Improvement"] }
+  { "id": 8, "title": "Building a Growth Mindset", "slug": "growth-mindset", "summary": "A guide to understanding and cultivating a growth mindset for personal and professional success.", "date": "09-03-2025", "readingTime": "3 minutes", "tags": ["Productivity", "Self Improvement"] },
+  { "id": 9, "title": "Emotional Intelligence", "slug": "eq", "summary": "What does it mean to have Emotional Intelligence?", "date": "16-03-2025", "readingTime": "3 minutes", "tags": ["Productivity", "Self Improvement"] }
 
 ]
