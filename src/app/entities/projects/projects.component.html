@@ -22,14 +22,18 @@
     <p class="git-text">Check out my GitHub profile for more projects and contributions: <a
       href="https://github.com/zainezq" target="_blank">zainezq</a></p>
     <div *ngIf="visibleGithubRepos.length > 0; else loading">
-      <div *ngFor="let repo of visibleGithubRepos" class="project-card">
-        <h3 class="github-title">
-          <a class="github-title-link" [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
-        </h3>
-        <p>{{ repo.description || 'No description available.' }}</p>
-        <a class="github-link" [href]="repo.html_url" target="_blank">View on GitHub</a>
+      <div class="projects-container">
+        <div *ngFor="let repo of visibleGithubRepos" class="project-card">
+          <h3 class="github-title">
+            <a class="github-title-link" [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+          </h3>
+          <p class="github-date"><strong>Last Updated:</strong> {{ repo.updated_at | date: 'medium' }}</p>
+          <p class="github-description">{{ repo.description || 'No description available.' }}</p>
+          <a class="github-link" [href]="repo.html_url" target="_blank">View on GitHub</a>
+        </div>
       </div>
     </div>
+
 
     <!-- Loading State -->
     <ng-template #loading>

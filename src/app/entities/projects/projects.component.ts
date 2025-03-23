@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { GithubService } from '../../services/github.service';
-import { NgForOf, NgIf } from '@angular/common';
+import {DatePipe, NgForOf, NgIf} from '@angular/common';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {ProjectPost, ProjectServiceService} from '../../services/project-service/project-service.service';
 
 @Component({
   selector: 'app-projects',
-  imports: [NgIf, NgForOf, RouterLink, RouterLinkActive],
+  imports: [NgIf, NgForOf, RouterLink, RouterLinkActive, DatePipe],
   templateUrl: './projects.component.html',
   standalone: true,
   styleUrl: './projects.component.scss'
@@ -17,7 +17,7 @@ export class ProjectsComponent implements OnInit {
   githubRepositories: any[] = [];
   visibleGithubRepos: any[] = []; // Paginated GitHub repositories
   currentPage: number = 1;
-  reposPerPage: number = 5; // Limit number of GitHub repositories per page
+  reposPerPage: number = 6; // Limit number of GitHub repositories per page
 
   constructor(private githubService: GithubService, private projectService: ProjectServiceService) {}
 
@@ -39,6 +39,7 @@ export class ProjectsComponent implements OnInit {
         console.log('Repositories fetched successfully');
       }
     });
+
   }
 
   updateVisibleGithubRepos(): void {

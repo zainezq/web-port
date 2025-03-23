@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavigationStart, Router, RouterLink, RouterLinkActive} from '@angular/router';
-import {NgClass, NgOptimizedImage} from '@angular/common';
+import {DatePipe, NgClass, NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +8,8 @@ import {NgClass, NgOptimizedImage} from '@angular/common';
     RouterLink,
     RouterLinkActive,
     NgOptimizedImage,
-    NgClass
+    NgClass,
+    DatePipe
   ],
   templateUrl: './sidebar.component.html',
   standalone: true,
@@ -18,49 +19,41 @@ export class SidebarComponent implements OnInit, OnDestroy {
   showSidebar = true;  // Default to false for small screens
   isLargeScreen = window.innerWidth >= 768;
   private resizeListener: any;
+  lastUpdated: Date = new Date('2025-03-23T15:26:35.292Z');
 
   constructor(private router: Router) {}
 
   ngOnInit() {
     if (this.isLargeScreen) {
-      this.showSidebar = true;  // Keep sidebar visible on large screens
-    }
-    if (!this.isLargeScreen) {
-      //this.showSidebar = false;  // Hide sidebar on small screens
-      console.log('Hide sidebar');
+      this.showSidebar = true;
     }
 
-    // Listen for route changes and hide the sidebar on small screens
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         if (!this.isLargeScreen) {
-          this.showSidebar = false;  // Hide sidebar on small screens when navigating
+          this.showSidebar = false;
         }
       }
     });
 
-    // Listen for window resizing to dynamically adjust sidebar visibility
     this.resizeListener = () => {
       this.isLargeScreen = window.innerWidth >= 1024;
       if (this.isLargeScreen) {
-        this.showSidebar = true;  // Keep sidebar visible on large screens
+        this.showSidebar = true;
       }
     };
     window.addEventListener('resize', this.resizeListener);
   }
 
   ngOnDestroy() {
-    // Cleanup the resize event listener when the component is destroyed
     window.removeEventListener('resize', this.resizeListener);
   }
 
   toggleSidebar() {
     if (!this.isLargeScreen) {
-      console.log('Toggle sidebar');
       this.showSidebar = !this.showSidebar;
-      console.log('Sidebar visible:', this.showSidebar);  // Log the state for debugging
     } else {
-      this.showSidebar = true;  // Ensure sidebar stays visible on larger screens
+      this.showSidebar = true;
     }
   }
 }

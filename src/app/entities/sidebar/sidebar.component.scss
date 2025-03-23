@@ -71,7 +71,8 @@ $font-stack: 'Courier New', Courier, monospace;
   flex-direction: column;
   height: 100%;
   justify-content: flex-end;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
+
 }
 
 .sidebar-nav ul {
@@ -80,7 +81,7 @@ $font-stack: 'Courier New', Courier, monospace;
   list-style-type: none;
 }
 
-.sidebar-nav a {
+.sidebar-nav-links {
   text-align: center;
   display: block;
   color: white;
@@ -88,13 +89,32 @@ $font-stack: 'Courier New', Courier, monospace;
   font-size: 1.3em;
   padding: 1em;
   transition: background 0.3s;
+
+   &:hover {
+     background-color: darken($secondary-color, 10%);
+   }
+   &.active {
+     font-weight: bold;
+     color: $accent-color;
+   }
 }
 
-.sidebar-nav a:hover {
-  background-color: darken($secondary-color, 10%);
+.never-by-ai {
+  margin: auto;
+  margin-top: 1em;
+  display: block;
 }
 
-.sidebar-nav a.active {
+.last-updated {
+  font-size: small;
+  color: #ffd57f;
+  text-align: center;
+}
+
+.bottom-sidebar {
+  font-size: small;
+  color: wheat;
   font-weight: bold;
-  color: $accent-color;
+  text-align: center;
+  border-top: 0.05px solid white;
 }

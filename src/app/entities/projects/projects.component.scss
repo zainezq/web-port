@@ -93,11 +93,30 @@ $font-stack: 'Courier New', Courier, monospace;
     margin-bottom: 1.5rem;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
   }
+  .github-row a {
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: bold;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .github-row h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $primary-color;
+    margin-bottom: 0.1rem;
+  }
+  .projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
   .project-card {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    border: 1px solid $secondary-color;
+    border: 1px solid #ccc;
     border-radius: 8px;
     margin-bottom: 1rem;
     background-color: white;
@@ -129,6 +148,18 @@ $font-stack: 'Courier New', Courier, monospace;
     }
   }
 
+  .github-description {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .github-date {
+    font-size: 0.875rem;
+    color: $tag-bg;
+    margin-top: 0.5rem;
+  }
+
   .pagination {
     display: flex;
     justify-content: center;
@@ -153,6 +184,11 @@ $font-stack: 'Courier New', Courier, monospace;
       &:hover:not(:disabled) {
         background: darken($primary-color, 10%);
       }
+    }
+  }
+  @media (max-width: 768px) {
+    .projects-container {
+      grid-template-columns: 1fr;
     }
   }
 }

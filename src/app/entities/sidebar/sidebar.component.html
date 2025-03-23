@@ -10,11 +10,19 @@
 
   <nav class="sidebar-nav" [ngClass]="{ 'closed': !showSidebar }">
     <ul>
-      <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-      <li><a routerLink="/blogs" routerLinkActive="active">Blogs</a></li>
-      <li><a routerLink="/quizzes" routerLinkActive="active">Quizzes</a></li>
-      <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
-      <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+      <li><a class="sidebar-nav-links" routerLink="/home" routerLinkActive="active">Home</a></li>
+      <li><a class="sidebar-nav-links" routerLink="/blogs" routerLinkActive="active">Blogs</a></li>
+      <li><a class="sidebar-nav-links" routerLink="/quizzes" routerLinkActive="active">Quizzes</a></li>
+      <li><a class="sidebar-nav-links" routerLink="/projects" routerLinkActive="active">Projects</a></li>
+      <li><a class="sidebar-nav-links" routerLink="/contact" routerLinkActive="active">Contact</a></li>
     </ul>
+    <div class="bottom-sidebar">
+      <br>
+      <a href="https://ko-fi.com/s/4662b19f61" target="_blank">
+        <img class="never-by-ai" src="assets/NeverByAi_04.png" alt=" Never By AI" height="31" width="88">
+      </a>
+      <p>&copy; 2024-2025 Zaine Qayyum</p>
+      <p class="last-updated">Last Updated: {{ lastUpdated | date: 'medium' }}</p>
+    </div>
   </nav>
 </div>
