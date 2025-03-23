@@ -1,4 +1,4 @@
 [
-  { "id": 1, "title": "A complete overview of my final year project", "slug": "final-year-project", "summary": "This project is a complete overview of my final year project, including the challenges and issues faced.", "date": "19-01-2025", "readingTime": "x minutes", "tags": ["Productivity", "Education"] },
-  { "id": 2, "title": "My Homelab Setup", "slug": "home-lab", "summary": "How I set up and maintain my homelab.", "date": "26-01-2025", "readingTime": "x minutes", "tags": ["Productivity", "Programming", "Technology"] }
+  { "id": 1, "title": "A complete overview of my final year project", "slug": "final-year-project", "summary": "This project is a complete overview of my final year project, including the challenges and issues faced.", "date": "19-01-2025", "readingTime": "x minutes", "tags": ["Productivity", "Education"], "underConstruction": "true" },
+  { "id": 2, "title": "My Homelab Setup", "slug": "home-lab", "summary": "How I set up and maintain my homelab.", "date": "26-01-2025", "readingTime": "x minutes", "tags": ["Productivity", "Programming", "Technology"], "underConstruction": "true" }
 ]

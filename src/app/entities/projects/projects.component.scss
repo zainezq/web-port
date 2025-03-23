@@ -32,6 +32,14 @@ $font-stack: 'Courier New', Courier, monospace;
   .project-card {
     display: flex;
     flex-direction: column;
+    position: relative;
+  }
+  .under-construction-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    height: 80px;
   }
   .project-content {
     .project-title {

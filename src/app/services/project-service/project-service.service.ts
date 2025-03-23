@@ -9,6 +9,7 @@ export interface ProjectPost {
   summary: string;
   date: string;
   tags?: string[];
+  underConstruction?: boolean
 }
 
 @Injectable({

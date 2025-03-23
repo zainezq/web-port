@@ -2,6 +2,9 @@
   <h1 class="project-header">My Projects</h1>
   <div *ngFor="let project of projects" class="project-row">
     <div class="project-card">
+      <!-- Under Construction Badge -->
+      <img *ngIf="project.underConstruction" src="assets/pixil-frame-0.png" alt="Under Construction" class="under-construction-badge">
+
       <div class="project-content">
         <h2 class="project-title">
           <a class="project-title-link" [routerLink]="['/projects', project.slug]">{{ project.title }}</a>
@@ -15,6 +18,7 @@
     </div>
   </div>
 </div>
+
 <!-- GitHub Projects Section -->
 <div class="github-projects">
   <div class="github-row">
