@@ -9,6 +9,7 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-markup';
 import katex from 'katex';
+import '/assets/katex/katex.min.css';
 import markedKatex from "marked-katex-extension";
 import markedFootnote from 'marked-footnote';
 
