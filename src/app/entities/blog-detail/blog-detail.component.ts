@@ -1,13 +1,17 @@
 import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { BlogService } from '../../services/blog-service/blog.service';
-import { marked } from 'marked';
+import {marked, Tokens} from 'marked';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-markup';
+import katex from 'katex';
+import 'katex/dist/katex.min.css';
+import markedKatex from "marked-katex-extension";
+import markedFootnote from 'marked-footnote';
 
 @Component({
   selector: 'app-blog-detail',
@@ -32,11 +36,19 @@ export class BlogDetailComponent implements OnInit, AfterViewChecked {
     private sanitizer: DomSanitizer
   ) {}
 
+
   ngOnInit(): void {
+    const options = {
+      throwOnError: false
+    };
+
     const slug = this.route.snapshot.paramMap.get('slug');
     if (slug) {
       this.blogService.getBlogContent(slug).subscribe({
         next: (data) => {
+          marked.use(markedKatex(options));
+          marked.use(markedFootnote());
+
           const html = marked(data);
           if (typeof html === "string") {
             this.blogContent = this.sanitizer.bypassSecurityTrustHtml(html);
@@ -74,11 +86,30 @@ export class BlogDetailComponent implements OnInit, AfterViewChecked {
   ngAfterViewChecked(): void {
     this.handleAnchorClicks();
     this.addCopyButtons();
+    this.renderMath();
   }
 
-  /**
-   * Scroll smoothly to the element with the given anchor (from URL fragment)
-   */
+  renderMath(): void {
+    if (this.content) {
+      const elements = this.content.nativeElement.querySelectorAll('span.math, div.math');
+      elements.forEach((element: HTMLElement) => {
+        const math = element.textContent || '';
+        try {
+          katex.render(math, element, {
+            throwOnError: false,
+            displayMode: element.tagName === 'DIV',
+          });
+
+          // Ensure proper styling
+          element.classList.add('math-rendered');
+        } catch (error) {
+          console.error('KaTeX rendering error: ', error);
+        }
+      });
+    }
+  }
+
+
   scrollToAnchor(anchor: string, attempts = 3): void {
     if (!anchor) return;
 
@@ -97,9 +128,6 @@ export class BlogDetailComponent implements OnInit, AfterViewChecked {
   }
 
 
-  /**
-   * Add smooth scrolling for ToC links inside the dynamically rendered Markdown
-   */
   handleAnchorClicks(): void {
     if (!this.content) return;
 
