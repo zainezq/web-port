@@ -1,4 +1,16 @@
 {
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/fonts/(.*)",
+      "dest": "/node_modules/katex/dist/fonts/$1"
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
   ]
