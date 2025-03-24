@@ -27,6 +27,7 @@ export class BlogListComponent implements OnInit {
       this.blogs = data;
     });
 
+
   }
   downloadRSS() {
     this.rssService.downloadRssFeed(this.blogs);
