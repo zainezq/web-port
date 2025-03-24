@@ -9,6 +9,8 @@ $font-stack: 'Courier New', Courier, monospace;
 
 /* Blog Content */
 .blog-content {
+  position: relative;
+  overflow-y: auto;
   background: lighten($bg-color, 5%);
   padding: 1.5rem;
   border-left: 4px solid $accent-color;
@@ -132,6 +134,7 @@ $font-stack: 'Courier New', Courier, monospace;
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-bottom: 0 !important;
   }
 
 }

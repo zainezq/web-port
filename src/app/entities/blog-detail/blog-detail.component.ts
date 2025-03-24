@@ -117,7 +117,15 @@ export class BlogDetailComponent implements OnInit, AfterViewChecked {
     const tryScroll = () => {
       const element = document.getElementById(anchor);
       if (element) {
+        // Scroll to the anchor with a smooth behavior
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // After scrolling, check if the page height exceeds the viewport
+        setTimeout(() => {
+          if (document.body.scrollHeight > window.innerHeight) {
+            document.body.style.overflowY = 'auto';  // Re-enable scrolling
+          }
+        }, 100);
       } else if (attemptCount < attempts) {
         attemptCount++;
         setTimeout(tryScroll, 100);
@@ -138,6 +146,8 @@ export class BlogDetailComponent implements OnInit, AfterViewChecked {
 
         const targetId = link.getAttribute('href')?.substring(1);
         if (targetId) {
+          // Temporarily hide overflow to prevent page shift when scrolling
+          document.body.style.overflowY = 'hidden';
 
           this.router.navigate([], {
             fragment: targetId,
@@ -146,6 +156,11 @@ export class BlogDetailComponent implements OnInit, AfterViewChecked {
           }).then(() => {
             this.scrollToAnchor(targetId);
           });
+
+          // Allow overflow after scroll
+          setTimeout(() => {
+            document.body.style.overflowY = 'auto';
+          }, 500);
         }
       });
     });

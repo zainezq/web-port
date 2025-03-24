@@ -1,12 +1,14 @@
 <div class="blog-list">
   <h1 class="blog-header">~ The Blorg ~</h1>
 
-  <!-- Tag Filter -->
   <div class="tag-filter">
     <button *ngFor="let tag of tags" (click)="selectTag(tag)" [class.active]="selectedTag === tag">
       {{ tag }}
     </button>
+    <!-- RSS Button placed inside the tag filter -->
+    <button class="rss-button" (click)="downloadRSS()">Download RSS</button>
   </div>
+
 
   <!-- Blog List -->
   <div class="blog-grid">
@@ -17,7 +19,6 @@
         </h2>
         <p class="blog-summary">{{ blog.summary }}</p>
         <p class="blog-date">📅 {{ blog.date }} | ⏱ {{ blog.readingTime }}</p>
-
         <!-- Blog Tags -->
         <div class="blog-tags">
           <span *ngFor="let tag of blog.tags" class="tag">{{ tag }}</span>

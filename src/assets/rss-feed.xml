@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+    <title>Your Blog Name</title>
+    <link>https://zainezq.com</link>
+    <description>Your blog description</description>
+    <language>en-us</language>
+    <item>
+        <title>My Emacs Config</title>
+        <link>https://zainezq.com/blog/emacs_config</link>
+        <description>A quick summary of my current Emacs configuration</description>
+        <pubDate>Sun, 01 Dec 2024 00:00:00 GMT</pubDate>
+        <guid>https://zainezq.com/blog/emacs_config</guid>
+        <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="crafting-a-customised-emacs-configuration-for-productivity-and-aesthetics">Crafting a Customised Emacs Configuration for Productivity and Aesthetics</h1>
+<p>By Zaine Qayyum</p>
+<hr>
+<p>Emacs is a powerhouse editor that can be tailored to your specific needs, and this blog showcases how I built my Emacs configuration to enhance my productivity and enjoyment. I primarily use Emacs to organise my notes, applications, books, projects and various other things. </p>
+<hr>
+<h2 id="1-package-management"><strong>1. Package Management</strong></h2>
+<p>The first step in customising Emacs is setting up package management. I’ve used MELPA as my primary package repository:</p>
+<pre><code class="language-elisp">(require &#39;package)
+(add-to-list &#39;package-archives &#39;(&quot;melpa&quot; . &quot;https://melpa.org/packages/&quot;) t)
+(package-initialize)
+</code></pre>
+<p>The snippet below shows you how to view the available packages.</p>
+<pre><code class="language-elisp">M-x package-list-packages
+</code></pre>
+<hr>
+<h2 id="2-scripts-and-custom-modules"><strong>2. Scripts and Custom Modules</strong></h2>
+<p>To keep my configuration modular, I’ve organised custom scripts in a <code>~/.emacs.d/scripts/</code> directory:</p>
+<pre><code class="language-elisp">(add-to-list &#39;load-path &quot;~/.emacs.d/scripts/&quot;)
+(require &#39;displays)
+(require &#39;shells)
+(require &#39;auto-comp)
+(require &#39;window)
+(require &#39;keyboard)
+(require &#39;custom-agenda)
+</code></pre>
+<p>Each of these are <code>.el</code> files, and are being loaded into my main <code>init.el</code> </p>
+<hr>
+<h2 id="3-general-settings"><strong>3. General Settings</strong></h2>
+<h3 id="startup-optimisation">Startup Optimisation</h3>
+<pre><code class="language-elisp">(setq inhibit-startup-screen t)
+</code></pre>
+<p>I disable the startup screen so that the first thing that loads up is the dashboard (more on this later).</p>
+<h3 id="key-bindings">Key Bindings</h3>
+<p>I use <code>ESC</code> as a universal escape key to quit minibuffer prompts:</p>
+<pre><code class="language-elisp">(global-set-key [escape] &#39;keyboard-escape-quit)
+</code></pre>
+<p>As opposed to using <code>C-g</code> (boo!!).</p>
+<h3 id="interface-tweaks">Interface Tweaks</h3>
+<pre><code class="language-elisp">(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(global-display-line-numbers-mode 1)
+(global-visual-line-mode t)
+</code></pre>
+<p>These settings remove clutter like scrollbars and enable essential features such as line numbers.</p>
+<hr>
+<h2 id="4-org-mode-for-organisation"><strong>4. Org Mode for Organisation</strong></h2>
+<h3 id="agenda-and-file-management">Agenda and File Management</h3>
+<p>Org mode is central to my workflow. I’ve set up an agenda that pulls from multiple files:</p>
+<pre><code class="language-elisp">(setq org-agenda-files &#39;(&quot;~/master-folder/org_files/master.org&quot;
+                         &quot;~/master-folder/org_files/deen-org/deen.org&quot;
+                         &quot;~/master-folder/org_files/career-org/career.org&quot;))
+(require &#39;org)
+</code></pre>
+<h3 id="enhancing-org-mode-appearance">Enhancing Org Mode Appearance</h3>
+<ul>
+<li><p>Inline images:</p>
+<pre><code class="language-elisp">(add-hook &#39;org-mode-hook &#39;org-display-inline-images)
+(add-hook &#39;org-mode-hook
+          (lambda ()
+            (org-display-inline-images t t)))
+</code></pre>
+</li>
+<li><p>Bullets and indentation:</p>
+<pre><code class="language-elisp">(use-package toc-org
+  :commands toc-org-enable
+  :init (add-hook &#39;org-mode-hook &#39;toc-org-enable))
+
+(use-package org-bullets)
+(add-hook &#39;org-mode-hook (lambda () (org-bullets-mode 1)))
+(add-hook &#39;org-mode-hook &#39;org-indent-mode)
+</code></pre>
+</li>
+</ul>
+<h3 id="disabling-electric-indent">Disabling Electric Indent</h3>
+<p>Org files often require manual formatting:</p>
+<pre><code class="language-elisp">(electric-indent-mode -1)
+</code></pre>
+<hr>
+<h2 id="5-enhancing-visual-appeal"><strong>5. Enhancing Visual Appeal</strong></h2>
+<p>I’ve added themes and icons to create a visually appealing environment:</p>
+<ul>
+<li><p><strong>Kaolin Bubblegum Theme:</strong></p>
+<pre><code class="language-elisp">(add-to-list &#39;custom-theme-load-path &quot;~/.emacs.d/themes/&quot;)
+(require &#39;kaolin-themes)
+(load-theme &#39;kaolin-bubblegum t)
+</code></pre>
+</li>
+<li><p><strong>All-the-Icons:</strong></p>
+<pre><code class="language-elisp">(use-package all-the-icons :ensure t :if (display-graphic-p))
+(use-package all-the-icons-dired
+  :hook (dired-mode . (lambda () (all-the-icons-dired-mode t))))
+</code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="6-roam-and-note-taking"><strong>6. Roam and Note-Taking</strong></h2>
+<p>Org-roam is perfect for building a network of interconnected notes:</p>
+<pre><code class="language-elisp">(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory &quot;~/master-folder/org_files/org_roam&quot;)
+  :config
+  (org-roam-setup))
+</code></pre>
+<hr>
+<h2 id="7-language-support"><strong>7. Language Support</strong></h2>
+<p>I’ve configured Emacs for Haskell development:</p>
+<pre><code class="language-elisp">(use-package haskell-mode)
+(org-babel-do-load-languages
+ &#39;org-babel-load-languages
+ &#39;((haskell . t)))
+</code></pre>
+<hr>
+<h2 id="8-backup-settings"><strong>8. Backup Settings</strong></h2>
+<p>To prevent clutter, backups are redirected to the Trash folder:</p>
+<pre><code class="language-elisp">(setq backup-directory-alist &#39;((&quot;.*&quot; . &quot;~/.Trash&quot;)))
+</code></pre>
+<hr>
+<h2 id="9-evil-mode-for-vim-lovers"><strong>9. Evil Mode for Vim Lovers</strong></h2>
+<p>Evil mode brings Vim keybindings to Emacs, with additional enhancements:</p>
+<pre><code class="language-elisp">(use-package evil
+  :init
+  (setq evil-want-integration t
+        evil-want-keybinding nil
+        evil-vsplit-window-right t
+        evil-split-window-below t)
+  (evil-mode))
+
+(use-package evil-collection
+  :after evil
+  :config
+  (setq evil-collection-mode-list &#39;(dashboard dired ibuffer))
+  (evil-collection-init))
+
+(use-package evil-tutor)
+</code></pre>
+<hr>
+<h2 id="10-reloading-configuration"><strong>10. Reloading Configuration</strong></h2>
+<p>For quick testing of changes:</p>
+<pre><code class="language-elisp">(defun reload-init-file ()
+  (interactive)
+  (load-file user-init-file)
+  (load-file user-init-file))
+</code></pre>
+<hr>
+<h2 id="11-scripts"><strong>11. Scripts</strong></h2>
+<p>As previously mentioned, I’ve kept scripts in a <code>~/.emacs.d/scripts/</code> directory:</p>
+<pre><code class="language-elisp">(add-to-list &#39;load-path &quot;~/.emacs.d/scripts/&quot;)
+(require &#39;displays)
+(require &#39;shells)
+(require &#39;auto-comp)
+(require &#39;window)
+(require &#39;keyboard)
+(require &#39;custom-agenda)
+</code></pre>
+<p>Each of these can be found in my GitHub repository: <a href="https://github.com/zainezq/dot-files">emacs-config</a></p>
+<hr>
+<h2 id="12-conclusion"><strong>12. Conclusion</strong></h2>
+<p>This is the end of my customised Emacs configuration, for more details I would recommend checking out this YouTube series: <a href="https://www.youtube.com/playlist?list=PL5--8gKSku15e8lXf7aLICFmAHQVo0KXX">DistroTube  - Configuring Emacs</a>. I hope you find it useful :)</p>
+ (see https://g.co/ng/security#xss)]]></content:encoded>
+    </item>
+    <item>
+        <title>Introduction to Nginx</title>
+        <link>https://zainezq.com/blog/nginx</link>
+        <description>What Nginx is, how it's used and how you can install it.</description>
+        <pubDate>Invalid Date</pubDate>
+        <guid>https://zainezq.com/blog/nginx</guid>
+        <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="understanding-nginx-what-it-is-and-how-to-use-it">Understanding Nginx: What It Is and How to Use It</h1>
+<p>By Zaine Qayyum</p>
+<hr>
+<p>In the world of server management, you’ve probably come across <strong>Nginx</strong> (pronounced &quot;engine-x&quot;). But what exactly is Nginx? And why is it such a popular tool among developers and system administrators? 
+As I was setting up my own server, I began to use Nginx for reverse proxying, and realised just how useful it can be in devops. I&#39;ll break down the basics of Nginx, explore its key features, and guide you on how to use it effectively.</p>
+<hr>
+<h2 id="what-is-nginx">What Is Nginx?</h2>
+<p>Nginx is an open source web server that can also function as a reverse proxy, load balancer, and HTTP cache. 
+It was originally created in 2004 by Igor Sysoev to address the <strong>C10K problem</strong>; a challenge related to handling 10,000 concurrent connections on a single server.</p>
+<p>What makes Nginx stand out is its event driven (more on this later), asynchronous architecture, which allows it to handle a large number of simultaneous connections efficiently. 
+&#39;Simultaneous&#39; connections refer to the number of incoming requests that can be processed at the same time, kind of like multi-threading. And in this day and age, being able to handle multiple requests at the same time is essential.</p>
+<p>Some of the most popular companies, like Netflix, Airbnb, and GitHub, use Nginx to serve their web traffic, due to it being lightweight, fast and reliable.</p>
+<hr>
+<h2 id="key-features-of-nginx">Key Features of Nginx</h2>
+<p>Nginx’s popularity stems from these core features:</p>
+<h3 id="1-web-server">1. <strong>Web Server</strong></h3>
+<p>Nginx serves static content like HTML, CSS, JavaScript, and images. </p>
+<h3 id="2-reverse-proxy">2. <strong>Reverse Proxy</strong></h3>
+<p>Nginx can act as a middleman, forwarding client requests to backend servers. 
+For instance, let&#39;s you have a docker service running on <code>localhost:4000</code> and you want to make it so that it routes to your website, Nginx will do the work for you, and you&#39;ll be able to access that service on: <code>yourwebsite.com:4000</code>.</p>
+<h3 id="3-load-balancing">3. <strong>Load Balancing</strong></h3>
+<p>For applications that rely on multiple servers, Nginx distributes incoming traffic evenly across them, which ensures smooth performance even during high traffics.</p>
+<h3 id="4-http-caching">4. <strong>HTTP Caching</strong></h3>
+<p>By caching responses, Nginx can speed up delivery times for frequently accessed resources, reducing load on backend servers.</p>
+<h3 id="5-ssltls-termination">5. <strong>SSL/TLS Termination</strong></h3>
+<p>Nginx simplifies secure connections by handling SSL/TLS encryption and decryption, offloading this task from backend servers.</p>
+<h3 id="6-content-compression">6. <strong>Content Compression</strong></h3>
+<p>Nginx can compress HTTP responses, reducing bandwidth usage and speeding up page load times.</p>
+<hr>
+<h2 id="how-to-use-nginx">How to Use Nginx</h2>
+<p>Now that we understand what Nginx is and why it’s so powerful, let’s look at how you can use it. Below is a simple guide to get you started.</p>
+<h3 id="step-1-install-nginx">Step 1: Install Nginx</h3>
+<p>Installation varies depending on your operating system.</p>
+<ul>
+<li><p><strong>For Ubuntu/Debian:</strong></p>
+<pre><code class="language-bash">sudo apt update
+sudo apt install nginx
+</code></pre>
+</li>
+<li><p><strong>For CentOS/RHEL:</strong></p>
+<pre><code class="language-bash">sudo yum install epel-release
+sudo yum install nginx
+</code></pre>
+</li>
+</ul>
+<p>Once installed, you can start Nginx with:</p>
+<pre><code class="language-bash">sudo systemctl start nginx
+</code></pre>
+<h3 id="step-2-verify-installation">Step 2: Verify Installation</h3>
+<p>To confirm that Nginx is running, open your browser and visit <code>http://localhost</code> or your server’s IP address. You should see the default Nginx welcome page.</p>
+<h3 id="step-3-configure-nginx">Step 3: Configure Nginx</h3>
+<p>The configuration files for Nginx are located in <code>/etc/nginx/</code>. 
+The main file is <code>nginx.conf</code>, but you’ll typically work with configuration files under <code>/etc/nginx/sites-available/</code> and <code>/etc/nginx/sites-enabled/</code>.</p>
+<h4 id="example-serving-a-static-website">Example: Serving a Static Website</h4>
+<ol>
+<li>Create a new configuration file:<pre><code class="language-bash">sudo nano /etc/nginx/sites-available/mywebsite
+</code></pre>
+</li>
+<li>Add the following:<pre><code class="language-nginx">server {
+    listen 80;
+    server_name mywebsite.com www.mywebsite.com;
+
+    root /var/www/mywebsite;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+</code></pre>
+</li>
+<li>Create a symlink and enable the configuration:<pre><code class="language-bash">sudo ln -s /etc/nginx/sites-available/mywebsite /etc/nginx/sites-enabled/
+sudo systemctl reload nginx
+</code></pre>
+</li>
+</ol>
+<h3 id="step-4-set-up-a-reverse-proxy">Step 4: Set Up a Reverse Proxy</h3>
+<p>To forward traffic to a backend server (e.g., a Node.js app):</p>
+<pre><code class="language-nginx">server {
+    listen 80;
+    server_name example.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+</code></pre>
+<p>Save the file, reload Nginx, and you’re good to go!</p>
+<hr>
+<h2 id="tips-for-managing-nginx">Tips for Managing Nginx</h2>
+<ul>
+<li><strong>Check Configuration Before Reloading:</strong>
+Run <code>sudo nginx -t</code> to test for syntax errors.</li>
+<li><strong>Monitor Logs:</strong>
+Use <code>tail -f /var/log/nginx/access.log /var/log/nginx/error.log</code> to troubleshoot issues.</li>
+<li><strong>Secure Your Server:</strong>
+Always enable SSL/TLS for secure connections. Tools like <a href="https://letsencrypt.org/">Let’s Encrypt</a> make this process easy.</li>
+</ul>
+<hr>
+<h2 id="closing-thoughts">Closing Thoughts</h2>
+<p>It&#39;s true when people say that you learn by doing, and Nginx is no exception. The more you expose yourself to it, the more you&#39;ll realise the capabilities it offers. </p>
+ (see https://g.co/ng/security#xss)]]></content:encoded>
+    </item>
+    <item>
+        <title>The Brain's Self-Discipline Blueprint</title>
+        <link>https://zainezq.com/blog/prefrontal_cortex</link>
+        <description>An analysis of the role of the prefrontal cortex in self-discipline and motivation.</description>
+        <pubDate>Invalid Date</pubDate>
+        <guid>https://zainezq.com/blog/prefrontal_cortex</guid>
+        <content:encoded><![CDATA[SafeValue must use [property]=binding: <h3 id="the-brains-self-discipline-blueprint-examining-the-prefrontal-cortex-and-other-areas">The Brain&#39;s Self-Discipline Blueprint: Examining the Prefrontal Cortex and Other Areas</h3>
+<p>By Zaine Qayyum</p>
+<hr>
+<h3 id="preface"><strong>Preface</strong></h3>
+<p>Why is it so difficult to resist a late-night snack or to maintain our self-imposed objectives? Our brains&#39; complex wiring holds the solution. &quot;The Science of Self-Discipline&quot; by Peter Hollins, a book which I was reading, says that it&#39;s not just about willpower but also about how well our brain&#39;s various components cooperate. This blog will explore the prefrontal cortex and other areas relating to self discipline. </p>
+<hr>
+<h3 id="the-brains-ceo-the-prefrontal-cortex"><strong>The Brain&#39;s CEO: The Prefrontal Cortex</strong></h3>
+<p>Consider your brain&#39;s prefrontal cortex (PFC) to be its CEO. It is responsible for &quot;executive functions&quot; such as impulse control, planning, and decision-making. Your PFC is taking over when you fight the need to browse social media while working.</p>
+<p>The PFC&#39;s neuroplasticity is one of its best features. This indicates that while heredity (biological inheritance) plays a part in self-discipline, it is not entirely lost because it can become stronger with effort. Research indicates that practices such as mindfulness meditation can expand grey matter in the PFC, improving our capacity to control our behaviour. In the well-known &quot;marshmallow test,&quot; kids who were able to postpone gratification by waiting for a second marshmallow ended up with better life outcomes.</p>
+<hr>
+<h3 id="aiding-participants-additional-brain-areas-impacting-self-control"><strong>Aiding Participants: Additional Brain Areas Impacting Self-Control</strong></h3>
+<p>Other parts of the brain are essential for self-discipline, even if the PFC is the main player:</p>
+<ul>
+<li><p><strong>Amygdala</strong> The amygdala is an almond shaped region in the brain that controls emotions such as anger and fear. The PFC can become overpowered when we are stressed or anxious, and it is the amygdala that overpowers the PFC, ultimately leading to impulsive decisions. For example, the amygdala frequently takes over our reactions before the PFC can calm us down, which is what leads to road rage.</p>
+</li>
+<li><p><strong>Basal Ganglia</strong>: The basal ganglia helps in automating behaviours and are in charge of habit formation. Self-discipline is made simpler by good habits since they demand less conscious effort, there is a famous arabic saying: ما تكرر تقرر, which translates to &quot;What is repeated becomes established&quot;, meaning that the habits we repeat tend to be the habits that stick to us. Building enduring habits can be facilitated by beginning with simple, regular behaviours, like reading for 5 minutes before bed.</p>
+</li>
+<li><p><strong>Anterior Cingulate Cortex (ACC)</strong>: This area of the brain controls emotional reactions and recognises mistakes. When things get difficult, a functioning ACC keeps us on course and helps us overcome obstacles.</p>
+</li>
+<li><p><strong>Dopaminergic Pathways (Reward System)</strong>: Dopamine is released during enjoyable activities by the brain&#39;s reward system: the nucleus accumbens. This explains the allure of instant gratification, such as checking your phone for notifications.</p>
+</li>
+</ul>
+<hr>
+<h3 id="how-self-discipline-works-a-brain-based-process"><strong>How Self-Discipline Works: A Brain-Based Process</strong></h3>
+<p>Self-discipline is often a tug-of-war between different brain regions. The PFC knows you should wake up early to exercise, but the amygdala prefers the comfort of staying in bed. This internal conflict is why self control can feel so challenging.</p>
+<p>Dopamine, a neurotransmitter, plays a dual role. It motivates you to take action but can also lead to addictive behaviors if not managed well. Gamification, like fitness apps with streaks, uses dopamine to encourage consistent behavior by rewarding small wins.</p>
+<p>The brain will naturally prioritise short term rewards, hence techniques like visualisation and writing can shift this focus, which ultimately will enable the PFC to prioritise long term benefits over instant gratification. </p>
+<hr>
+<h3 id="building-self-control-useful-advice"><strong>Building Self-Control: Useful Advice</strong></h3>
+<p>The following are some methods to improve self-discipline that have scientific support:</p>
+<ul>
+<li><p><strong>Mindfulness Practices</strong>: Mindfulness enhances the PFC and decreases amygdala activity. Inhaling for four seconds, holding for four, and expelling for six is a basic breathing technique that helps one focus and relax.</p>
+</li>
+<li><p><strong>Developing Positive Habits</strong>: Apply the &quot;cue-routine-reward&quot; cycle. For instance, put your running shoes by the door (trigger), jog (routine), and then take a cool shower (reward). A good starting place to learn more about habit formation and the intricate science behind it is the famous book of James Clear titled &quot;Atomic Habits&quot;</p>
+</li>
+<li><p><strong>Managing Stress</strong>: Excessive stress might impair the PFC&#39;s ability to regulate. The parasympathetic nervous system can be activated by methods such as splashing cold water to ones face or practicing progressive muscle relaxation, which will help maintain ones composure.</p>
+</li>
+<li><p><strong>Dopamine Detox</strong>: As mentionned before, this is a double edged sword, one can reduce overstimulation by avoiding social media, binge-watching, or sugary snacks for a set period. This resets the brain’s reward system, making it easier to focus on meaningful tasks.</p>
+</li>
+</ul>
+<hr>
+<h3 id="conclusion"><strong>Conclusion</strong></h3>
+<p>Along with other brain regions, the prefrontal cortex provides the foundation for self discipline. If one actively gets an understanding of how these different parts work together, deliberate steps can be taken to strengthen self control. Start small, pick one of the tips and practice it daily. Over time, these small changes will lead to significant improvements.</p>
+<p>Remember, self-discipline is like a muscle, the more one trains it, the stronger it becomes. As the Stoic philosopher Epictetus said, &quot;No man is free who is not master of himself.&quot;</p>
+ (see https://g.co/ng/security#xss)]]></content:encoded>
+    </item>
+    <item>
+        <title>A brief introduction to Agda</title>
+        <link>https://zainezq.com/blog/intro-to-agda</link>
+        <description>An overview of what Agda is with examples, and how it can be used to prove mathematical theorems.</description>
+        <pubDate>Sun, 02 Feb 2025 00:00:00 GMT</pubDate>
+        <guid>https://zainezq.com/blog/intro-to-agda</guid>
+        <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="what-is-agda-a-beginners-guide">What is Agda? A Beginner&#39;s Guide</h1>
+<p>By Zaine Qayyum</p>
+<hr>
+<p>Agda is a dependently typed functional programming language and proof assistant. It is widely used in academia and research for writing verified programs and proving mathematical theorems. While it might seem intimidating at first, Agda is both powerful and rewarding once you get the hang of it. 
+This was my chosen module for my Final Year as a Computer Science student, (module titled: <em>Advanced Functional Programming</em>), and so to reinforce my understanding I wanted to write a little about it.</p>
+<h2 id="why-agda">Why Agda?</h2>
+<p>Agda combines programming and theorem proving in a seamless way. Here are some of its features that stand out:</p>
+<ul>
+<li><strong>Dependent Types:</strong> Agda allows types to depend on values, which means you can encode intricate properties of data directly into your types, ultimately making it easier to write correct programs.</li>
+<li><strong>Interactive Development:</strong> Agda comes with an interactive environment that helps you construct proofs and debug code incrementally (emacs).</li>
+<li><strong>Strong Typing:</strong> The type system in Agda catches many errors at compile time.</li>
+<li><strong>Extensibility:</strong> Agda has support for Unicode characters and custom operators.</li>
+</ul>
+<hr>
+<h2 id="installing-agda">Installing Agda</h2>
+<p>To start using Agda, you’ll need to install it. Here’s how:</p>
+<ol>
+<li><p><strong>Install Haskell:</strong> Since Agda is implemented in Haskell, you’ll need the Haskell Platform or GHC.</p>
+</li>
+<li><p><strong>Install Agda:</strong> You can install Agda via <code>cabal</code> or <code>stack</code>. For example:</p>
+<pre><code class="language-bash">cabal update
+cabal install Agda
+</code></pre>
+</li>
+<li><p><strong>Install the Agda Standard Library:</strong> Clone the Agda Standard Library from its <a href="https://github.com/agda/agda-stdlib">GitHub repository</a> and include it in your project.</p>
+</li>
+<li><p><strong>Editor Support:</strong> Agda works well with Emacs. Make sure you have the Agda mode installed and set up in your Emacs configuration.</p>
+</li>
+</ol>
+<hr>
+<h2 id="writing-your-first-agda-program">Writing Your First Agda Program</h2>
+<p>Let’s start with a simple example: defining natural numbers.</p>
+<pre><code class="language-agda">module Basics where
+
+-- Define natural numbers
+data Nat : Set where
+  zero : Nat
+  suc  : Nat -&gt; Nat
+
+-- Add two natural numbers
+add : Nat -&gt; Nat -&gt; Nat
+add zero     n = n
+add (suc m) n = suc (add m n)
+
+-- Example usage
+example : Nat
+example = add (suc (suc zero)) (suc zero)
+</code></pre>
+<h3 id="explanation">Explanation</h3>
+<ol>
+<li><strong>Module Declaration:</strong> We start by defining a module named <code>Basics</code>. Think of it as a namespace.</li>
+<li><strong>Natural Numbers:</strong> We define <code>Nat</code>, a data type with two constructors:<ul>
+<li><code>zero</code>: Represents 0.</li>
+<li><code>suc</code>: Represents the successor of a number (e.g., <code>suc zero</code> is 1, <code>suc (suc zero)</code> is 2).</li>
+</ul>
+</li>
+<li><strong>Addition:</strong> The <code>add</code> function recursively adds two natural numbers.</li>
+<li><strong>Example Usage:</strong> We compute <code>2 + 1</code> and store the result in <code>example</code>.</li>
+</ol>
+<hr>
+<h2 id="dependent-types-in-action">Dependent Types in Action</h2>
+<p>A dependant type is a type that depends on a value, and this is where Agda really shines. Let’s use dependent types to define vectors, which are lists with a fixed length.</p>
+<pre><code class="language-agda">module Vectors where
+
+open import Data.Nat
+open import Data.List
+
+-- Define a vector
+data Vec (A : Set) : Nat -&gt; Set where
+  []   : Vec A zero
+  _::_ : {n : Nat} -&gt; A -&gt; Vec A n -&gt; Vec A (suc n)
+
+-- Append two vectors
+append : {A : Set} {m n : Nat} -&gt; Vec A m -&gt; Vec A n -&gt; Vec A (m + n)
+append []       ys = ys
+append (x :: xs) ys = x :: append xs ys
+
+-- Example usage
+exampleVec : Vec Nat 3
+exampleVec = 1 :: 2 :: 3 :: []
+
+exampleAppend : Vec Nat 5
+exampleAppend = append exampleVec (4 :: 5 :: [])
+</code></pre>
+<h3 id="explanation-1">Explanation</h3>
+<ol>
+<li><p><strong>Vectors:</strong> We define <code>Vec</code>, a type for vectors, parameterised by:</p>
+<ul>
+<li><code>A</code>: The type of elements in the vector.</li>
+<li><code>n</code>: The length of the vector.</li>
+</ul>
+<p>A vector of length 0 is represented by <code>[]</code>. A non-empty vector is constructed using <code>_::_</code>.</p>
+</li>
+<li><p><strong>Append Function:</strong> The <code>append</code> function takes two vectors and produces a new vector whose length is the sum of the lengths of the input vectors.</p>
+</li>
+<li><p><strong>Example Usage:</strong> We create a vector of length 3 and append it to another vector.</p>
+</li>
+</ol>
+<hr>
+<h2 id="proving-properties">Proving Properties</h2>
+<p>In Agda, you can write proofs just like programs. Let’s prove a simple property: adding zero to a number doesn’t change the number.</p>
+<pre><code class="language-agda">module Proofs where
+
+open import Data.Nat
+
+-- Proof: n + 0 = n
+data _≡_ {A : Type} : A → A → Type where
+ refl : (x : A) → x ≡ x
+
+addZero : (n : Nat) -&gt; add n zero ≡ n
+addZero zero     = refl
+addZero (suc n) = cong suc (addZero n)
+
+</code></pre>
+<h3 id="explanation-2">Explanation</h3>
+<ol>
+<li><strong>Equality:</strong> The <code>≡</code> type represents equality in Agda. A value of type <code>x ≡ y</code> is a proof that <code>x</code> equals <code>y</code>.</li>
+<li><strong>Base Case:</strong> For <code>n = zero</code>, the proof is trivial (<code>refl</code> is a proof that any value equals itself, pronounced reflexivity).</li>
+<li><strong>Inductive Step:</strong> For <code>n = suc m</code>, we use <code>cong</code> to show that equality holds by induction.</li>
+</ol>
+<hr>
+<h2 id="interactive-development">Interactive Development</h2>
+<p>Agda’s interactive features are a game changer. While working in Emacs, you can:</p>
+<ul>
+<li><strong>Type Check:</strong> Use <code>C-c C-l</code> to load your file and check for errors.</li>
+<li><strong>Infer Types:</strong> Place the cursor over an expression and press <code>C-c C-d</code> to see its type.</li>
+<li><strong>Fill in Holes:</strong> Use <code>C-c C-space</code> to generate code snippets or suggestions for incomplete parts of your program.</li>
+</ul>
+<hr>
+<h2 id="challenges-and-tips">Challenges and Tips</h2>
+<p>Learning Agda can be challenging, especially if you’re new to dependent types or theorem proving. Here are some tips to make it easier:</p>
+<ul>
+<li><strong>Start Small:</strong> Focus on simple programs and proofs before tackling complex ones.</li>
+<li><strong>Use the Standard Library:</strong> The Agda Standard Library contains many useful definitions and functions.</li>
+<li><strong>Leverage the Community:</strong> Join forums and mailing lists to ask questions and share knowledge.</li>
+<li><strong>Practice Regularly:</strong> Like any skill, mastering Agda requires consistent practice.</li>
+</ul>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>As with any programming language, it takes time to get used to the syntax and the nitty-gritties of the language itself- Agda is no exception. But once you start to write programs and proofs, you get more used to it, and you’ll find that it’s a powerful tool for solving complex problems.</p>
+ (see https://g.co/ng/security#xss)]]></content:encoded>
+    </item>
+    <item>
+        <title>A brief guide to SSH keys</title>
+        <link>https://zainezq.com/blog/guide-to-ssh-keys</link>
+        <description>An overview of what SSH keys are, how to generate them, and how to use them to automate tasks.</description>
+        <pubDate>Mon, 01 Sep 2025 23:00:00 GMT</pubDate>
+        <guid>https://zainezq.com/blog/guide-to-ssh-keys</guid>
+        <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="guide-to-ssh-keys-and-gitlab">Guide to SSH Keys and GitLab</h1>
+<p>By Zaine Qayyum</p>
+<hr>
+<h2 id="what-are-ssh-keys">What are SSH Keys?</h2>
+<p>SSH (Secure Shell) keys are a pair of cryptographic keys that can be used to secure communication between two parties. One key is private, and it should be kept secure on your local machine, while the other key is public and can be shared with others. SSH keys are commonly used for authentication, allowing secure access to remote servers and services without the need for a password.</p>
+<h2 id="generating-ssh-keys">Generating SSH Keys</h2>
+<p>To generate an SSH key pair, follow these steps:</p>
+<h3 id="step-1">Step 1:</h3>
+<ul>
+<li>Open a terminal on your local machine.</li>
+<li>Use the following command to generate a new SSH key:</li>
+</ul>
+<p><code>ssh-keygen -t rsa -b 2048 -C &quot;example key&quot;</code></p>
+<ul>
+<li>Press Enter to accept the default file location and provide a secure passphrase when prompted.</li>
+<li>Two files, <code>id_rsa</code> (private key) and <code>id_rsa.pub</code> (public key), will be generated in the <code>~/.ssh/</code> directory.</li>
+</ul>
+<h3 id="step-2">Step 2:</h3>
+<p>Adding SSH Key to the SSH Agent</p>
+<ul>
+<li>Start the SSH agent:</li>
+</ul>
+<p><code>eval &quot;$(ssh-agent -s)&quot;</code></p>
+<ul>
+<li>Add your private key to the SSH agent:</li>
+</ul>
+<p><code>ssh-add ~/.ssh/id_rsa</code></p>
+<h3 id="step-3">Step 3:</h3>
+<p>Adding SSH Key to GitLab/GitHub</p>
+<ul>
+<li>Copy the contents of your public key:</li>
+</ul>
+<p><code>cat ~/.ssh/id_rsa.pub</code></p>
+<ul>
+<li>Log in to your GitLab/GitHub account.</li>
+<li>Navigate to Settings &gt; SSH Keys.</li>
+<li>Paste the copied public key into the &quot;Key&quot; field and give it a descriptive title.</li>
+<li>Click Add Key.</li>
+</ul>
+<h2 id="testing-ssh-connection">Testing SSH Connection</h2>
+<p>To test if your SSH key is set up correctly:</p>
+<p><code>ssh -T git@git.test.com</code></p>
+<p>You should see a message indicating a successful connection.</p>
+<h2 id="using-ssh-with-git">Using SSH with Git</h2>
+<ul>
+<li>Change the remote URL of your Git repository to use SSH:</li>
+</ul>
+<p><code>git clone git@git.test.com/repo</code></p>
+<p>Replace repo with the repository you want to clone.</p>
+<ul>
+<li>Now you can push and pull from GitLab without entering a username and password.</li>
+</ul>
+<h2 id="managing-multiple-ssh-keys">Managing Multiple SSH Keys</h2>
+<p>If you use multiple SSH keys for different services, you can configure them in the SSH config file:</p>
+<ol>
+<li><p>Open (or create) the SSH config file:</p>
+<pre><code>nano ~/.ssh/config
+</code></pre>
+</li>
+<li><p>Add the following configuration:</p>
+<pre><code>Host gitlab.com
+    HostName gitlab.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_gitlab
+
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_github
+</code></pre>
+</li>
+<li><p>Save and exit the file. What this allows you to do is to use different SSH keys for different services.</p>
+</li>
+</ol>
+<h2 id="troubleshooting-ssh-issues">Troubleshooting SSH Issues</h2>
+<p>If you encounter any issues with SSH authentication, try the following:</p>
+<ol>
+<li><p>Ensure the SSH agent is running:</p>
+<pre><code>eval &quot;$(ssh-agent -s)&quot;
+</code></pre>
+</li>
+<li><p>Verify that your SSH key is added:</p>
+<pre><code>ssh-add -l
+</code></pre>
+</li>
+<li><p>Check file permissions to ensure the private key is secure:</p>
+<pre><code>chmod 600 ~/.ssh/id_rsa
+</code></pre>
+</li>
+<li><p>Debug SSH connection issues:</p>
+<pre><code>ssh -vT git@git.test.com
+</code></pre>
+</li>
+<li><p>Ensure your public key is correctly added to GitLab/GitHub.</p>
+</li>
+</ol>
+<p>By following these steps, you can securely authenticate with GitLab using SSH and make your workflow alot more streamlined.</p>
+ (see https://g.co/ng/security#xss)]]></content:encoded>
+    </item>
+    <item>
+        <title>Advanced Emacs Config</title>
+        <link>https://zainezq.com/blog/advanced-emacs-config</link>
+        <description>A deeper look at my advanced Emacs configuration</description>
+        <pubDate>Invalid Date</pubDate>
+        <guid>https://zainezq.com/blog/advanced-emacs-config</guid>
+        <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="setting-up-an-advanced-emacs-configuration-for-productivity">Setting Up an Advanced Emacs Configuration for Productivity</h1>
+<p>By Zaine Qayyum</p>
+<hr>
+<p>I recently spoke about what Emacs is, and how it is useful for productivity. I wanted to write this up again and dive more into the other files that were stored in the <code>/scripts</code> directory , as well as how to set it up.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before we begin, ensure you have Emacs installed. You can install Emacs using the following commands based on your operating system:</p>
+<ul>
+<li><strong>Ubuntu/Debian:</strong> <code>sudo apt install emacs</code></li>
+<li><strong>MacOS (Homebrew):</strong> <code>brew install emacs</code></li>
+<li><strong>Windows:</strong> Use <a href="https://www.msys2.org/">MSYS2</a> or install Emacs from <a href="https://www.gnu.org/software/emacs/">GNU Emacs</a>.</li>
+</ul>
+<p>Additionally, ensure that <code>git</code> is installed to clone repositories and manage configurations.</p>
+<h2 id="download-the-configuration-files">Download the Configuration Files</h2>
+<p>First let&#39;s walk through how to set this up.</p>
+<p>Clone the repository or manually download the provided configuration files into your <code>~/.emacs.d/</code> directory:</p>
+<pre><code class="language-sh">mkdir -p ~/.emacs.d/
+cd ~/.emacs.d/
+</code></pre>
+<p>The following file should be copied to <code>~/.emacs.d/</code>:</p>
+<ul>
+<li><code>init.el</code></li>
+</ul>
+<p>And the following files should be copied into <code>~/.emacs.d/scripts</code>:</p>
+<ul>
+<li><code>auto-comp.el</code></li>
+<li><code>custom-agenda.el</code></li>
+<li><code>displays.el</code></li>
+<li><code>keyboard.el</code></li>
+<li><code>shells.el</code></li>
+<li><code>window.el</code></li>
+</ul>
+<p>If you are using <code>git</code>, you can clone your repository directly:</p>
+<pre><code class="language-sh">git clone https://github.com/zainezq/dot-files/tree/main/emacs-config
+</code></pre>
+<h2 id="understanding-the-configuration">Understanding the Configuration</h2>
+<p>This configuration is modularised for easier maintenance. Each file handles a specific feature:</p>
+<h3 id="initel-the-core-configuration">init.el: The Core Configuration</h3>
+<p>The <code>init.el</code> file is the entry point of the configuration. It:</p>
+<ul>
+<li>Loads package management (MELPA, <code>use-package</code>)</li>
+<li>Imports additional modules (<code>displays</code>, <code>shells</code>, <code>auto-comp</code>, <code>window</code>, <code>keyboard</code>, <code>custom-agenda</code>)</li>
+<li>Configures UI elements such as themes, icons, and window behavior</li>
+<li>Sets up Org mode and language support</li>
+<li>Enables Evil mode for Vim-like keybindings</li>
+</ul>
+<h3 id="auto-compel-auto-completion-setup">auto-comp.el: Auto-Completion Setup</h3>
+<p>This file configures <code>company-mode</code> for autocompletion in Emacs. It:</p>
+<ul>
+<li>Loads <code>company-mode</code> and <code>company-box</code> for a better UI</li>
+<li>Sets the minimum prefix length and delay before suggestions appear</li>
+<li>Enables backend support for various modes</li>
+</ul>
+<h3 id="keyboardel-custom-keybindings">keyboard.el: Custom Keybindings</h3>
+<p>This file sets up keybindings using the <code>general.el</code> package. Some useful shortcuts include:</p>
+<ul>
+<li><code>SPC .</code> → Open file finder</li>
+<li><code>SPC f c</code> → Open <code>init.el</code> for quick edits</li>
+<li><code>SPC b b</code> → Switch buffers</li>
+<li><code>SPC w 1</code> → Removes (not kills) all buffers except the current one</li>
+<li><code>SPC t n</code> → Toggle NeoTree file explorer</li>
+</ul>
+<h3 id="windowel-window-management">window.el: Window Management</h3>
+<p>Defines functions for moving buffers between splits using <code>windmove</code>. Functions include:</p>
+<ul>
+<li><code>buf-move-up</code> → Swap buffers up</li>
+<li><code>buf-move-down</code> → Swap buffers down</li>
+<li><code>buf-move-left</code> → Swap buffers left</li>
+<li><code>buf-move-right</code> → Swap buffers right</li>
+</ul>
+<h3 id="shellsel-shell-and-terminal-integration">shells.el: Shell and Terminal Integration</h3>
+<p>Configures:</p>
+<ul>
+<li><code>vterm</code> as the primary terminal</li>
+<li><code>eshell-toggle</code> for quick access to Eshell</li>
+<li><code>vterm-toggle</code> for easy terminal toggling</li>
+</ul>
+<h3 id="custom-agendael-org-mode-enhancements">custom-agenda.el: Org Mode Enhancements</h3>
+<p>This file customises Org mode agendas. It:</p>
+<ul>
+<li>Configures custom agenda views</li>
+<li>Hides the Org agenda startup message</li>
+<li>Enables extra features such as displaying scheduled tasks</li>
+</ul>
+<h3 id="displaysel-ui-enhancements">displays.el: UI Enhancements</h3>
+<p>This file improves the visual experience in Emacs:</p>
+<ul>
+<li>Configures <code>dashboard.el</code> to show a custom startup screen, you may modify this to your liking, see: <a href="https://github.com/emacs-dashboard/emacs-dashboard">Emacs Dashboard</a></li>
+<li>Enables <code>neotree</code> for file navigation</li>
+<li>Hides unnecessary UI elements for a cleaner look</li>
+</ul>
+<h2 id="installing-dependencies">Installing Dependencies</h2>
+<p>Open Emacs and run the following command to install missing packages:</p>
+<pre><code class="language-sh">M-x package-refresh-contents
+M-x package-install-selected-packages
+</code></pre>
+<p>Alternatively, restart Emacs, and <code>use-package</code> will automatically install any missing dependencies.</p>
+<p>If any issues arise, check <code>*Messages*</code> buffer (<code>M-x view-echo-area-messages</code>) or start Emacs with debugging mode enabled (<code>emacs --debug-init</code>). What I tend to do is whenever I encounter any errors, I run emacs in minimal mode: <code>emacs -Q</code>, this loads emacs without the init.el file (if I can&#39;t pinpoint the exact error).</p>
+<h2 id="final-notes">Final Notes</h2>
+<p>This configuration optimises Emacs for efficient navigation, organisation, and shell integration. 
+Everybody&#39;s configuration will differ based on their needs, so feel free to take and leave the parts as you wish!</p>
+<p>For additional customisation, refer to the official package documentation:</p>
+<ul>
+<li><a href="https://github.com/noctuid/general.el">General.el (Keybindings)</a></li>
+<li><a href="https://github.com/emacs-evil/evil">Evil Mode (Vim keybindings)</a></li>
+<li><a href="https://orgmode.org/">Org Mode</a></li>
+<li><a href="https://github.com/jaypei/emacs-neotree">Neotree (File navigation)</a></li>
+</ul>
+ (see https://g.co/ng/security#xss)]]></content:encoded>
+    </item>
+    <item>
+        <title>What is Urge Surfing?</title>
+        <link>https://zainezq.com/blog/urge-surfing</link>
+        <description>A quick summary of what urge surfing is and how it works.</description>
+        <pubDate>Mon, 03 Feb 2025 00:00:00 GMT</pubDate>
+        <guid>https://zainezq.com/blog/urge-surfing</guid>
+        <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="urge-surfing-mastering-the-art-of-riding-your-impulses">Urge Surfing: Mastering the Art of Riding Your Impulses</h1>
+<p>By Zaine Qayyum</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#what-is-urge-surfing">What is Urge Surfing?</a></li>
+<li><a href="#how-urge-surfing-works">How Urge Surfing Works</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+<h2 id="introduction">Introduction</h2>
+<p>I&#39;ve spoken about the internal components of &#39;self-discipline&#39; in another blog, but if we take a look at this whole self-improvement topic from another angle, we can see that the underlying reason for us not being able to &#39;stick to things&#39; is due to us giving in to our urges. That may sound trivial, and we may connect the dots that if we control our impulses, we can do xyz. However, that form of thinking requires a bit of explanation.</p>
+<p>Psychologists have researched and found that opposing our urges is like making them stronger because we give it that &#39;attention&#39; it wants (Wegner, 1994). In his Ironic Process Theory, Daniel Wegner demonstrated that trying to suppress thoughts such as resisting cravings or unwanted impulses paradoxically makes them more persistent (Wegner, Schneider, Carter, &amp; White, 1987). Addiction research further emphasises this, where forcefully fighting cravings can intensify them rather than make them disappear.</p>
+<p>But what if, instead of giving in or fighting them, we learned to ride them like a wave? This is the foundation of urge surfing, a mindfulness based technique developed by Dr. Alan Marlatt, which teaches individuals to observe their cravings without reacting to them, allowing them to naturally peak and fade.</p>
+<h2 id="what-is-urge-surfing">What is Urge Surfing?</h2>
+<p>Urge surfing is a concept that originated in addiction therapy and mindfulness practices. Developed by psychologist <strong>Dr. Alan Marlatt</strong>, it was designed to help people struggling with addictive behaviors by teaching them to observe their cravings rather than acting on them.</p>
+<p>The fundamental aspect of the technique is based on the ideology that <strong>urges are temporary</strong> (so real), they rise, peak and then eventually fade away, which is where the term <strong>surfing</strong> intuitively comes from.</p>
+<h2 id="how-urge-surfing-works">How Urge Surfing Works</h2>
+<p>Urge surfing relies on mindfulness, where we recognise the urge, observe it, then let it fade away.</p>
+<p>The process can be broken down into three main steps:</p>
+<h3 id="1-recognising-the-urge">1. <strong>Recognising the Urge</strong></h3>
+<p>The first step is to <em>identify the urge</em> as it arises. This means paying close attention to bodily sensations, thoughts, and emotions that signal a craving. For example:</p>
+<ul>
+<li>A sudden tension in the stomach when craving sweets.</li>
+<li>Restlessness and an urge to check social media.</li>
+<li>A racing heart and a compulsion to lash out in anger.</li>
+</ul>
+<p>Acknowledging the urge early gives you the power to observe it rather than be consumed by it (kind of wanted to link this to &quot;The Observer and the Observed&quot;).</p>
+<h3 id="2-riding-the-wave">2. <strong>Riding the Wave</strong></h3>
+<p>Once you recognise the urge, the next step is to <strong>observe it without reacting</strong>. Imagine the urge as a wave in the ocean. rather than fighting it, you ride it by:</p>
+<ul>
+<li><em>Breathing deeply</em>: In other words, focussing on slow deep breaths to achor yourself in the present moment</li>
+<li><em>Noticing sensations</em>: Where do you feel the urge? Is it in your chest, hands, or stomach?</li>
+<li><em>Labeling the urge</em>: Mentally note, &quot;This is just a craving,&quot; or &quot;This is just an impulse.&quot; This helps you distance yourself from it</li>
+<li><em>Practicing non-judgment</em>: Don&#39;t label the urge as good or bad. Just observe it as it rises and falls</li>
+</ul>
+<h3 id="3-letting-it-fade-away">3. <strong>Letting It Fade Away</strong></h3>
+<p>With time, urges <em>naturally subside</em>. Like waves, they reach a peak and then fade away. The trick behind this is accepting that they come and go, and this gives you a much better control over your impulses.</p>
+<h2 id="the-science-behind-urge-surfing">The Science Behind Urge Surfing</h2>
+<p>Now you might be thinking &quot;Hey you just spouted a bunch of things but where is the scientific correlation???&quot;. Let&#39;s take a look at the science behind it:</p>
+<ul>
+<li><em>The 90-Second Rule</em>: Neuroscientist <strong>Dr. Jill Bolte Taylor</strong> suggests that most emotional reactions last about 90 seconds. If we can <em>sit with an urge</em> for that duration, it often begins to dissipate.</li>
+<li><em>Neuroplasticity</em>: Every time we resist an impulse instead of acting on it, we <em>weaken the neural pathways</em> associated with that habit. Over time, the urges become less intense.</li>
+<li><em>The Prefrontal Cortex</em>: Self-control is governed by the prefrontal cortex, the rational part of our brain. Practicing urge surfing strengthens this area, which improves discipline.</li>
+</ul>
+<p><img src="./assets/urge-surfing.png" alt="Urge Surfing Diagram"></p>
+<p><em>Source: <a href="https://www.thenourishedpath.com/blog/eating-mindfully-urge-surfing">Link</a></em></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Urge surfing is truly a powerful technique when mastered, not only does it allow you to control your urges without giving in, it also helps you to become more self-disciplined. If you are interested in learning more about this, I would recommend reading the book &quot;The Science of Self-Discipline&quot; by Peter Hollins.</p>
+ (see https://g.co/ng/security#xss)]]></content:encoded>
+    </item>
+    <item>
+        <title>Building a Growth Mindset</title>
+        <link>https://zainezq.com/blog/growth-mindset</link>
+        <description>A guide to understanding and cultivating a growth mindset for personal and professional success.</description>
+        <pubDate>Tue, 02 Sep 2025 23:00:00 GMT</pubDate>
+        <guid>https://zainezq.com/blog/growth-mindset</guid>
+        <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="building-a-growth-mindset">Building a Growth Mindset</h1>
+<p>By Zaine Qayyum</p>
+<hr>
+<p>This topic is something that I&#39;ve been wanting to talk about for a while, and the reason is because of how important it is as human beings to have this <strong>growth mindset</strong>. You might ask &quot;why? what is the need when I can just have a fixed mindset?&quot;. The answer is simple: having a growth mindset is essential for personal and professional success. This is what I wanted to talk about in this blog, and I hope you find it useful!</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#what-is-a-growth-mindset">What Is a Growth Mindset?</a></li>
+<li><a href="#why-does-a-growth-mindset-matter">Why Does a Growth Mindset Matter?</a></li>
+<li><a href="#how-to-develop-a-growth-mindset">How to Develop a Growth Mindset</a></li>
+<li><a href="#final-thoughts">Final Thoughts</a>.</li>
+</ol>
+<h2 id="what-is-a-growth-mindset">What Is a Growth Mindset?</h2>
+<p>The term <em>growth mindset</em> was introduced by psychologist <strong>Dr. Carol Dweck</strong> in her research on motivation and learning. It refers to the belief that our abilities, intelligence, and talents can be developed through <strong>effort, learning, and persistence</strong>. Take for example the muscles in our body, we develop them through repeated &quot;reps&quot; and consistent effort. The same applies to our intelligence, talents, and abilities; we can develop them through effort, learning, and persistence.</p>
+<p>This contrasts with a <strong>fixed mindset</strong>, where people believe their intelligence and talents are static traits, they either &quot;have it&quot; or they don’t.</p>
+<h3 id="growth-mindset-vs-fixed-mindset">Growth Mindset vs. Fixed Mindset</h3>
+<table>
+<thead>
+<tr>
+<th>Growth Mindset</th>
+<th>Fixed Mindset</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Challenges are opportunities to grow</td>
+<td>Challenges are threats to avoid</td>
+</tr>
+<tr>
+<td>Failure is a stepping stone for learning</td>
+<td>Failure defines intelligence and worth</td>
+</tr>
+<tr>
+<td>Effort is the path to mastery</td>
+<td>If you have to try, you&#39;re not naturally talented</td>
+</tr>
+<tr>
+<td>Constructive criticism is valuable</td>
+<td>Criticism is a personal attack</td>
+</tr>
+<tr>
+<td>Inspired by others&#39; success</td>
+<td>Feels threatened by others&#39; success</td>
+</tr>
+</tbody></table>
+<h2 id="why-does-a-growth-mindset-matter">Why Does a Growth Mindset Matter?</h2>
+<p>The question now might arise, &quot;why does a growth mindset matter?&quot;
+Having a growth mindset is <strong>not just motivational jargon,</strong> but it has real benefits, here are some of them:</p>
+<ul>
+<li><strong>Increases resilience:</strong> People with a growth mindset are more likely to persist in the face of challenges, which ultimately allows you to grow in multiple ways.</li>
+<li><strong>Encourages continuous learning:</strong> Lifelong learning is something so valued and desired (subject for another blog?), and a growth mindset goes hand in hand with it.</li>
+<li><strong>Boosts performance:</strong> Research shows that students and professionals with a growth mindset perform better over time. This &quot;performance&quot; can be related to arbitrary things like academic success, job performance, or personal growth.</li>
+<li><strong>Improves relationships:</strong> It helps people handle feedback better and build stronger connections with others.</li>
+</ul>
+<h2 id="how-to-develop-a-growth-mindset">How to Develop a Growth Mindset</h2>
+<h3 id="1-reframe-failure-as-learning">1. <strong>Reframe Failure as Learning</strong></h3>
+<p>Instead of viewing failure as proof of inadequacy, see it as feedback. Ask yourself:</p>
+<ul>
+<li><em>What can I learn from this?</em></li>
+<li><em>How can I approach this differently next time?</em></li>
+</ul>
+<p>The questions I always ask myself are &quot;What did I do that went well?&quot; and &quot;What can I do differently next time?&quot;</p>
+<h3 id="2-challenges-should-be-embraced">2. <strong>Challenges should be embraced</strong></h3>
+<p>A common trap of a fixed mindset is avoiding challenges to protect your self-esteem. Instead:</p>
+<ul>
+<li>Take on <strong>new projects</strong> that push your abilities.</li>
+<li>Step outside your <strong>comfort zone</strong> regularly.</li>
+<li>Remind yourself: <em>Every expert was once a beginner</em>.</li>
+</ul>
+<h3 id="3-use-yet-to-change-your-self-talk">3. <strong>Use &quot;Yet&quot; to Change Your Self Talk</strong></h3>
+<p>Pay attention to your inner dialogue (yes we all have one, even if we don&#39;t realise it). If you catch yourself saying:</p>
+<blockquote>
+<p><em>&quot;I&#39;m not good at this.&quot;</em></p>
+</blockquote>
+<p>Reframe it to:</p>
+<blockquote>
+<p><em>&quot;I&#39;m not good at this <strong>yet</strong>.&quot;</em></p>
+</blockquote>
+<p>This small change can shift your perspective from <strong>impossibility to potential</strong>.</p>
+<h3 id="4-value-effort-over-talent">4. <strong>Value Effort Over Talent</strong></h3>
+<p>Society often glorifies natural talent, but effort is what leads to mastery. Instead of aiming to be &quot;the best,&quot; focus on:</p>
+<ul>
+<li>Developing <strong>discipline and consistency</strong>.</li>
+<li>Tracking your <strong>progress</strong> rather than comparing yourself to others.</li>
+<li>Celebrating small wins along the way.</li>
+</ul>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>A <strong>growth mindset</strong> isn’t something you &quot;get&quot; overnight, it takes a while to cultivate. It’s a daily practice. It requires self awareness, patience, and a willingness to embrace discomfort. But once achieved, it can take you to unimaginable heights.</p>
+<p>I honestly feel as though the best thing that worked for me was shifting my mindset, being positive about the situations I am in and learning to embrace the now.</p>
+<p>I hope this inspires you even in the slightest :)</p>
+<hr>
+ (see https://g.co/ng/security#xss)]]></content:encoded>
+    </item>
+    <item>
+        <title>Emotional Intelligence</title>
+        <link>https://zainezq.com/blog/eq</link>
+        <description>What does it mean to have Emotional Intelligence?</description>
+        <pubDate>Invalid Date</pubDate>
+        <guid>https://zainezq.com/blog/eq</guid>
+        <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="how-to-build-emotional-intelligence-eq-for-better-relationships">How to Build Emotional Intelligence (EQ) for Better Relationships</h1>
+<p>Someone asked me a while ago &quot;bro, do you think I have emotional intelligence?&quot;, and after having that conversation, I thought to myself &quot;what exactly does <em>mean</em> to have emotional intelligence? Emotional Intelligence (EQ) is the ability to recognise, understand, and manage your own emotions, as well as the emotions of others. I wanted to write out this post so that this can be better understood and applied to our daily lives.</p>
+<hr>
+<h2 id="what-is-emotional-intelligence-eq">What is Emotional Intelligence (EQ)?</h2>
+<p>Emotional Intelligence is often broken down into five key components:</p>
+<ol>
+<li><strong>Self-Awareness</strong>: Recognising and understanding your own emotions.</li>
+<li><strong>Self-Regulation</strong>: Managing and controlling your emotional reactions.</li>
+<li><strong>Motivation</strong>: Harnessing emotions to pursue goals with energy and persistence.</li>
+<li><strong>Empathy</strong>: Understanding and sharing the feelings of others.</li>
+<li><strong>Social Skills</strong>: Building and maintaining healthy relationships through effective communication and conflict resolution.</li>
+</ol>
+<p>Knowledge is of little use if not applied. These five components, one can say, are the building blocks for EQ.</p>
+<hr>
+<h2 id="why-eq-matters-in-relationships">Why EQ Matters in Relationships</h2>
+<p>Relationships depend on emotional connection. Whether it’s with a partner, family member, friend, or colleague, EQ helps you:</p>
+<ul>
+<li>Communicate more effectively.</li>
+<li>Resolve conflicts constructively.</li>
+<li>Build trust and intimacy.</li>
+<li>Understand and meet the emotional needs of others.</li>
+</ul>
+<p>Without emotional intelligence, you may not be able to <em>understand</em> the emotions of others, which can ultimately lead to conflicts.</p>
+<hr>
+<h2 id="how-to-build-emotional-intelligence-for-better-relationships">How to Build Emotional Intelligence for Better Relationships</h2>
+<p>Based on the 5 components of EQ, here are practical steps to develop your EQ and strengthen your relationships:</p>
+<h3 id="self-awareness"><strong>Self-Awareness</strong></h3>
+<ul>
+<li><strong>Reflect on Your Emotions</strong>: Take time each day to identify and label your emotions. Ask yourself, “What am I feeling right now, and why?”</li>
+<li><strong>Journal</strong>: Writing about your emotions can help you process them and identify patterns in your reactions.</li>
+<li><strong>Seek Feedback</strong>: Ask friends or family members how they perceive your emotional responses. This can provide valuable insights into blind spots.</li>
+</ul>
+<h3 id="self-regulation"><strong>Self-Regulation</strong></h3>
+<ul>
+<li><strong>Pause Before Reacting</strong>: When you feel a strong emotion, take a deep breath and give yourself a moment to respond thoughtfully rather than reacting impulsively.</li>
+<li><strong>Practice Stress Management</strong>: Techniques like meditation, exercise, or deep breathing can help you stay calm in emotionally charged situations.</li>
+<li><strong>Set Boundaries</strong>: Learn to say no and manage your emotional energy to avoid depletion.</li>
+</ul>
+<h3 id="empathy"><strong>Empathy</strong></h3>
+<ul>
+<li><strong>Listen Actively</strong>: Pay full attention when someone is speaking. Focus on their words, tone, and body language without interrupting or planning your response. There is a huge difference between active listening and passive listening.</li>
+<li><strong>Put Yourself in Their Shoes</strong>: Try to understand the other person’s perspective, even if you don’t agree with it.</li>
+<li><strong>Validate Their Feelings</strong>: Acknowledge their emotions by saying things like, “I understand why you’d feel that way.”</li>
+</ul>
+<h3 id="social-skills"><strong>Social Skills</strong></h3>
+<ul>
+<li><strong>Communicate Clearly</strong>: Use “I” statements to express your feelings without blaming others (e.g., “I feel upset when…”).</li>
+<li><strong>Practice Conflict Resolution</strong>: Approach disagreements with a problem solving mindset rather than a confrontational one. Remember its you and them versus the problem, not each other!</li>
+<li><strong>Show Appreciation</strong>: Regularly express gratitude and appreciation for the people in your life.</li>
+</ul>
+<h3 id="motivation"><strong>Motivation</strong></h3>
+<ul>
+<li><strong>Set Personal Goals</strong>: Identify what you want to achieve in your relationships and take steps to work toward those goals.</li>
+<li><strong>Stay Positive</strong>: Focus on the good in your relationships and maintain a hopeful outlook, even during challenging times.</li>
+</ul>
+<hr>
+<h2 id="real-life-examples-of-eq-in-action">Real-Life Examples of EQ in Action</h2>
+<p>There are many practical examples of EQ in action in our daily lives. Take work as an example, if you notice your colleague a little stressed, offer them support and ask if they need help! Not only will they feel grateful that they&#39;re being seen, you&#39;ll also strengthen your professional relationship with said colleague. Another one is in a platonic relationship, when a friend shares a problem, listen without judgement and offer empathy.</p>
+<hr>
+<h2 id="the-long-term-benefits-of-high-eq">The Long-Term Benefits of High EQ</h2>
+<p>Building emotional intelligence is a lifelong journey, but the rewards are immense. Over time, you’ll notice:</p>
+<ul>
+<li>Stronger, more meaningful relationships.</li>
+<li>Improved communication.</li>
+<li>Greater resilience in the face of challenges.</li>
+<li>A deeper understanding of yourself and others.</li>
+<li>Being able to actively listen to others.</li>
+</ul>
+<hr>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>This whole thought and discussion stemmed from that single question. I find myself becoming more intrigued in the intricacies of relationships and human interaction. EQ is one of those components that make up a considerable portion of how we interact with others, without which relationships would become stale. Thank you for reading :)</p>
+<hr>
+<p><em>“Emotional intelligence is the key to both personal and professional success.” – Daniel Goleman</em></p>
+ (see https://g.co/ng/security#xss)]]></content:encoded>
+    </item>
+    <item>
+        <title>12 Week Reflection</title>
+        <link>https://zainezq.com/blog/week-12-reflections</link>
+        <description>A reflection on the past 12 weeks.</description>
+        <pubDate>Invalid Date</pubDate>
+        <guid>https://zainezq.com/blog/week-12-reflections</guid>
+        <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="week-12-reflections">Week 12 reflections</h1>
+<p>12 out of the 52 weeks are now completed (following the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO-8601</a>), and I guess this blog post will be a little different from the usual <em>information-centric</em> posts. 12 weeks having passed from this year means there&#39;s only 9 months left of 2025, and i&#39;ve come to realise that time is moving <em>quick</em>. The question then arose, &quot;how can I maximise the time that I have?&quot;, the answer to which isn&#39;t as simple as one may think. Albeit this, let&#39;s take a look at one particularly useful equation that may serve as a guide to modelling the value of time:</p>
+<h2 id="value-of-time">Value of Time</h2>
+<p>$$
+V_t = \frac{O}{T}
+$$</p>
+<p>Where $V_t$ is the value of time at time $t$, $O$ is the output/impact of an activity, and $T$ is the amount of time that you have available. In order to maximise the $V_t$, one must either increase $T$ or decrease $O$. Essentially what this means is that we need to either increase the output and/or decrease the amount of time spent.</p>
+<p>Take for example the following scenario:
+Let&#39;s say our $T$ is 12 hours, and we have a task that requires 8 hours to complete. This task has a $O$ of 2. In this scenario, the value of this task is:</p>
+<p>$$
+V_t = \frac{2}{8} = \frac{1}{4} = 0.25
+$$</p>
+<p>Now let&#39;s say we have a task that requires 4 hours to complete. This task has a $O$ of 3. In this scenario, the value of this task is:</p>
+<p>$$
+V_t = \frac{3}{4} = 0.75
+$$</p>
+<p>What this shows us is that in the first example, the value of $V_t$ is $0.25$, which is less than the value of the second example, $0.75$. This means that the second example is worth more to us than the first.</p>
+<p>This is a very simple example, but it shows us that it is important to maximise $V_t$ by either increasing $T$ or decreasing $O$.</p>
+<h2 id="exponential-time-decay-forgetting-curve">Exponential Time Decay (Forgetting Curve)</h2>
+<p>In addition to understanding the value of time, it&#39;s also important to use this time to learn new things or reinforce existing knowledge. This is where the <strong>exponential time decay</strong> comes in.</p>
+<p>A well-known concept in learning and memory retention is the <strong>Forgetting Curve</strong> <a href="https://en.wikipedia.org/wiki/Forgetting_curve">^1</a>, which models how information is lost over time when there is no attempt to retain it. This can be described mathematically as:</p>
+<p>$$
+R = e^{-t/S}
+$$
+Where:</p>
+<ul>
+<li>$ R $ is the retrievability of the information.</li>
+<li>$ S $ is the stability of the memory.</li>
+<li>$ t $ is the time.</li>
+<li>$ e $ is Euler&#39;s number $ \approx 2.718 $.</li>
+</ul>
+<h3 id="understanding-the-forgetting-curve">Understanding the Forgetting Curve</h3>
+<p>This equation shows that without reinforcement, knowledge decays exponentially. The higher the value of $ k $, the faster information is forgotten. However, <strong>spaced repetition</strong> (reviewing information at increasing intervals) can counteract this decay, reinforcing the memory over time.</p>
+<h2 id="takeaways">Takeaways</h2>
+<p>These two concepts made me think a lot about the remainder of this year and what&#39;s to come. Life is a journey of learning, and this fundamentally starts when we understand the value of the time we have.
+Not sure if this kind of styled blogs are better (was not intending for maths to be involved but it just made its way into my mind). Hope you find this somewhat useful :)</p>
+ (see https://g.co/ng/security#xss)]]></content:encoded>
+    </item>
+</channel>
+</rss>
