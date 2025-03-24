@@ -11,8 +11,7 @@ import {RssDownloadComponent} from './RssDownloadComponent';
   standalone: true,
   imports: [
     RouterLink,
-    NgForOf,
-    RssDownloadComponent
+    NgForOf
   ],
   styleUrls: ['./blog-list.component.scss'],
 
