@@ -20,7 +20,7 @@ import markedFootnote from 'marked-footnote';
   imports: [
 
   ],
-  styleUrls: ['./blog-detail.component.scss' , '../../../assets/katex/katex.min.css'],
+  styleUrls: ['./blog-detail.component.scss' ],
   encapsulation: ViewEncapsulation.None
 })
 export class BlogDetailComponent implements OnInit, AfterViewChecked {
