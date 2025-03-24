@@ -1,5 +1,9 @@
 # Week 12 reflections
 
+By Zaine Qayyum
+
+---
+
 12 out of the 52 weeks are now completed (following the [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601)), and I guess this blog post will be a little different from the usual *information-centric* posts. 12 weeks having passed from this year means there's only 9 months left of 2025, and i've come to realise that time is moving *quick*. The question then arose, "how can I maximise the time that I have?", the answer to which isn't as simple as one may think. Albeit this, let's take a look at one particularly useful equation that may serve as a guide to modelling the value of time:
 
 ## Value of Time

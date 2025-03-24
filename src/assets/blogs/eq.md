@@ -1,5 +1,8 @@
-
 # How to Build Emotional Intelligence (EQ) for Better Relationships
+
+By Zaine Qayyum
+
+---
 
 Someone asked me a while ago "bro, do you think I have emotional intelligence?", and after having that conversation, I thought to myself "what exactly does *mean* to have emotional intelligence? Emotional Intelligence (EQ) is the ability to recognise, understand, and manage your own emotions, as well as the emotions of others. I wanted to write out this post so that this can be better understood and applied to our daily lives.
 

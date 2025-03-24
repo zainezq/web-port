@@ -15,7 +15,7 @@ import { environment} from '../environments/environment.development';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'web-port-frontend';
+  title = 'zainezq';
   loading = false;
 
   constructor(private router: Router) {
