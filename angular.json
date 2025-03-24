@@ -32,7 +32,6 @@
               "src/favicon.ico",
               "src/assets",
               "src/ngsw-config.json",
-              "src/assets/fonts",
               {
                 "glob": "**/*",
                 "input": "public"
