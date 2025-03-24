@@ -32,7 +32,6 @@
               "src/favicon.ico",
               "src/assets",
               "src/ngsw-config.json",
-              "node_modules/katex/dist/fonts",
               {
                 "glob": "**/*",
                 "input": "public"
