@@ -9,18 +9,18 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-markup';
 import katex from 'katex';
-import '/assets/katex/katex.min.css';
 import markedKatex from "marked-katex-extension";
 import markedFootnote from 'marked-footnote';
 
 @Component({
   selector: 'app-blog-detail',
   templateUrl: './blog-detail.component.html',
+
   standalone: true,
   imports: [
 
   ],
-  styleUrls: ['./blog-detail.component.scss'],
+  styleUrls: ['./blog-detail.component.scss' , '../../../assets/katex/katex.min.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class BlogDetailComponent implements OnInit, AfterViewChecked {

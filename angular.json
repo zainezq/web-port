@@ -32,7 +32,6 @@
               "src/favicon.ico",
               "src/assets",
               "src/ngsw-config.json",
-              "src/assets/katex/katex.min.css",
               {
                 "glob": "**/*",
                 "input": "public"
