@@ -1,11 +1,12 @@
 {
-  "routes": [
-    {
-      "src": "/fonts/(.*)",
-      "dest": "/node_modules/katex/dist/fonts/$1"
-    }
-  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    {
+      "source": "/fonts/(.*)",
+      "destination": "/node_modules/katex/dist/fonts/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
   ]
 }
