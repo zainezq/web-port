@@ -4,7 +4,7 @@ By Zaine Qayyum
 
 ---
 
-Someone asked me a while ago "bro, do you think I have emotional intelligence?", and after having that conversation, I thought to myself "what exactly does *mean* to have emotional intelligence? Emotional Intelligence (EQ) is the ability to recognise, understand, and manage your own emotions, as well as the emotions of others. I wanted to write out this post so that this can be better understood and applied to our daily lives.
+Someone asked me a while ago "do you think I have emotional intelligence?", and after having that conversation, I thought to myself "what exactly does it *mean* to have emotional intelligence? Emotional Intelligence (EQ) is the ability to recognise, understand, and manage your own emotions, as well as the emotions of others. I wanted to write out this post so that this can be better understood and applied to our daily lives.
 
 ---
 
@@ -90,4 +90,4 @@ This whole thought and discussion stemmed from that single question. I find myse
 
 ---
 
-*“Emotional intelligence is the key to both personal and professional success.” – Daniel Goleman*
+> *“Emotional intelligence is the key to both personal and professional success.” – Daniel Goleman*
