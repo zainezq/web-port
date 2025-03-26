@@ -18,7 +18,6 @@ export class ContactComponent {
   successMessage = false;
   errorMessage = false;
 
-  // Replace these with your actual EmailJS user ID and template/service IDs
   private serviceId = 'service_s1lpqyn';
   private templateId = 'template_8n9ih8j';
   private publicKey = 'SmPb33DB3RySZOfPu';
@@ -27,9 +26,9 @@ export class ContactComponent {
     console.log('Form submitted:', contactForm.value);
 
     const templateParams = {
-      email: contactForm.value.email, // Maps to {{email}}
-      subject: contactForm.value.subject, // Maps to {{subject}}
-      message: contactForm.value.message, // Maps to {{message}}
+      email: contactForm.value.email,
+      subject: contactForm.value.subject,
+      message: contactForm.value.message,
     };
 
 
