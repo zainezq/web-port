@@ -1,23 +1,21 @@
-$bg-color: #f4f1de;
-$text-color: #3d3d3d;
-$primary-color: #e07a5f;
-$secondary-color: #81b29a;
-$accent-color: #f2cc8f;
-$tag-bg: #8d99ae;
-$tag-text: #edf2f4;
-$font-stack: 'Courier New', Courier, monospace;
+@use '../../../styles/index' as *;
+
 
 /* Blog Content */
 .blog-content {
   position: relative;
   overflow-y: auto;
-  background: lighten($bg-color, 5%);
+  min-height: 100vh;
+  box-sizing: border-box;
   padding: 1.5rem;
   border-left: 4px solid $accent-color;
   font-size: 1.1rem;
   line-height: 1.6;
   word-wrap: break-word;
   color: $text-color;
+ 
+ 
+ 
 
   h1, h2, h3, h4 {
     color: $primary-color;

@@ -1,19 +1,11 @@
-$bg-color: #f4f1de;
-$text-color: #3d3d3d;
-$primary-color: #e07a5f;
-$secondary-color: #81b29a;
-$accent-color: #f2cc8f;
-$tag-bg: #8d99ae;
-$tag-text: #edf2f4;
-$font-stack: 'Courier New', Courier, monospace;
-
+@use '../../../styles/index' as *;
 
 /* Home Section */
 .home-section {
   padding: 20px;
   font-family: $font-stack;
   color: $text-color;
-  background-color: lighten($bg-color, 5%);
+  background-color: $bg-color;
 }
 
 .home-section h1 {

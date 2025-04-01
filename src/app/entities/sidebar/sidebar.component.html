@@ -3,6 +3,7 @@
     <a routerLink="/home">
       <img ngSrc="./assets/gr.png" alt="Sidebar Logo" class="sidebar-logo" height="500" width="500"/>
     </a>
+   <a routerLink="/home">  <p class="top-zxq"> [ zxq ] $ </p> </a>
   </div>
 
   <!-- Sidebar Toggle Button (only shown on small screens) -->
@@ -10,11 +11,11 @@
 
   <nav class="sidebar-nav" [ngClass]="{ 'closed': !showSidebar }">
     <ul>
-      <li><a class="sidebar-nav-links" routerLink="/home" routerLinkActive="active">Home</a></li>
-      <li><a class="sidebar-nav-links" routerLink="/blogs" routerLinkActive="active">Blogs</a></li>
-      <li><a class="sidebar-nav-links" routerLink="/quizzes" routerLinkActive="active">Quizzes</a></li>
-      <li><a class="sidebar-nav-links" routerLink="/projects" routerLinkActive="active">Projects</a></li>
-      <li><a class="sidebar-nav-links" routerLink="/contact" routerLinkActive="active">Contact</a></li>
+      <li><a class="sidebar-nav-links" routerLink="/home" routerLinkActive="active">./home</a></li>
+      <li><a class="sidebar-nav-links" routerLink="/blogs" routerLinkActive="active">./blogs</a></li>
+      <li><a class="sidebar-nav-links" routerLink="/projects" routerLinkActive="active">./projects</a></li>
+      <li><a class="sidebar-nav-links" routerLink="/now" routerLinkActive="active">./now</a></li>
+      <li><a class="sidebar-nav-links" routerLink="/contact" routerLinkActive="active">./contact</a></li>
     </ul>
     <div class="bottom-sidebar">
       <br>

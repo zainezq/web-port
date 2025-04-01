@@ -864,7 +864,9 @@ Having a growth mindset is <strong>not just motivational jargon,</strong> but it
         <pubDate>Invalid Date</pubDate>
         <guid>https://zainezq.com/blog/eq</guid>
         <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="how-to-build-emotional-intelligence-eq-for-better-relationships">How to Build Emotional Intelligence (EQ) for Better Relationships</h1>
-<p>Someone asked me a while ago &quot;bro, do you think I have emotional intelligence?&quot;, and after having that conversation, I thought to myself &quot;what exactly does <em>mean</em> to have emotional intelligence? Emotional Intelligence (EQ) is the ability to recognise, understand, and manage your own emotions, as well as the emotions of others. I wanted to write out this post so that this can be better understood and applied to our daily lives.</p>
+<p>By Zaine Qayyum</p>
+<hr>
+<p>Someone asked me a while ago &quot;do you think I have emotional intelligence?&quot;, and after having that conversation, I thought to myself &quot;what exactly does it <em>mean</em> to have emotional intelligence? Emotional Intelligence (EQ) is the ability to recognise, understand, and manage your own emotions, as well as the emotions of others. I wanted to write out this post so that this can be better understood and applied to our daily lives.</p>
 <hr>
 <h2 id="what-is-emotional-intelligence-eq">What is Emotional Intelligence (EQ)?</h2>
 <p>Emotional Intelligence is often broken down into five key components:</p>
@@ -935,7 +937,9 @@ Having a growth mindset is <strong>not just motivational jargon,</strong> but it
 <h2 id="final-thoughts">Final Thoughts</h2>
 <p>This whole thought and discussion stemmed from that single question. I find myself becoming more intrigued in the intricacies of relationships and human interaction. EQ is one of those components that make up a considerable portion of how we interact with others, without which relationships would become stale. Thank you for reading :)</p>
 <hr>
+<blockquote>
 <p><em>“Emotional intelligence is the key to both personal and professional success.” – Daniel Goleman</em></p>
+</blockquote>
  (see https://g.co/ng/security#xss)]]></content:encoded>
     </item>
     <item>
@@ -945,6 +949,8 @@ Having a growth mindset is <strong>not just motivational jargon,</strong> but it
         <pubDate>Invalid Date</pubDate>
         <guid>https://zainezq.com/blog/week-12-reflections</guid>
         <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="week-12-reflections">Week 12 reflections</h1>
+<p>By Zaine Qayyum</p>
+<hr>
 <p>12 out of the 52 weeks are now completed (following the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO-8601</a>), and I guess this blog post will be a little different from the usual <em>information-centric</em> posts. 12 weeks having passed from this year means there&#39;s only 9 months left of 2025, and i&#39;ve come to realise that time is moving <em>quick</em>. The question then arose, &quot;how can I maximise the time that I have?&quot;, the answer to which isn&#39;t as simple as one may think. Albeit this, let&#39;s take a look at one particularly useful equation that may serve as a guide to modelling the value of time:</p>
 <h2 id="value-of-time">Value of Time</h2>
 <p>$$
@@ -980,6 +986,17 @@ Where:</p>
 <h2 id="takeaways">Takeaways</h2>
 <p>These two concepts made me think a lot about the remainder of this year and what&#39;s to come. Life is a journey of learning, and this fundamentally starts when we understand the value of the time we have.
 Not sure if this kind of styled blogs are better (was not intending for maths to be involved but it just made its way into my mind). Hope you find this somewhat useful :)</p>
+ (see https://g.co/ng/security#xss)]]></content:encoded>
+    </item>
+    <item>
+        <title>2 Modules Completed</title>
+        <link>https://zainezq.com/blog/2-modules-done</link>
+        <description>Reflection on the completion of 2 modules.</description>
+        <pubDate>Invalid Date</pubDate>
+        <guid>https://zainezq.com/blog/2-modules-done</guid>
+        <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="introduction">Introduction</h1>
+<p>This is a quick blog regarding the completion of 2 modules and my reflections on what&#39;s to come. 
+The two modules are titled as: <code>Advanced Functional Programming</code> and <code>Intelligent Software Engineering</code>. I particularly found the former quite difficult due to the complexity of the module and the amount of proofs required. The latter was quite enjoyable for a new module, the content was quite interesting and the things learnt will translate well in future career. So what&#39;s next? As graduation day is closing in, I am finding things to fill the time with, things that I know will be beneficial in terms of my professional life. One thing, in particular, that I wish to complete is the <a href="/projects/home-lab">s</a></p>
  (see https://g.co/ng/security#xss)]]></content:encoded>
     </item>
 </channel>

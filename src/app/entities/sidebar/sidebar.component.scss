@@ -1,11 +1,4 @@
-$bg-color: #f4f1de;
-$text-color: #3d3d3d;
-$primary-color: #e07a5f;
-$secondary-color: #81b29a;
-$accent-color: #f2cc8f;
-$tag-bg: #8d99ae;
-$tag-text: #edf2f4;
-$font-stack: 'Courier New', Courier, monospace;
+@use '../../../styles/index' as *;
 
 .sidebar {
   width: 12em;
@@ -66,6 +59,15 @@ $font-stack: 'Courier New', Courier, monospace;
   border: 3px solid $accent-color;
 }
 
+.top-zxq {
+  background-color: $primary-color; 
+  color: $text-color;              
+  padding: 10px 16px;        
+  display: inline-block;     
+  font-weight: bold;         
+  margin-top: 10px;
+}
+
 .sidebar-nav {
   display: flex;
   flex-direction: column;
@@ -84,9 +86,10 @@ $font-stack: 'Courier New', Courier, monospace;
 .sidebar-nav-links {
   text-align: center;
   display: block;
-  color: white;
+  color: $text-color;
   text-decoration: none;
   font-size: 1.3em;
+  font-weight: bold;
   padding: 1em;
   transition: background 0.3s;
 

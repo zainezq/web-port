@@ -8,6 +8,7 @@ import { BlogDetailComponent } from './entities/blog-detail/blog-detail.componen
 import { ProjectDetailComponent } from './entities/projects/project-detail/project-detail.component';
 import {QuizzesDetailComponent} from './entities/quizzes/quizzes-detail/quizzes-detail.component';
 import {QuizzesComponent} from './entities/quizzes/quizzes.component';
+import {NowComponent} from './entities/now/now.component';
 
 const routerOptions: ExtraOptions = {
   anchorScrolling: 'enabled',
@@ -25,6 +26,7 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'quizzes', component: QuizzesComponent },
   { path: 'quizzes/:slug', component: QuizzesDetailComponent },
+  { path: 'now', component: NowComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' } // Wildcard route
 ];
