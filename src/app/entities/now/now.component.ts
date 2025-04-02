@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { marked } from 'marked';
 import { CommonModule } from '@angular/common';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-now',
@@ -20,9 +21,13 @@ export class NowComponent implements OnInit {
   }
 
   async loadMarkdown(): Promise<void> {
-    const rawMd = await this.http.get('assets/now/now.md', { responseType: 'text' }).toPromise();
-    if (rawMd != null) {
-      this.markdownContent = await marked.parse(rawMd);
+    try {
+      const rawMd = await firstValueFrom(this.http.get('assets/now/now.md', { responseType: 'text' }));
+      if (rawMd != null) {
+	this.markdownContent = await marked.parse(rawMd);
+      } 
+    } catch (error) {
+      console.error('Error loading now', error)
     }
   }
 }

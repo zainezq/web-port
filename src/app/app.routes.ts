@@ -9,6 +9,7 @@ import { ProjectDetailComponent } from './entities/projects/project-detail/proje
 import {QuizzesDetailComponent} from './entities/quizzes/quizzes-detail/quizzes-detail.component';
 import {QuizzesComponent} from './entities/quizzes/quizzes.component';
 import {NowComponent} from './entities/now/now.component';
+import { ChangelogComponent } from './entities/changelog/changelog.component';
 
 const routerOptions: ExtraOptions = {
   anchorScrolling: 'enabled',
@@ -27,6 +28,7 @@ export const routes: Routes = [
   { path: 'quizzes', component: QuizzesComponent },
   { path: 'quizzes/:slug', component: QuizzesDetailComponent },
   { path: 'now', component: NowComponent },
+  { path: 'changelog', component: ChangelogComponent }, 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' } // Wildcard route
 ];

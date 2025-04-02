@@ -1,7 +1,9 @@
 
 @use '../../../styles/index' as *;
 
-
+.project-main {
+  border-left: 4px solid $accent-color;
+} 
 
 .project-list {
   background-color: $bg-color;

@@ -7,7 +7,8 @@
   font-family: $font-stack;
   color: $text-color;
   margin: auto;
-
+  border-left: 4px solid $accent-color;
+  
   .blog-header {
     text-align: center;
     font-size: 2rem;

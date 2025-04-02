@@ -11,14 +11,14 @@ $font-stack: 'Courier New', Courier, monospace;
 .app-container {
   display: flex;
   height: 100dvh;
-
 }
+
 .main-content {
   flex: 1;
   overflow-y: auto;
   background-color: $bg-color;
   padding-bottom: env(safe-area-inset-bottom);
-
+  
 }
 
 

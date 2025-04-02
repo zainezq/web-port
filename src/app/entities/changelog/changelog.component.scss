@@ -1,0 +1,138 @@
+
+@use '../../../styles/index' as *;
+
+
+.changelog-content {
+  position: relative;
+  overflow-y: auto;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 1.5rem;
+  border-left: 4px solid $accent-color;
+  font-size: 1.1rem;
+  //line-height: 1.6;
+  word-wrap: break-word;
+  color: $text-color;
+
+  h1, h2, h3, h4 {
+    //color: $primary-color;
+    //text-shadow: 2px 2px 0 rgba(224, 122, 95, 0.2);
+    margin-bottom: 0;
+  }
+
+  p {
+    //margin-bottom: 1rem;
+    color: darken($text-color, 15%);
+  }
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: bold;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p code,
+  li code,
+  span code {
+    background: darken($bg-color, 5%);
+    color: $text-color;
+    font-family: $font-stack;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.95em;
+    white-space: nowrap;
+    display: inline;
+  }
+
+  blockquote {
+    background: rgba(224, 122, 95, 0.1);
+    border-left: 4px solid $primary-color;
+    padding: 1rem;
+    font-style: italic;
+    color: $text-color;
+  }
+
+  pre {
+    background: darken($bg-color, 5%);
+    color: $text-color;
+    font-family: $font-stack;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 4px;
+    position: relative;
+    overflow: auto;
+    border: 1px solid $primary-color;
+    margin-bottom: 1rem;
+  }
+
+  pre code {
+    background: transparent;
+    color: inherit;
+    font-family: $font-stack;
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  code {
+    background: transparent;
+    color: inherit;
+    font-family: $font-stack;
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: $accent-color;
+    color: $text-color;
+    border: none;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 6px rgba(242, 204, 143, 0.5);
+    transition: background 0.3s ease-in-out, transform 0.1s;
+
+    &:hover {
+      background: darken($accent-color, 10%);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 3px solid #000;
+    padding: 5px;
+  }
+
+
+  .math-rendered {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0 !important;
+  }
+
+}
+
+

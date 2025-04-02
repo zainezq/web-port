@@ -25,6 +25,7 @@ export class AppComponent {
           this.loading = true;
         }
       }
+      
       if (event instanceof NavigationEnd) {
         this.loading = false;
       }

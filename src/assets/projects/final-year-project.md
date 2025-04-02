@@ -9,4 +9,4 @@ This project is titled "Overcoming Cognitive Overload - Designing an AI-Based No
 
 1. [Introduction](#introduction)  
 
-![Home Page](./assets/ss_1.png)
+<!-- ![Home Page](./assets/ss_1.png) -->

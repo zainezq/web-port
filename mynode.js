@@ -19,7 +19,6 @@ fs.writeFileSync(filePath, fileContent);
 
 console.log("✅ lastUpdated timestamp updated:", currentDate);
 
-
 const envFile = `export const environment = {
   production: false,
   firebase: {
