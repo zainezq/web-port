@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavigationStart, Router, RouterLink, RouterLinkActive} from '@angular/router';
-import {DatePipe, NgClass, NgOptimizedImage} from '@angular/common';
+import {DatePipe, NgClass, NgIf, NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +9,8 @@ import {DatePipe, NgClass, NgOptimizedImage} from '@angular/common';
     RouterLinkActive,
     NgOptimizedImage,
     NgClass,
-    DatePipe
+    DatePipe,
+    NgIf
   ],
   templateUrl: './sidebar.component.html',
   standalone: true,
@@ -19,7 +20,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   showSidebar = true;  // Default to false for small screens
   isLargeScreen = window.innerWidth >= 768;
   private resizeListener: any;
-  lastUpdated: Date = new Date('2025-04-02T09:19:47.677Z');
+  lastUpdated: Date = new Date('2025-04-02T22:23:42.923Z');
 
   constructor(private router: Router) {}
 
