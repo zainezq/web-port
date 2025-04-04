@@ -33,8 +33,8 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
     private router: Router,
     private sanitizer: DomSanitizer
   ) {}
-
   ngOnInit(): void {
+    // Define custom renderer for Mermaid and other code blocks
     const renderer = {
       code(this: any, args: Tokens.Code): string {
         const { text, lang } = args;
@@ -46,7 +46,8 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
     };
 
     marked.use({ renderer });
-    
+
+    // Subscribe to the route parameters to load project content
     this.route.paramMap.subscribe(params => {
       const slug = params.get('slug');
       if (slug) {
@@ -54,13 +55,16 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
 
         this.projectService.getProjectContent(slug).subscribe({
           next: (data) => {
-            const html = marked(data);
+            const html = marked(data); // Use marked to parse the content with the custom renderer
             if (typeof html === 'string') {
               this.projectContent = this.sanitizer.bypassSecurityTrustHtml(html);
             }
 
             this.loading = false;
-            setTimeout(() => Prism.highlightAll(), 0);
+            setTimeout(() => {
+              Prism.highlightAll(); // Highlight code blocks with Prism
+              mermaid.init(undefined, document.querySelectorAll('.mermaid')); // Initialize Mermaid diagrams
+            }, 0);
           },
           error: (err) => {
             console.error('Error fetching project content:', err);
@@ -70,7 +74,7 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
       }
     });
 
-
+    // Scroll to anchor if a fragment is present in the URL
     this.route.fragment.subscribe(fragment => {
       if (fragment) {
         this.scrollToAnchor(fragment);
