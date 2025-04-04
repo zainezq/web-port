@@ -22,8 +22,6 @@
     "@emailjs/browser": "^4.4.1",
     "@vercel/analytics": "^1.5.0",
     "dotenv": "^16.4.7",
-    "emailjs": "^4.0.3",
-    "emailjs-com": "^3.2.0",
     "firebase": "^11.4.0",
     "js-yaml": "^4.1.0",
     "katex": "^0.16.21",
@@ -33,11 +31,8 @@
     "marked-katex-extension": "^5.1.4",
     "mermaid": "^11.6.0",
     "ngx-mail-sender": "^1.1.0",
-    "nodemailer": "^6.9.16",
     "prismjs": "^1.29.0",
     "rxjs": "~7.8.0",
-    "smtp-client": "^0.4.0",
-    "smtp-server": "^3.13.6",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
@@ -56,6 +51,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "source-map-explorer": "^2.5.3",
     "typescript": "~5.6.2",
     "url-loader": "^4.1.1"
   }
