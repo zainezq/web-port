@@ -1,16 +1,16 @@
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectServiceService } from '../../../services/project-service/project-service.service';
-import { marked } from 'marked';
-import { gfmHeadingId } from 'marked-gfm-heading-id'; // ✅ Import the plugin
+import { marked, Tokens } from 'marked';
+import { gfmHeadingId } from 'marked-gfm-heading-id';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-markup';
+import mermaid from 'mermaid';
 
-// ✅ Use the marked-gfm-heading-id plugin
 marked.use(gfmHeadingId());
 
 @Component({
@@ -35,6 +35,18 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
   ) {}
 
   ngOnInit(): void {
+    const renderer = {
+      code(this: any, args: Tokens.Code): string {
+        const { text, lang } = args;
+        if (lang === 'mermaid') {
+          return `<div class="mermaid">${text}</div>`;
+        }
+        return `<pre><code class="language-${lang}">${text}</code></pre>`;
+      }
+    };
+
+    marked.use({ renderer });
+    
     this.route.paramMap.subscribe(params => {
       const slug = params.get('slug');
       if (slug) {
