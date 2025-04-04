@@ -31,6 +31,7 @@
     "marked-footnote": "^1.2.4",
     "marked-gfm-heading-id": "^4.1.1",
     "marked-katex-extension": "^5.1.4",
+    "mermaid": "^11.6.0",
     "ngx-mail-sender": "^1.1.0",
     "nodemailer": "^6.9.16",
     "prismjs": "^1.29.0",
