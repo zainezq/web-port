@@ -36,7 +36,7 @@
     }
   }
 
-  p code,
+ p code,
   li code,
   span code {
     background: darken($bg-color, 5%);
@@ -50,18 +50,24 @@
     display: inline;
   }
 
+  p code {
+      font-family: 'JetBrains Mono', 'Fira Mono', monospace !important;
+  }
+
   blockquote {
     background: rgba(224, 122, 95, 0.1);
     border-left: 4px solid $primary-color;
     padding: 1rem;
     font-style: italic;
     color: $text-color;
+    font-family: 'JetBrains Mono', 'Fira Mono', monospace;
   }
 
   pre {
     background: darken($bg-color, 5%);
     color: $text-color;
-    font-family: $font-stack;
+    //font-family: $font-stack;
+    font-family: 'JetBrains Mono', 'Fira Mono', monospace;
     font-weight: bold;
     padding: 1rem;
     border-radius: 4px;
@@ -74,7 +80,8 @@
   pre code {
     background: transparent;
     color: inherit;
-    font-family: $font-stack;
+    //font-family: $font-stack;
+    font-family: 'JetBrains Mono', 'Fira Mono', monospace;
     display: block;
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -83,11 +90,14 @@
   code {
     background: transparent;
     color: inherit;
-    font-family: $font-stack;
+    font-family: 'JetBrains Mono', 'Fira Mono', monospace;
+
     display: block;
     white-space: pre-wrap;
     word-wrap: break-word;
   }
+
+
 
   .copy-btn {
     position: absolute;

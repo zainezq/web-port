@@ -6,14 +6,21 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ---
 
 ## Table of Contents
+- [1.3.4 - 05-04-2025](#134---05-04-2025)
 - [1.3.3 - 04-04-2025](#133---04-04-2025)
 - [1.3.2 - 02-04-2025](#132---04-02-2025)
-- [1.3.1 - 2025-01-04](#131---2025-04-01)
-- [1.2.0 - 2025-14-03](#120---2025-03-14)
-- [1.1.0 - 2025-15-02](#110---2025-02-15)
-- [1.0.0 - 2025-01-01](#100---2025-01-01)
-- [0.2.0-alpha - 2024-12-18](#020-alpha---2024-12-18)
-- [0.1.0-alpha - 2024-06-13](#010-alpha---2024-06-13)
+- [1.3.1 - 01-04-2025](#131---04-01-2025)
+- [1.2.0 - 03-14-2025](#120---03-14-2025)
+- [1.1.0 - 15-02-2025](#110---15-02-2025)
+- [1.0.0 - 01-01-2025](#100---01-01-2025)
+- [0.2.0-alpha - 18-12-2024](#020-alpha---18-12-2024)
+- [0.1.0-alpha - 13-06-2024](#010-alpha---13-06-2024)
+
+---
+
+## [1.3.4] - 05-04-2025
+### Changed
+- Code blocks now render in `JetBrains Mono` font for better readability
 
 ---
 
@@ -32,7 +39,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [1.3.1] - 2025-04-01
+## [1.3.1] - 04-01-2025
 ### Added
 - A `now` section
 
@@ -41,7 +48,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [1.2.0] - 2025-03-14
+## [1.2.0] - 03-14-2025
 ### Added
 - Quizzes and Firebase storage integration
 - Rendering of images
@@ -53,7 +60,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [1.1.0] - 2025-02-15
+## [1.1.0] - 15-02-2025
 ### Added
 - Estimated reading time for each blog
 - Tags feature for blog categorization
@@ -66,7 +73,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [1.0.0] - 2025-01-01
+## [1.0.0] - 01-01-2025
 ### Added
 - Initial deployment of the website
 
@@ -80,7 +87,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [0.2.0-alpha] - 2024-12-18
+## [0.2.0-alpha] - 18-12-2024
 ### Added
 - Blog section
 - Sidebar layout
@@ -94,7 +101,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [0.1.0-alpha] - 2024-06-13
+## [0.1.0-alpha] - 13-06-2024
 ### Added
 - Initial commit of the website
 - README file
