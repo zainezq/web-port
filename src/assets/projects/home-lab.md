@@ -26,7 +26,7 @@ graph TD
         class HOMELAB_SYSTEM titleBox
 
         internet[Internet Users]
-        nginx[NGINX Reverse Proxy: zserver.zapto.org]
+        nginx[NGINX Reverse Proxy: home.ip.address]
 
         %% Internet Flow
         internet --> nginx
