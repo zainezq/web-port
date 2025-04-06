@@ -1,0 +1,61 @@
+$error-color: #B60D0D;
+
+@use '../../../styles/index' as *;
+
+.error-container {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .error-code {
+    font-size: 6rem;
+    font-weight: 900;
+    color: $error-color;
+    margin-bottom: 1rem;
+  }
+
+  .error-message {
+    font-size: 1.25rem;
+    color: $text-color;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .error-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+
+  .home-button {
+    background-color: #d11717;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 0.3rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .error-code {
+      font-size: 4rem;
+    }
+
+    .error-message {
+      font-size: 1rem;
+    }
+
+    .home-button {
+      width: 80%;
+      font-size: 1rem;
+    }
+  }
+}

@@ -7,17 +7,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { gfmHeadingId } from 'marked-gfm-heading-id';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 
-
 @Component({
-  selector: 'app-changelog',
-  standalone: true,
+  selector: 'app-sitemap',
   imports: [CommonModule],
-  templateUrl: './changelog.component.html',
-  styleUrls: ['./changelog.component.scss'],
+  standalone: true,
+  templateUrl: './sitemap.component.html',
+  styleUrls: ['./sitemap.component.scss'],
   encapsulation: ViewEncapsulation.None
+
 })
-export class ChangelogComponent implements OnInit, AfterViewChecked {
-  changelogContent: SafeHtml = '';
+export class SitemapComponent implements OnInit, AfterViewChecked {
+  sitemapContent: SafeHtml = '';
 
   @ViewChild('content', { static: false }) content?: ElementRef;
 
@@ -36,13 +36,6 @@ export class ChangelogComponent implements OnInit, AfterViewChecked {
       }
     });
   }
-  ngAfterViewInit(): void {
-
-    const fragment = this.route.snapshot.fragment;
-    if (fragment) {
-      this.scrollToAnchor(fragment);
-    }
-  }
 
   ngAfterViewChecked(): void {
     this.handleAnchorClicks();
@@ -53,13 +46,13 @@ export class ChangelogComponent implements OnInit, AfterViewChecked {
   async loadMarkdown(): Promise<void> {
     try {
 
-      const rawMd = await firstValueFrom(this.http.get('assets/changelog/changelog.md', { responseType: 'text' }));
+      const rawMd = await firstValueFrom(this.http.get('assets/sitemap/sitemap.md', { responseType: 'text' }));
       const html = marked(rawMd);
       if (typeof html === "string") {
-        this.changelogContent = this.sanitizer.bypassSecurityTrustHtml(html);
+        this.sitemapContent = this.sanitizer.bypassSecurityTrustHtml(html);
       }
     } catch (error) {
-      console.error('Error loading changelog:', error);
+      console.error('Error loading sitemap:', error);
     }
   }
 
@@ -71,13 +64,10 @@ export class ChangelogComponent implements OnInit, AfterViewChecked {
     const tryScroll = () => {
       const element = document.getElementById(anchor);
       if (element) {
-        // Scroll to the anchor with a smooth behavior
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-        // After scrolling, check if the page height exceeds the viewport
         setTimeout(() => {
           if (document.body.scrollHeight > window.innerHeight) {
-            document.body.style.overflowY = 'auto';  // Re-enable scrolling
+            document.body.style.overflowY = 'auto';
           }
         }, 100);
       } else if (attemptCount < attempts) {
@@ -92,7 +82,6 @@ export class ChangelogComponent implements OnInit, AfterViewChecked {
 
   handleAnchorClicks(): void {
     if (!this.content) return;
-
     const links = this.content.nativeElement.querySelectorAll('a[href^="#"]');
     links.forEach((link: HTMLAnchorElement) => {
       link.addEventListener('click', (event) => {
@@ -100,9 +89,7 @@ export class ChangelogComponent implements OnInit, AfterViewChecked {
 
         const targetId = link.getAttribute('href')?.substring(1);
         if (targetId) {
-          // Temporarily hide overflow to prevent page shift when scrolling
           document.body.style.overflowY = 'hidden';
-
           this.router.navigate([], {
             fragment: targetId,
             queryParamsHandling: 'preserve',
@@ -110,18 +97,11 @@ export class ChangelogComponent implements OnInit, AfterViewChecked {
           }).then(() => {
             this.scrollToAnchor(targetId);
           });
-
-          // Allow overflow after scroll
           setTimeout(() => {
             document.body.style.overflowY = 'auto';
           }, 500);
         }
       });
     });
-  }
-
-
-  getAllEntries() {
-      return '';
   }
 }

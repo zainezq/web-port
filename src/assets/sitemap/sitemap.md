@@ -1,0 +1,22 @@
+Sitemap
+=======
+
+*   [Home](https://www.zainezq.com/home)
+  *   [Blogs](https://www.zainezq.com/blogs)
+      *   [A brief guide to SSH keys](https://zainezq.com/blog/guide-to-ssh-keys)
+      *   [My Emacs Config](https://zainezq.com/blog/emacs_config)
+      *   [Introduction to Nginx](https://zainezq.com/blog/nginx)
+      *   [The Brain's Self-Discipline Blueprint](https://zainezq.com/blog/prefrontal_cortex)
+      *   [A brief introduction to Agda](https://zainezq.com/blog/intro-to-agda)
+      *   [Advanced Emacs Config](https://zainezq.com/blog/advanced-emacs-config)
+      *   [Building a Growth Mindset](https://zainezq.com/blog/growth-mindset)
+      *   [What is Urge Surfing?](https://zainezq.com/blog/urge-surfing)
+      *   [Emotional Intelligence](https://zainezq.com/blog/eq)
+      *   [12 Week Reflection](https://zainezq.com/blog/week-12-reflections)
+  *   [Projects](https://www.zainezq.com/projects)
+      *  [Final Year Project](https://www.zainezq.com/projects/final-year-project)
+      *  [Home Lab](https://www.zainezq.com/projects/home-lab) 
+  *   [Contact](https://www.zainezq.com/contact)
+  *   [Quizzes](https://www.zainezq.com/quizzes)
+  *   [Now](https://www.zainezq.com/now)
+  *   [Changelog](https://www.zainezq.com/changelog)

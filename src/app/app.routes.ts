@@ -10,6 +10,8 @@ import {QuizzesDetailComponent} from './entities/quizzes/quizzes-detail/quizzes-
 import {QuizzesComponent} from './entities/quizzes/quizzes.component';
 import {NowComponent} from './entities/now/now.component';
 import { ChangelogComponent } from './entities/changelog/changelog.component';
+import { ErrorPageComponent } from './entities/error-page/error-page.component';
+import { SitemapComponent } from './entities/sitemap/sitemap.component';
 
 const routerOptions: ExtraOptions = {
   anchorScrolling: 'enabled',
@@ -28,9 +30,11 @@ export const routes: Routes = [
   { path: 'quizzes', component: QuizzesComponent },
   { path: 'quizzes/:slug', component: QuizzesDetailComponent },
   { path: 'now', component: NowComponent },
-  { path: 'changelog', component: ChangelogComponent }, 
+  { path: 'changelog', component: ChangelogComponent },
+  { path: 'sitemap', component: SitemapComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', redirectTo: '/home' } // Wildcard route
+  { path: '404', component: ErrorPageComponent},
+  { path: '**', redirectTo: '/404' } // Wildcard route
 ];
 
 @NgModule({

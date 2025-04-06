@@ -3,7 +3,7 @@ import {BlogPost, BlogService} from '../../services/blog-service/blog.service';
 import {RouterLink} from '@angular/router';
 import {NgForOf} from '@angular/common';
 import {RssService} from '../../services/rss/rss.service';
-import {RssDownloadComponent} from './RssDownloadComponent';
+import {ContentAggregatorService} from '../../services/content-aggregator/content-aggregator.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -20,7 +20,8 @@ export class BlogListComponent implements OnInit {
   blogs: BlogPost[] = [];
   tags = ['All', "Technology" , 'Productivity', 'Education', 'Programming', 'Self Improvement'];
   selectedTag = 'All';
-  constructor(private blogService: BlogService, private rssService: RssService) {}
+  constructor(private blogService: BlogService, private rssService: RssService,
+              private contentAggregator: ContentAggregatorService) {}
 
   ngOnInit(): void {
     this.blogService.getBlogList().subscribe(data => {
@@ -30,7 +31,14 @@ export class BlogListComponent implements OnInit {
 
   }
   downloadRSS() {
-    this.rssService.downloadRssFeed(this.blogs);
+    this.contentAggregator.getAllRssItems().subscribe({
+      next: (rssItems) => {
+        this.rssService.downloadRssFeed(rssItems);
+      },
+      error: (err) => {
+        console.error('Failed to fetch content for RSS:', err);
+      }
+    });
   }
 
   get filteredBlogs() {

@@ -12,7 +12,7 @@ What is a home lab? As the name suggests, a [home lab](https://linuxhandbook.com
 
 ## Introduction
 
-Ever since I found out about Linux and what *Open Sourcing* is, I've falled deep down a rabbit hole. Amongst the many intricacies of having a computer is being able to self host services for your own personal needs. For instance, in my particular use case, I use PSQL a lot (mainly because its my favourite SQL language but anyways), so I thought to myself "could I not just host this on a machine and make it run 24/7?"; and that's exactly what I did. 
+Ever since I found out about Linux and what *Open Sourcing* is, I've fallen deep down a rabbit hole. Amongst the many intricacies of having a computer is being able to self host services for your own personal needs. For instance, in my particular use case, I use PSQL a lot (mainly because its my favourite SQL language but anyways), so I thought to myself "could I not just host this on a machine and make it run 24/7?"; and that's exactly when the absorption began.
 
 ## Setup
 
