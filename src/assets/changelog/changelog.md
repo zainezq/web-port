@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ---
 
 ## Table of Contents
+- [1.4.0 - 06-04-2025](#140---06-04-2025)
 - [1.3.4 - 05-04-2025](#134---05-04-2025)
 - [1.3.3 - 04-04-2025](#133---04-04-2025)
 - [1.3.2 - 02-04-2025](#132---04-02-2025)
@@ -15,6 +16,19 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - [1.0.0 - 01-01-2025](#100---01-01-2025)
 - [0.2.0-alpha - 18-12-2024](#020-alpha---18-12-2024)
 - [0.1.0-alpha - 13-06-2024](#010-alpha---13-06-2024)
+
+---
+
+## [1.4.0] - 06-04-2025
+### Added
+- Sitemap which shows the pages of the website
+- Error 404 page with sans error gif (ha undertale reference)
+
+## Changed
+- Some minor UI tweaks
+
+## Fixed
+- RSS now shows `blogs`, `projects` and `changelog`
 
 ---
 

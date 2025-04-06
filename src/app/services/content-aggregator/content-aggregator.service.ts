@@ -41,7 +41,7 @@ export class ContentAggregatorService {
         const changelogItems: RSSItem[] = [{
           title: 'Changelog',
           slug: 'changelog',
-          summary: changelog,
+          summary: 'Latest changes and updates to the site.',
           date: new Date().toISOString(),
           type: 'changelog'
         }];
