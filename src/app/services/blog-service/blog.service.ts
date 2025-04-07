@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 export interface BlogPost {
   id: number;
@@ -17,6 +17,7 @@ export interface BlogPost {
 })
 export class BlogService {
   private blogsPath = 'assets/blogs/';
+  private blogCount = 0;
 
   constructor(private http: HttpClient) {}
 
@@ -25,10 +26,18 @@ export class BlogService {
     return this.http.get<BlogPost[]>(`${this.blogsPath}index.json`);
   }
 
+  getBlogCount(): Observable<number> {
+	return this.getBlogList().pipe(
+		map(blogs => blogs.length)
+		);
+	}
+
+  
   // Fetch an individual blog post
   getBlogContent(slug: string): Observable<string> {
     return this.http.get(`assets/blogs/${slug}.md`, { responseType: 'text' });
   }
+
 
 
   getProjectContent(slug: string): Observable<string> {

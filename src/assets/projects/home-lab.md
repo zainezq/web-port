@@ -29,6 +29,9 @@ The specs of the machine that I am running isn't anything too fancy, I actually 
 | **Memory**    | 15.6 GiB RAM                         |
 | **Storage**   | 128GB SSD (need to add the hard drive too, but this is okay for the *current* use case) |
 
+## Configuration
+
+Below is a `mermaid`-like diagrammatical representation of the services I use and how they interact with another.
 
 ```mermaid
 graph TD

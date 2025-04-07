@@ -6,7 +6,7 @@
 
 April 2025
 
-- **Final Year Project**: *Overcoming Cognitive Overload: Designing an AI-Based Note-Taking Solution*  
+- **Final Year Project**: *Overcoming Cognitive Overload: Designing an AI-Based Note-Taking Solution* 
   *(Repository is private at the moment)* - Currently writing up my dissertation for this.
 - Ricing my Linux
   - Setting up i3
