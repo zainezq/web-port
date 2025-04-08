@@ -13,6 +13,11 @@ April 2025
 - Modifying my Home Lab
 - Transitioning to Emacs for web development + Java
   - linting and lsp's 
+- Trying to automate this website, instead of hardcoding certain properties (like the sitemap)
+
+
+
+(below is a mermaid js test diagram, shock)
 
 ```mermaid
 graph TD;

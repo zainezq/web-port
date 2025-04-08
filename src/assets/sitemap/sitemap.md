@@ -13,6 +13,8 @@ Sitemap
       *   [What is Urge Surfing?](https://zainezq.com/blog/urge-surfing)
       *   [Emotional Intelligence](https://zainezq.com/blog/eq)
       *   [12 Week Reflection](https://zainezq.com/blog/week-12-reflections)
+	  *   [2 Modules Completed](https://zainezq.com/blog/2-modules-done)
+	  *   [The vibe coding disease](https://zainezq.com/blog/vibe-coding-disease)
   *   [Projects](https://www.zainezq.com/projects)
       *  [Final Year Project](https://www.zainezq.com/projects/final-year-project)
       *  [Home Lab](https://www.zainezq.com/projects/home-lab) 

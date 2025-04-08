@@ -1002,6 +1002,25 @@ Thanks for reading!</p>
  (see https://g.co/ng/security#xss)]]></content:encoded>
   </item>
   <item>
+    <title>The vibe coding disease</title>
+    <link>https://zainezq.com/blog/vibe-coding-disease</link>
+    <description>What vibe coding is and why it's a disease</description>
+    <pubDate>Tue, 03 Jun 2025 23:00:00 GMT</pubDate>
+    <guid>https://zainezq.com/blog/vibe-coding-disease</guid>
+    <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="vibe-coding">Vibe coding</h1>
+<p>By Zaine Qayyum</p>
+<hr>
+<p>This term <code>vibe coding</code> is defined as follows <a href="https://blankslatedigital.co.uk/blog/artificial-intelligence/what-is-vibe-coding/">^1</a>: </p>
+<blockquote>
+<p>Vibe Coding is an emerging approach to software development where instead of writing lines of code, you describe what you want and let AI do the heavy lifting. The term was introduced and gained popularity in early 2025, amidst the rise of large language models (LLMs) and AI coding assistants.</p>
+</blockquote>
+<p>Honestly this post might be a little rant-ish, but with the rise of AI, a growing fear amongst students and professionals alike is being <em>too</em> reliant on AI. Yes, it has its benefits and can help in certain aspects of whatever ones field is, however the issue stems when that individual uses AI for <strong>everything</strong>, and that&#39;s when one sees this tool as an extension of one&#39;s character. </p>
+<p>Back to the matter at hand, vibe coding is particularly dangerous as it makes you less and less reliant on your own capabilities, ultimately leading to having a bunch of code in a codebase that you don&#39;t understand. Maybe this can be disputed and countered by arguing that AI is the future and that coding without it is becoming obsolete. That may be true. But there is a difference between coding and programming, with the latter being an extension to the former. The paradigms involved with programming can&#39;t be replaced, what sets a senior developer and a junior developer apart isn&#39;t the amount of hours spent coding, but it&#39;s the soft skills and the ability to take on different roles. Coding is simply <em>part</em> of their responsabilites.</p>
+<p>AI can absolutely supercharge productivity and act like a second brain, but the issue is when it becomes the <em>only</em> brain. It’s the same danger as copy/pasting from Stack Overflow without understanding what you’re pasting, but multiplied by 100 because now it’s dressed up with perfect formatting and seemingly tailored answers. So yeah, vibe coding might feel like the future (and who knows), but it shouldn&#39;t be the default, it should be a tool, never a substitute.</p>
+<p>Thank you for reading.</p>
+ (see https://g.co/ng/security#xss)]]></content:encoded>
+  </item>
+  <item>
     <title>A complete overview of my final year project</title>
     <link>https://zainezq.com/project/final-year-project</link>
     <description>This project is a complete overview of my final year project, including the challenges and issues faced.</description>
@@ -1075,6 +1094,8 @@ Thanks for reading!</p>
 <td>128GB SSD (need to add the hard drive too, but this is okay for the <em>current</em> use case)</td>
 </tr>
 </tbody></table>
+<h2 id="configuration">Configuration</h2>
+<p>Below is a <code>mermaid</code>-like diagrammatical representation of the services I use and how they interact with another.</p>
 <pre><code class="language-mermaid">graph TD
     %% Layout direction
     classDef titleBox fill:#f0f0f0,stroke:#333,stroke-width:2px,font-weight:bold
@@ -1133,14 +1154,15 @@ Thanks for reading!</p>
   <item>
     <title>Changelog</title>
     <link>https://zainezq.com/changelog/changelog</link>
-    <description></description>
-    <pubDate>Sun, 06 Apr 2025 22:31:10 GMT</pubDate>
+    <description>Latest changes and updates to the site.</description>
+    <pubDate>Tue, 08 Apr 2025 12:42:18 GMT</pubDate>
     <guid>https://zainezq.com/changelog/changelog</guid>
     <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="changelog">Changelog</h1>
 <p>All notable changes to this project will be documented in this file.<br>This project adheres to <a href="https://semver.org/">Semantic Versioning</a>.</p>
 <hr>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
+<li><a href="#141---07-04-2025">1.4.0 - 07-04-2025</a></li>
 <li><a href="#140---06-04-2025">1.4.0 - 06-04-2025</a></li>
 <li><a href="#134---05-04-2025">1.3.4 - 05-04-2025</a></li>
 <li><a href="#133---04-04-2025">1.3.3 - 04-04-2025</a></li>
@@ -1153,8 +1175,14 @@ Thanks for reading!</p>
 <li><a href="#010-alpha---13-06-2024">0.1.0-alpha - 13-06-2024</a></li>
 </ul>
 <hr>
-<h2 id="140---06-04-2025">[1.4.0] - 06-04-2025</h2>
+<h2 id="141---07-04-2025">[1.4.1] - 07-04-2025</h2>
 <h3 id="added">Added</h3>
+<ul>
+<li>Blog count for the homepage</li>
+</ul>
+<hr>
+<h2 id="140---06-04-2025">[1.4.0] - 06-04-2025</h2>
+<h3 id="added-1">Added</h3>
 <ul>
 <li>Sitemap which shows the pages of the website</li>
 <li>Error 404 page with sans error gif (ha undertale reference)</li>
@@ -1175,13 +1203,13 @@ Thanks for reading!</p>
 </ul>
 <hr>
 <h2 id="133---04-04-2025">[1.3.3] - 04-04-2025</h2>
-<h3 id="added-1">Added</h3>
+<h3 id="added-2">Added</h3>
 <ul>
 <li>Support for <code>mermaid</code>-like diagrams, works with <code>markedjs</code></li>
 </ul>
 <hr>
 <h2 id="132---04-02-2025">[1.3.2] - 04-02-2025</h2>
-<h3 id="added-2">Added</h3>
+<h3 id="added-3">Added</h3>
 <ul>
 <li>This <code>changelog</code> section</li>
 </ul>
@@ -1191,7 +1219,7 @@ Thanks for reading!</p>
 </ul>
 <hr>
 <h2 id="131---04-01-2025">[1.3.1] - 04-01-2025</h2>
-<h3 id="added-3">Added</h3>
+<h3 id="added-4">Added</h3>
 <ul>
 <li>A <code>now</code> section</li>
 </ul>
@@ -1201,7 +1229,7 @@ Thanks for reading!</p>
 </ul>
 <hr>
 <h2 id="120---03-14-2025">[1.2.0] - 03-14-2025</h2>
-<h3 id="added-4">Added</h3>
+<h3 id="added-5">Added</h3>
 <ul>
 <li>Quizzes and Firebase storage integration</li>
 <li>Rendering of images</li>
@@ -1214,7 +1242,7 @@ Thanks for reading!</p>
 </ul>
 <hr>
 <h2 id="110---15-02-2025">[1.1.0] - 15-02-2025</h2>
-<h3 id="added-5">Added</h3>
+<h3 id="added-6">Added</h3>
 <ul>
 <li>Estimated reading time for each blog</li>
 <li>Tags feature for blog categorization</li>
@@ -1229,7 +1257,7 @@ Thanks for reading!</p>
 </ul>
 <hr>
 <h2 id="100---01-01-2025">[1.0.0] - 01-01-2025</h2>
-<h3 id="added-6">Added</h3>
+<h3 id="added-7">Added</h3>
 <ul>
 <li>Initial deployment of the website</li>
 </ul>
@@ -1245,7 +1273,7 @@ Thanks for reading!</p>
 </ul>
 <hr>
 <h2 id="020-alpha---18-12-2024">[0.2.0-alpha] - 18-12-2024</h2>
-<h3 id="added-7">Added</h3>
+<h3 id="added-8">Added</h3>
 <ul>
 <li>Blog section</li>
 <li>Sidebar layout</li>
@@ -1261,7 +1289,7 @@ Thanks for reading!</p>
 </ul>
 <hr>
 <h2 id="010-alpha---13-06-2024">[0.1.0-alpha] - 13-06-2024</h2>
-<h3 id="added-8">Added</h3>
+<h3 id="added-9">Added</h3>
 <ul>
 <li>Initial commit of the website</li>
 <li>README file</li>
