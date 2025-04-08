@@ -5,7 +5,26 @@ import { CommonModule } from '@angular/common';
 import { firstValueFrom } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { gfmHeadingId } from 'marked-gfm-heading-id';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
+interface BlogMetadata {
+  id: number;
+  title: string;
+  slug: string;
+  summary: string;
+  date: string;
+  readingTime: string;
+  tags: string[];
+}
+
+interface ProjectMetadata {
+  id: number;
+  title: string;
+  slug: string;
+  summary?: string;
+  date?: string;
+  tags?: string[];
+}
 
 @Component({
   selector: 'app-sitemap',
@@ -14,23 +33,30 @@ import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
   templateUrl: './sitemap.component.html',
   styleUrls: ['./sitemap.component.scss'],
   encapsulation: ViewEncapsulation.None
-
 })
 export class SitemapComponent implements OnInit, AfterViewChecked {
   sitemapContent: SafeHtml = '';
-
+  blogMetadata: BlogMetadata[] = [];
+  projectMetadata: ProjectMetadata[] = [];
+  
   @ViewChild('content', { static: false }) content?: ElementRef;
-
-
-  constructor(private http: HttpClient, private router: Router,
-              private route: ActivatedRoute,     private sanitizer: DomSanitizer
-  ){}
+  
+  constructor(
+    private http: HttpClient, 
+    private router: Router,
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit(): void {
-
-    this.loadMarkdown();
-
-      this.route.fragment.subscribe(fragment => {
+    Promise.all([
+      this.loadBlogMetadata(),
+      this.loadProjectMetadata()
+    ]).then(() => {
+      this.generateSitemap();
+    });
+    
+    this.route.fragment.subscribe(fragment => {
       if (fragment) {
         this.scrollToAnchor(fragment);
       }
@@ -41,25 +67,76 @@ export class SitemapComponent implements OnInit, AfterViewChecked {
     this.handleAnchorClicks();
   }
 
-
-
-  async loadMarkdown(): Promise<void> {
+  async loadBlogMetadata(): Promise<void> {
     try {
-
-      const rawMd = await firstValueFrom(this.http.get('assets/sitemap/sitemap.md', { responseType: 'text' }));
-      const html = marked(rawMd);
-      if (typeof html === "string") {
-        this.sitemapContent = this.sanitizer.bypassSecurityTrustHtml(html);
-      }
+      const response = await firstValueFrom(
+        this.http.get<BlogMetadata[]>('assets/blogs/index.json')
+      );
+      this.blogMetadata = response;
     } catch (error) {
-      console.error('Error loading sitemap:', error);
+      console.error('Error loading blog metadata:', error);
     }
   }
 
+  async loadProjectMetadata(): Promise<void> {
+    try {
+      const response = await firstValueFrom(
+        this.http.get<ProjectMetadata[]>('assets/projects/index.json')
+      );
+      this.projectMetadata = response;
+    } catch (error) {
+      console.error('Error loading project metadata:', error);
+    }
+  }
+
+  generateSitemap(): void {
+    // Create the base sitemap structure
+    let sitemapMd = `# Sitemap\n\n`;
+    sitemapMd += `* [Home](https://www.zainezq.com/home)\n`;
+    
+    // Add Blogs section with dynamic content
+    sitemapMd += `* [Blogs](https://www.zainezq.com/blogs)\n`;
+    
+    // Sort blogs by id (oldest first)
+    const sortedBlogs = [...this.blogMetadata].sort((a, b) => a.id - b.id);
+    
+    // Add each blog post
+    sortedBlogs.forEach(blog => {
+      sitemapMd += `  * [${blog.title}](https://zainezq.com/blogs/${blog.slug})\n`;
+    });
+    
+    // Add Projects section with dynamic content
+    sitemapMd += `* [Projects](https://www.zainezq.com/projects)\n`;
+    
+    // Sort projects by id (oldest first, or however you prefer)
+    const sortedProjects = [...this.projectMetadata].sort((a, b) => a.id - b.id);
+    
+    // Add each project
+    sortedProjects.forEach(project => {
+      sitemapMd += `  * [${project.title}](https://www.zainezq.com/projects/${project.slug})\n`;
+    });
+    
+    // Add the rest of your static sitemap sections
+    sitemapMd += `* [Contact](https://www.zainezq.com/contact)\n`;
+    sitemapMd += `* [Quizzes](https://www.zainezq.com/quizzes)\n`;
+    sitemapMd += `* [Now](https://www.zainezq.com/now)\n`;
+    sitemapMd += `* [Changelog](https://www.zainezq.com/changelog)\n`;
+    
+    // Convert the markdown to HTML, ensuring we have a string
+    const htmlResult = marked(sitemapMd);
+    
+    // Handle both cases - if it's a Promise or a string
+    if (htmlResult instanceof Promise) {
+      htmlResult.then(html => {
+        this.sitemapContent = this.sanitizer.bypassSecurityTrustHtml(html);
+      });
+    } else {
+      this.sitemapContent = this.sanitizer.bypassSecurityTrustHtml(htmlResult);
+    }
+  }
 
   scrollToAnchor(anchor: string, attempts = 3): void {
     if (!anchor) return;
-
     let attemptCount = 0;
     const tryScroll = () => {
       const element = document.getElementById(anchor);
@@ -75,10 +152,8 @@ export class SitemapComponent implements OnInit, AfterViewChecked {
         setTimeout(tryScroll, 100);
       }
     };
-
     tryScroll();
   }
-
 
   handleAnchorClicks(): void {
     if (!this.content) return;
@@ -86,7 +161,6 @@ export class SitemapComponent implements OnInit, AfterViewChecked {
     links.forEach((link: HTMLAnchorElement) => {
       link.addEventListener('click', (event) => {
         event.preventDefault();
-
         const targetId = link.getAttribute('href')?.substring(1);
         if (targetId) {
           document.body.style.overflowY = 'hidden';
