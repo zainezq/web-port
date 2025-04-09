@@ -1,14 +1,25 @@
 [
-  { "id": 1, "title": "My Emacs Config", "slug": "emacs_config", "summary": "A quick summary of my current Emacs configuration", "date": "12-01-2024", "readingTime": "4 minutes" , "tags": ["Productivity", "Programming", "Technology"] },
-  { "id": 2, "title": "Introduction to Nginx", "slug": "nginx", "summary": "What Nginx is, how it's used and how you can install it.", "date": "19-01-2025", "readingTime": "4 minutes", "tags": ["Technology"] },
-  { "id": 3, "title": "The Brain's Self-Discipline Blueprint", "slug": "prefrontal_cortex", "summary": "An analysis of the role of the prefrontal cortex in self-discipline and motivation.", "date": "26-01-2025", "readingTime": "5 minutes", "tags": ["Productivity", "Education"] },
-  { "id": 4, "title": "A brief introduction to Agda", "slug": "intro-to-agda", "summary": "An overview of what Agda is with examples, and how it can be used to prove mathematical theorems.", "date": "02-02-2025", "readingTime": "5 minutes", "tags": ["Technology", "Programming"] },
-  { "id": 5, "title": "A brief guide to SSH keys", "slug": "guide-to-ssh-keys", "summary": "An overview of what SSH keys are, how to generate them, and how to use them to automate tasks.", "date": "09-02-2025", "readingTime": "3 minutes", "tags": ["Technology"] },
-  { "id": 6, "title": "Advanced Emacs Config", "slug": "advanced-emacs-config", "summary": "A deeper look at my advanced Emacs configuration", "date": "16-02-2025", "readingTime": "4 minutes", "tags": ["Productivity", "Programming", "Technology"] },
-  { "id": 7, "title": "What is Urge Surfing?", "slug": "urge-surfing", "summary": "A quick summary of what urge surfing is and how it works.", "date": "02-03-2025", "readingTime": "3 minutes", "tags": ["Productivity", "Education"] },
-  { "id": 8, "title": "Building a Growth Mindset", "slug": "growth-mindset", "summary": "A guide to understanding and cultivating a growth mindset for personal and professional success.", "date": "09-03-2025", "readingTime": "3 minutes", "tags": ["Productivity", "Self Improvement"] },
-  { "id": 9, "title": "Emotional Intelligence", "slug": "eq", "summary": "What does it mean to have Emotional Intelligence?", "date": "16-03-2025", "readingTime": "3 minutes", "tags": ["Productivity", "Self Improvement"] },
-  { "id": 10, "title": "12 Week Reflection", "slug": "week-12-reflections", "summary": "A reflection on the past 12 weeks.", "date": "23-03-2025", "readingTime": "2 minutes", "tags": ["Productivity", "Self Improvement", "Education"] },
-  { "id": 11, "title": "2 Modules Completed", "slug": "2-modules-done", "summary": "Reflection on the completion of 2 modules.", "date": "30-03-2025", "readingTime": "1 minutes", "tags": ["Education"] },
-  { "id": 12, "title": "The vibe coding disease", "slug": "vibe-coding-disease", "summary": "What vibe coding is and why it's a disease", "date": "06-04-2025", "readingTime": "1 minutes", "tags": ["Education", "Technology"] }
+  { "id": 1, "title": "My Emacs Config", "slug": "emacs_config", "summary": "A quick summary of my current Emacs configuration", "date": "12-01-2024", "readingTime": "4 minutes", "tags": ["Development", "Technology"] },
+  
+  { "id": 2, "title": "Introduction to Nginx", "slug": "nginx", "summary": "What Nginx is, how it's used and how you can install it.", "date": "19-01-2025", "readingTime": "4 minutes", "tags": ["Technology", "Research & Insights"] },
+  
+  { "id": 3, "title": "The Brain's Self-Discipline Blueprint", "slug": "prefrontal_cortex", "summary": "An analysis of the role of the prefrontal cortex in self-discipline and motivation.", "date": "26-01-2025", "readingTime": "5 minutes", "tags": ["Personal Growth", "Learning", "Research & Insights"] },
+  
+  { "id": 4, "title": "A brief introduction to Agda", "slug": "intro-to-agda", "summary": "An overview of what Agda is with examples, and how it can be used to prove mathematical theorems.", "date": "02-02-2025", "readingTime": "5 minutes", "tags": ["Technology", "Development", "Research & Insights"] },
+  
+  { "id": 5, "title": "A brief guide to SSH keys", "slug": "guide-to-ssh-keys", "summary": "An overview of what SSH keys are, how to generate them, and how to use them to automate tasks.", "date": "09-02-2025", "readingTime": "3 minutes", "tags": ["Technology", "Development", "Research & Insights"] },
+  
+  { "id": 6, "title": "Advanced Emacs Config", "slug": "advanced-emacs-config", "summary": "A deeper look at my advanced Emacs configuration", "date": "16-02-2025", "readingTime": "4 minutes", "tags": ["Development", "Technology"] },
+  
+  { "id": 7, "title": "What is Urge Surfing?", "slug": "urge-surfing", "summary": "A quick summary of what urge surfing is and how it works.", "date": "02-03-2025", "readingTime": "3 minutes", "tags": ["Personal Growth", "Learning", "Research & Insights"] },
+  
+  { "id": 8, "title": "Building a Growth Mindset", "slug": "growth-mindset", "summary": "A guide to understanding and cultivating a growth mindset for personal and professional success.", "date": "09-03-2025", "readingTime": "3 minutes", "tags": ["Personal Growth", "Research & Insights"] },
+  
+  { "id": 9, "title": "Emotional Intelligence", "slug": "eq", "summary": "What does it mean to have Emotional Intelligence?", "date": "16-03-2025", "readingTime": "3 minutes", "tags": ["Personal Growth", "Research & Insights"] },
+  
+  { "id": 10, "title": "12 Week Reflection", "slug": "week-12-reflections", "summary": "A reflection on the past 12 weeks.", "date": "23-03-2025", "readingTime": "2 minutes", "tags": ["Personal Growth", "Learning", "Research & Insights"] },
+  
+  { "id": 11, "title": "2 Modules Completed", "slug": "2-modules-done", "summary": "Reflection on the completion of 2 modules.", "date": "30-03-2025", "readingTime": "1 minutes", "tags": ["Learning", "Personal Growth"] },
+  
+  { "id": 12, "title": "The vibe coding disease", "slug": "vibe-coding-disease", "summary": "What vibe coding is and why it's a disease", "date": "06-04-2025", "readingTime": "1 minutes", "tags": ["Learning", "Technology", "Development"] }
 ]

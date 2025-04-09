@@ -18,8 +18,12 @@
  
 
   h1, h2, h3, h4 {
-    color: $primary-color;
-    text-shadow: 2px 2px 0 rgba(224, 122, 95, 0.2);
+    //color: $primary-color;
+    //text-shadow: 2px 2px 0 rgba(224, 122, 95, 0.2);
+  }
+
+  h4 {
+      color: $secondary-color;
   }
 
   p {

@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ---
 
 ## Table of Contents
+- [1.4.3 - 09-04-2025](#143---09-04-2025)
 - [1.4.2 - 08-04-2025](#142---08-04-2025)
 - [1.4.1 - 07-04-2025](#141---07-04-2025)
 - [1.4.0 - 06-04-2025](#140---06-04-2025)
@@ -18,6 +19,22 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - [1.0.0 - 01-01-2025](#100---01-01-2025)
 - [0.2.0-alpha - 18-12-2024](#020-alpha---18-12-2024)
 - [0.1.0-alpha - 13-06-2024](#010-alpha---13-06-2024)
+
+---
+
+## [1.4.3] - 09-04-2025
+
+### Added
+- New blog tag structure
+- `Now` header in home page routes to `/now`
+
+### Changed
+- Reversed the order of the filtered blogs so that it shows in a *newest to oldest* format
+- Stylings of the `now` page
+
+### Fixed
+- Fixed issue of rendering of mermaid diagrams only working after page refresh
+
 
 ---
 
@@ -95,7 +112,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ## [1.1.0] - 15-02-2025
 ### Added
 - Estimated reading time for each blog
-- Tags feature for blog categorization
+- Tags feature for blog categorisation
 
 ### Changed
 - Projects page now separates GitHub-linked and manually written projects
