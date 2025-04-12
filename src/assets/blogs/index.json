@@ -21,5 +21,7 @@
   
   { "id": 11, "title": "2 Modules Completed", "slug": "2-modules-done", "summary": "Reflection on the completion of 2 modules.", "date": "30-03-2025", "readingTime": "1 minutes", "tags": ["Learning", "Personal Growth"] },
   
-  { "id": 12, "title": "The vibe coding disease", "slug": "vibe-coding-disease", "summary": "What vibe coding is and why it's a disease", "date": "06-04-2025", "readingTime": "1 minutes", "tags": ["Learning", "Technology", "Development"] }
+  { "id": 12, "title": "The vibe coding disease", "slug": "vibe-coding-disease", "summary": "What vibe coding is and why it's a disease", "date": "06-04-2025", "readingTime": "1 minutes", "tags": ["Learning", "Technology", "Development"] },
+  
+  { "id": 13, "title": "Sadness", "slug": "sadness", "summary": "Looking at emotions from a different angle", "date": "13-04-2025", "readingTime": "1 minutes", "tags": ["Learning", "Personal Growth"] }
 ]
