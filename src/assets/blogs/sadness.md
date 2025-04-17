@@ -11,7 +11,11 @@ Emotions. We all feel them on a daily basis. Happiness, anger, sadness, fear and
 
 There comes that word: *pause*. How important is it to sometimes just pause and reflect, to ponder over life and the things happening around us? When was the last time we sat in silence with no distractions, no phones, no people, just nothing? We learn a lot when we tune in to our emotions, despite how much sadness may hurt, and how much it makes us want to cry, we should always remember that this same sadness adds value to the happy moments in life. Like shadows on a painting, it gives dimension to our emotional world.
 
-It reminds me of this verse in the noble Quran: فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا which means: "So, surely with hardship comes ease." The hardship we face in life always has a positive aspect to it, sometimes we become too blinded and short sighted by the trials and tribulations that we forget to look at it from another angle.
+It reminds me of this verse in the noble Quran:
+
+**فَإِنَّ مَعَ الْعُسْرِ يُسْرًا**
+
+which means: "So, surely with hardship comes ease." The hardship we face in life always has a positive aspect to it, sometimes we become too blinded and short sighted by the trials and tribulations that we forget to look at it from another angle.
 
 Anyways I'll end this with this poetic touch:
 > "Sadness doesn’t shout. It whispers. It sits beside you in silence. It tugs at your sleeve when the world moves too fast. And in that quiet tug, you find pieces of yourself you forgot existed."

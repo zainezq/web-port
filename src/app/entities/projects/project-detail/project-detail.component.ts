@@ -1,7 +1,7 @@
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectServiceService } from '../../../services/project-service/project-service.service';
-import { marked, Tokens } from 'marked';
+import { marked, options, Tokens } from 'marked';
 import { gfmHeadingId } from 'marked-gfm-heading-id';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import Prism from 'prismjs';
@@ -10,6 +10,9 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-markup';
 import mermaid from 'mermaid';
+import markedKatex from 'marked-katex-extension';
+import markedFootnote from 'marked-footnote';
+import katex from 'katex';
 
 marked.use(gfmHeadingId());
 
@@ -34,6 +37,10 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
     private sanitizer: DomSanitizer
   ) {}
   ngOnInit(): void {
+    const options = {
+      throwOnError: false
+    };
+
     // Define custom renderer for Mermaid and other code blocks
     const renderer = {
       code(this: any, args: Tokens.Code): string {
@@ -55,6 +62,9 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
 
         this.projectService.getProjectContent(slug).subscribe({
           next: (data) => {
+	    marked.use(markedKatex(options));
+	    marked.use(markedFootnote());
+
             const html = marked(data); // Use marked to parse the content with the custom renderer
             if (typeof html === 'string') {
               this.projectContent = this.sanitizer.bypassSecurityTrustHtml(html);
@@ -95,11 +105,33 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
   ngAfterViewChecked(): void {
     this.handleAnchorClicks();
     this.addCopyButtons();
+
+    this.renderMath();
   }
 
-  /**
-   * Scroll smoothly to the element with the given anchor (from URL fragment)
-   */
+
+  renderMath(): void {
+    if (this.content) {
+      const elements = this.content.nativeElement.querySelectorAll('span.math, div.math');
+      elements.forEach((element: HTMLElement) => {
+        const math = element.textContent || '';
+        try {
+          katex.render(math, element, {
+            throwOnError: false,
+            displayMode: element.tagName === 'DIV',
+          });
+
+          // Ensure proper styling
+          element.classList.add('math-rendered');
+        } catch (error) {
+          console.error('KaTeX rendering error: ', error);
+        }
+      });
+    }
+  }
+
+
+
   scrollToAnchor(anchor: string, attempts = 3): void {
     if (!anchor) return;
 
@@ -107,7 +139,15 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
     const tryScroll = () => {
       const element = document.getElementById(anchor);
       if (element) {
+        // Scroll to the anchor with a smooth behavior
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // After scrolling, check if the page height exceeds the viewport
+        setTimeout(() => {
+          if (document.body.scrollHeight > window.innerHeight) {
+            document.body.style.overflowY = 'auto';  // Re-enable scrolling
+          }
+        }, 100);
       } else if (attemptCount < attempts) {
         attemptCount++;
         setTimeout(tryScroll, 100);
@@ -118,9 +158,6 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
   }
 
 
-  /**
-   * Add smooth scrolling for ToC links inside the dynamically rendered Markdown
-   */
   handleAnchorClicks(): void {
     if (!this.content) return;
 
@@ -131,6 +168,8 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
 
         const targetId = link.getAttribute('href')?.substring(1);
         if (targetId) {
+          // Temporarily hide overflow to prevent page shift when scrolling
+          document.body.style.overflowY = 'hidden';
 
           this.router.navigate([], {
             fragment: targetId,
@@ -139,6 +178,11 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
           }).then(() => {
             this.scrollToAnchor(targetId);
           });
+
+          // Allow overflow after scroll
+          setTimeout(() => {
+            document.body.style.overflowY = 'auto';
+          }, 500);
         }
       });
     });
@@ -149,7 +193,7 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
   addCopyButtons(): void {
     const codeBlocks = this.content?.nativeElement.querySelectorAll('pre');
     codeBlocks.forEach((block: HTMLElement) => {
-      if (!block.querySelector('.copy-btn')) {
+      if (!block.querySelector('.copy-btn')) { // Prevent adding multiple buttons
         const copyBtn = document.createElement('button');
         copyBtn.classList.add('copy-btn');
         copyBtn.textContent = 'Copy';
@@ -159,9 +203,14 @@ export class ProjectDetailComponent implements OnInit, AfterViewChecked, AfterVi
           const code = block.querySelector('code')?.textContent;
           if (code) {
             navigator.clipboard.writeText(code).then(() => {
+              // Change the button text to "Copied!" and reset it
               copyBtn.textContent = 'Copied!';
-              setTimeout(() => (copyBtn.textContent = 'Copy'), 1000);
-            }).catch(err => console.error('Failed to copy:', err));
+              setTimeout(() => {
+                copyBtn.textContent = 'Copy'; // Reset text after 1 second
+              }, 1000);
+            }).catch(err => {
+              console.error('Failed to copy: ', err);
+            });
           }
         });
       }

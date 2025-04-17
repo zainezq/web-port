@@ -1021,6 +1021,29 @@ Thanks for reading!</p>
  (see https://g.co/ng/security#xss)]]></content:encoded>
   </item>
   <item>
+    <title>Sadness</title>
+    <link>https://zainezq.com/blog/sadness</link>
+    <description>Looking at emotions from a different angle</description>
+    <pubDate>Invalid Date</pubDate>
+    <guid>https://zainezq.com/blog/sadness</guid>
+    <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="sadness-as-an-emotion">Sadness as an emotion</h1>
+<p>By Zaine</p>
+<hr>
+<p>Emotions. We all feel them on a daily basis. Happiness, anger, sadness, fear and disgust. They come and they go, sometimes for a long duration, and at other times merely for a few seconds. Sadness in particular is an interesting emotion; I say this for two reasons: the first is that it reminds us of what matters to us, and the second is that it makes you realise things about yourself that you never knew of before. Sadness is something that honestly makes you step out of your own body and view things in a different light, you become more perceptive despite the phyiscal and mental tang you feel. Should we strive to stop feeling sad? Who knows, some may say it&#39;s a part of who we are, others may counter and say that it&#39;s not a desired emotion. Regardless, we all have felt it at some point in our lives; the quantity of which varies across people, for some, it could be very minute and for some very large.</p>
+<blockquote>
+<p>&quot;Some psychologists argue that sadness plays an evolutionary role—it slows us down, forces us to think, to reflect, to re-evaluate our priorities. It’s the brain’s way of making us pause, take stock, and reorient ourselves.&quot;</p>
+</blockquote>
+<p>There comes that word: <em>pause</em>. How important is it to sometimes just pause and reflect, to ponder over life and the things happening around us? When was the last time we sat in silence with no distractions, no phones, no people, just nothing? We learn a lot when we tune in to our emotions, despite how much sadness may hurt, and how much it makes us want to cry, we should always remember that this same sadness adds value to the happy moments in life. Like shadows on a painting, it gives dimension to our emotional world.</p>
+<p>It reminds me of this verse in the noble Quran:</p>
+<p><strong>فَإِنَّ مَعَ الْعُسْرِ يُسْرًا</strong></p>
+<p>which means: &quot;So, surely with hardship comes ease.&quot; The hardship we face in life always has a positive aspect to it, sometimes we become too blinded and short sighted by the trials and tribulations that we forget to look at it from another angle.</p>
+<p>Anyways I&#39;ll end this with this poetic touch:</p>
+<blockquote>
+<p>&quot;Sadness doesn’t shout. It whispers. It sits beside you in silence. It tugs at your sleeve when the world moves too fast. And in that quiet tug, you find pieces of yourself you forgot existed.&quot;</p>
+</blockquote>
+ (see https://g.co/ng/security#xss)]]></content:encoded>
+  </item>
+  <item>
     <title>A complete overview of my final year project</title>
     <link>https://zainezq.com/project/final-year-project</link>
     <description>This project is a complete overview of my final year project, including the challenges and issues faced.</description>
@@ -1028,11 +1051,23 @@ Thanks for reading!</p>
     <guid>https://zainezq.com/project/final-year-project</guid>
     <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="final-year-project">Final Year Project</h1>
 <p>This project is titled &quot;Overcoming Cognitive Overload - Designing an AI-Based Note-Taking Solution&quot;. This is my final year project at the University Of Birmingham, as well as being my biggest project to date. In this project I aim to design a note taking solution that is both easy to use and effective whilst reducing the overload of information through the use of AI and NLP.</p>
+<p><strong>The dissertation has officially been submitted on: 17-04-2025</strong></p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol>
-<li><a href="#introduction">Introduction</a></li>
+<li><a href="#introduction">Introduction</a> </li>
+<li><a href="#design">Design</a></li>
 </ol>
-<!-- ![Home Page](./assets/ss_1.png) -->
+<h2 id="introduction">Introduction</h2>
+<p>I don&#39;t want to talk too much about the literature side of this, but the key point I want to mention is that notetaking, as deep as the rabbit hole may be, is up to the preference of the <em>individual</em>. If you like to use pen and paper, go for it! If you prefer to leverage digital ubiquity, go for it! The important thing is that we find something that works for us. This project provides the foundation for solving the <strong>cognitive overload</strong> issue[^1] that is faced amongst researchers and students alike. </p>
+<h2 id="design">Design</h2>
+<h3 id="default-page">Default Page</h3>
+<p>When the user goes onto the wesbite, they are greeted with an intuitive home page that showcases the features of the system, as well as links to direct them to the login or register page.</p>
+<p><img src="./assets/default_page.png" alt="Home Page"></p>
+<h3 id="dashboard-page">Dashboard Page</h3>
+<p>Once the user is logged in and given a JWT token[^2], they are then able to access their dashboard page:</p>
+<p><img src="./assets/dashboard.png" alt="Dashboard Page"></p>
+<p>[^1]: B. G. S. Cezar and A. C. G. Maçada, &quot;Cognitive Overload, Anxiety, Cognitive Fatigue, Avoidance Behavior and Data Literacy in Big Data environments,&quot; Information Processing &amp; Management, vol. 60, no. 6, p. 103482, 2023. [Online]. Available: <a href="https://doi.org/10.1016/j.ipm.2023.103482">https://doi.org/10.1016/j.ipm.2023.103482</a>
+[^2]: <a href="https://jwt.io/introduction">https://jwt.io/introduction</a></p>
  (see https://g.co/ng/security#xss)]]></content:encoded>
   </item>
   <item>
@@ -1155,14 +1190,17 @@ Thanks for reading!</p>
     <title>Changelog</title>
     <link>https://zainezq.com/changelog/changelog</link>
     <description>Latest changes and updates to the site.</description>
-    <pubDate>Tue, 08 Apr 2025 12:42:18 GMT</pubDate>
+    <pubDate>Thu, 17 Apr 2025 15:33:19 GMT</pubDate>
     <guid>https://zainezq.com/changelog/changelog</guid>
     <content:encoded><![CDATA[SafeValue must use [property]=binding: <h1 id="changelog">Changelog</h1>
-<p>All notable changes to this project will be documented in this file.<br>This project adheres to <a href="https://semver.org/">Semantic Versioning</a>.</p>
+<p>All changes to this project will be documented in this file.<br>This project adheres to <a href="https://semver.org/">Semantic Versioning</a>.</p>
 <hr>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#141---07-04-2025">1.4.0 - 07-04-2025</a></li>
+<li><a href="#144---17-04-2025">1.4.4 - 17-04-2025</a></li>
+<li><a href="#143---09-04-2025">1.4.3 - 09-04-2025</a></li>
+<li><a href="#142---08-04-2025">1.4.2 - 08-04-2025</a></li>
+<li><a href="#141---07-04-2025">1.4.1 - 07-04-2025</a></li>
 <li><a href="#140---06-04-2025">1.4.0 - 06-04-2025</a></li>
 <li><a href="#134---05-04-2025">1.3.4 - 05-04-2025</a></li>
 <li><a href="#133---04-04-2025">1.3.3 - 04-04-2025</a></li>
@@ -1175,121 +1213,153 @@ Thanks for reading!</p>
 <li><a href="#010-alpha---13-06-2024">0.1.0-alpha - 13-06-2024</a></li>
 </ul>
 <hr>
-<h2 id="141---07-04-2025">[1.4.1] - 07-04-2025</h2>
+<h2 id="144---17-04-2025">[1.4.4] - 17-04-2025</h2>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Final Year Project submitted; working on the project description (on this website)</li>
+</ul>
+<hr>
+<h2 id="143---09-04-2025">[1.4.3] - 09-04-2025</h2>
 <h3 id="added">Added</h3>
+<ul>
+<li>New blog tag structure</li>
+<li><code>Now</code> header in home page routes to <code>/now</code></li>
+</ul>
+<h3 id="changed-1">Changed</h3>
+<ul>
+<li>Reversed the order of the filtered blogs so that it shows in a <em>newest to oldest</em> format</li>
+<li>Stylings of the <code>now</code> page</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Fixed issue of rendering of mermaid diagrams only working after page refresh</li>
+</ul>
+<hr>
+<h2 id="142---08-04-2025">[1.4.2] - 08-04-2025</h2>
+<h3 id="added-1">Added</h3>
+<ul>
+<li>Enclosed sidebar nav links with <code>[ ]</code></li>
+</ul>
+<h3 id="changed-2">Changed</h3>
+<ul>
+<li>Sitemap now dynamically updates based on the blog/project json index</li>
+</ul>
+<hr>
+<h2 id="141---07-04-2025">[1.4.1] - 07-04-2025</h2>
+<h3 id="added-2">Added</h3>
 <ul>
 <li>Blog count for the homepage</li>
 </ul>
 <hr>
 <h2 id="140---06-04-2025">[1.4.0] - 06-04-2025</h2>
-<h3 id="added-1">Added</h3>
+<h3 id="added-3">Added</h3>
 <ul>
 <li>Sitemap which shows the pages of the website</li>
 <li>Error 404 page with sans error gif (ha undertale reference)</li>
 </ul>
-<h2 id="changed">Changed</h2>
+<h2 id="changed-3">Changed</h2>
 <ul>
 <li>Some minor UI tweaks</li>
 </ul>
-<h2 id="fixed">Fixed</h2>
+<h2 id="fixed-1">Fixed</h2>
 <ul>
 <li>RSS now shows <code>blogs</code>, <code>projects</code> and <code>changelog</code></li>
 </ul>
 <hr>
 <h2 id="134---05-04-2025">[1.3.4] - 05-04-2025</h2>
-<h3 id="changed-1">Changed</h3>
+<h3 id="changed-4">Changed</h3>
 <ul>
 <li>Code blocks now render in <code>JetBrains Mono</code> font for better readability</li>
 </ul>
 <hr>
 <h2 id="133---04-04-2025">[1.3.3] - 04-04-2025</h2>
-<h3 id="added-2">Added</h3>
+<h3 id="added-4">Added</h3>
 <ul>
 <li>Support for <code>mermaid</code>-like diagrams, works with <code>markedjs</code></li>
 </ul>
 <hr>
 <h2 id="132---04-02-2025">[1.3.2] - 04-02-2025</h2>
-<h3 id="added-3">Added</h3>
+<h3 id="added-5">Added</h3>
 <ul>
 <li>This <code>changelog</code> section</li>
 </ul>
-<h3 id="changed-2">Changed</h3>
+<h3 id="changed-5">Changed</h3>
 <ul>
 <li>Global styles are now stored in a <code>_variables</code> file</li>
 </ul>
 <hr>
 <h2 id="131---04-01-2025">[1.3.1] - 04-01-2025</h2>
-<h3 id="added-4">Added</h3>
+<h3 id="added-6">Added</h3>
 <ul>
 <li>A <code>now</code> section</li>
 </ul>
-<h3 id="fixed-1">Fixed</h3>
+<h3 id="fixed-2">Fixed</h3>
 <ul>
 <li>Mobile height overflowing</li>
 </ul>
 <hr>
 <h2 id="120---03-14-2025">[1.2.0] - 03-14-2025</h2>
-<h3 id="added-5">Added</h3>
+<h3 id="added-7">Added</h3>
 <ul>
 <li>Quizzes and Firebase storage integration</li>
 <li>Rendering of images</li>
 <li>Some sticker features</li>
 <li>&quot;Last updated&quot; timestamp display</li>
 </ul>
-<h3 id="fixed-2">Fixed</h3>
+<h3 id="fixed-3">Fixed</h3>
 <ul>
 <li>LaTeX rendering issues resolved</li>
 </ul>
 <hr>
 <h2 id="110---15-02-2025">[1.1.0] - 15-02-2025</h2>
-<h3 id="added-6">Added</h3>
+<h3 id="added-8">Added</h3>
 <ul>
 <li>Estimated reading time for each blog</li>
-<li>Tags feature for blog categorization</li>
+<li>Tags feature for blog categorisation</li>
 </ul>
-<h3 id="changed-3">Changed</h3>
+<h3 id="changed-6">Changed</h3>
 <ul>
 <li>Projects page now separates GitHub-linked and manually written projects</li>
 </ul>
-<h3 id="fixed-3">Fixed</h3>
+<h3 id="fixed-4">Fixed</h3>
 <ul>
 <li>General bug fixes</li>
 </ul>
 <hr>
 <h2 id="100---01-01-2025">[1.0.0] - 01-01-2025</h2>
-<h3 id="added-7">Added</h3>
+<h3 id="added-9">Added</h3>
 <ul>
 <li>Initial deployment of the website</li>
 </ul>
-<h3 id="changed-4">Changed</h3>
+<h3 id="changed-7">Changed</h3>
 <ul>
 <li>Homepage banner updated</li>
 <li>Improved mobile loading speed</li>
 <li>Reverted to using EmailJS for form handling</li>
 </ul>
-<h3 id="fixed-4">Fixed</h3>
+<h3 id="fixed-5">Fixed</h3>
 <ul>
 <li>Minor bug fixes</li>
 </ul>
 <hr>
 <h2 id="020-alpha---18-12-2024">[0.2.0-alpha] - 18-12-2024</h2>
-<h3 id="added-8">Added</h3>
+<h3 id="added-10">Added</h3>
 <ul>
 <li>Blog section</li>
 <li>Sidebar layout</li>
 </ul>
-<h3 id="changed-5">Changed</h3>
+<h3 id="changed-8">Changed</h3>
 <ul>
 <li>Updated stylings across the website</li>
 </ul>
-<h3 id="fixed-5">Fixed</h3>
+<h3 id="fixed-6">Fixed</h3>
 <ul>
 <li>SMTP Gmail server configuration</li>
 <li>Mobile menu collapsing issue</li>
 </ul>
 <hr>
 <h2 id="010-alpha---13-06-2024">[0.1.0-alpha] - 13-06-2024</h2>
-<h3 id="added-9">Added</h3>
+<h3 id="added-11">Added</h3>
 <ul>
 <li>Initial commit of the website</li>
 <li>README file</li>
