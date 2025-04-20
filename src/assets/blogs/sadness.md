@@ -1,7 +1,6 @@
 # Sadness
 
-
-By Zaine
+By Zaine Qayyum
 
 ---
 

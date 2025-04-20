@@ -6,9 +6,10 @@ What is a home lab? As the name suggests, a [home lab](https://linuxhandbook.com
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [Setup](#setup)
-3. [Configuration](#configuration)
+- [Introduction](#introduction)
+- [Setup](#setup)
+- [Configuration](#configuration)
+  - [Glance](#glance) 
 
 ## Introduction
 
@@ -31,60 +32,30 @@ The specs of the machine that I am running isn't anything too fancy, I actually 
 
 ## Configuration
 
-Below is a `mermaid`-like diagrammatical representation of the services I use and how they interact with another.
+Below is a `plantuml`-like diagrammatical representation of the services I use and how they interact with another.
 
-```mermaid
-graph TD
-    %% Layout direction
-    classDef titleBox fill:#f0f0f0,stroke:#333,stroke-width:2px,font-weight:bold
-    classDef groupBox fill:#fff,stroke:#bbb,stroke-dasharray: 5 5
 
-    %% Outer wrapper
-    subgraph HOMELAB_SYSTEM["Homelab System"]
-        class HOMELAB_SYSTEM titleBox
+![PlantUML](./assets/homelab_1.png)
 
-        internet[Internet Users]
-        nginx[NGINX Reverse Proxy: home.ip.address]
+Each of these services hold a purpose, the `docker-compose.yml` of each of these can be found below:
 
-        %% Internet Flow
-        internet --> nginx
+### Glance
 
-        %% NGINX Routing
-        nginx --> homepage
-        nginx --> pgadmin
-        nginx --> stirlingpdf
-        nginx --> miniflux
-        nginx --> jupyter
+Glance is the dashboard that I use to easily navigate through these self-hosted services; the neat part is that it's reverse-proxied (as all of them are, but since this one is, I don't need to remember the URL's for the rest). I used to use homepage[^1], but decided to go with glance now for absolutely no reason whatsoever. The `.yml` is found below:
 
-        %% Docker Subsystems
-        subgraph Homepage_Stack["Homepage Service"]
-            class Homepage_Stack groupBox
-            homepage[Homepage Port: 3000]
-        end
-
-        subgraph PostgreSQL_Stack["PostgreSQL Stack"]
-            class PostgreSQL_Stack groupBox
-            postgres[PostgreSQL Port: 5432]
-            pgadmin[PGAdmin4 Port: 5050]
-            pgadmin --> postgres
-        end
-
-        subgraph StirlingPDF_Stack["StirlingPDF Service"]
-            class StirlingPDF_Stack groupBox
-            stirlingpdf[StirlingPDF Port: 8002]
-        end
-
-        subgraph Miniflux_Stack["Miniflux Service"]
-            class Miniflux_Stack groupBox
-            miniflux[Miniflux Port: 9433]
-            miniflux_db[PostgreSQL DB Internal]
-            miniflux --> miniflux_db
-        end
-
-        subgraph Jupyter_Stack["JupyterLab Service"]
-            class Jupyter_Stack groupBox
-            jupyter[JupyterLab Port: 8888]
-        end
-    end
+```yml
+services:
+  glance:
+    container_name: glance
+    image: glanceapp/glance
+    volumes:
+      - ./config:/app/config
+      - ./assets:/app/assets
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - 8085:8080
+    env_file: .env
 
 ```
+
+[^1]: https://github.com/glanceapp/glance

@@ -14,7 +14,7 @@
 - Transitioning to Emacs for web development + Java [✔]
   - linting and lsp's 
 - Trying to automate this website, instead of hardcoding certain properties (like the sitemap)
-
+- Integrate `disqus` into the site
 
 
 (below is a mermaid js test diagram, shock)
