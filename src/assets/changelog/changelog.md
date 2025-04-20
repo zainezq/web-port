@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ---
 
 ## Table of Contents
+- [1.4.5 - 20-04-2025](#145---20-04-2025)
 - [1.4.4 - 17-04-2025](#144---17-04-2025)
 - [1.4.3 - 09-04-2025](#143---09-04-2025)
 - [1.4.2 - 08-04-2025](#142---08-04-2025)
@@ -20,6 +21,17 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - [1.0.0 - 01-01-2025](#100---01-01-2025)
 - [0.2.0-alpha - 18-12-2024](#020-alpha---18-12-2024)
 - [0.1.0-alpha - 13-06-2024](#010-alpha---13-06-2024)
+
+---
+
+## [1.4.5] - 20-04-2025
+
+### Added
+- New blog 
+- Worked on the homelab file
+
+### Changed
+- Mermaid giving some issues, resorting to plant-uml.
 
 ---
 
