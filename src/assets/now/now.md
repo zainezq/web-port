@@ -16,15 +16,9 @@
 - Trying to automate this website, instead of hardcoding certain properties (like the sitemap)
 - Integrate `disqus` into the site
 
+---
 
-(below is a mermaid js test diagram, shock)
+#### May 2025
 
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-```
 
 ---

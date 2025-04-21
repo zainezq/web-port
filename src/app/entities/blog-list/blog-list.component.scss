@@ -8,7 +8,7 @@
   color: $text-color;
   margin: auto;
   border-left: 4px solid $accent-color;
-  
+
   .blog-header {
     text-align: center;
     font-size: 2rem;
@@ -66,109 +66,53 @@
       background: $primary-color;
     }
   }
-
-  .blog-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-
-    @media (min-width: 768px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  .month-heading {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    color: black;
   }
 
-  .blog-row {
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+  .blog-listing {
+    list-style: none;
+    padding-left: 0;
 
-    &:hover {
-      background-color: darken($bg-color, 5%);
-      transform: scale(1.05);
+    li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid lighten($primary-color, 40%);
     }
-  }
 
-  .blog-card {
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease-in-out;
-
-    &:hover {
-      background-color: darken($bg-color, 5%);
-      transform: scale(1.05);
-    }
-  }
-
-  .blog-content {
-    .blog-title {
-      font-size: 1.5rem;
+    .title-link {
       font-weight: bold;
       color: $primary-color;
-      margin-bottom: 0.5rem;
-    }
-
-    .blog-title-link {
       text-decoration: none;
-      color: inherit;
-      transition: color 0.3s;
 
       &:hover {
         color: $accent-color;
       }
     }
 
-    .blog-summary {
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    .blog-date {
+    .blog-date-inline {
+      color: $text-color;
       font-size: 0.875rem;
-      color: $secondary-color;
-      margin-top: 0.5rem;
+      margin-left: 0.5rem;
     }
   }
 
-  .blog-tags {
-    margin-top: 0.5rem;
+.blog-tags-inline {
+  display: inline-block;
+  margin-left: 1rem;
 
-    .tag {
-      display: inline-block;
-      background: $tag-bg;
-      color: $tag-text;
-      font-size: 0.75rem;
-      padding: 0.25rem 0.5rem;
-      margin-right: 0.25rem;
-      border-radius: 4px;
-      text-transform: uppercase;
-    }
+  .blog-tag {
+    display: inline-block;
+    background-color: lighten($secondary-color, 10%);
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    margin-right: 0.25rem;
   }
+}
 
-  .blog-footer {
-    margin-top: 1rem;
-    text-align: right;
-
-    .read-more-btn {
-      background: $primary-color;
-      color: white;
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      font-size: 0.875rem;
-      border-radius: 4px;
-      transition: 0.3s;
-
-      &:hover {
-        background: darken($primary-color, 10%);
-      }
-    }
-  }
 }
 

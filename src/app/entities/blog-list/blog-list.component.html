@@ -5,28 +5,21 @@
     <button *ngFor="let tag of tags" (click)="selectTag(tag)" [class.active]="selectedTag === tag">
       {{ tag }}
     </button>
-    <!-- RSS Button placed inside the tag filter -->
     <button class="rss-button" (click)="downloadRSS()">Download RSS</button>
   </div>
 
-
-  <!-- Blog List -->
-  <div class="blog-grid">
-    <div *ngFor="let blog of filteredBlogs" class="blog-card">
-      <div class="blog-content">
-        <h2 class="blog-title">
-          <a class="blog-title-link" [routerLink]="['/blogs', blog.slug]">{{ blog.title }}</a>
-        </h2>
-        <p class="blog-summary">{{ blog.summary }}</p>
-        <p class="blog-date">📅 {{ blog.date }} | ⏱ {{ blog.readingTime }}</p>
-        <!-- Blog Tags -->
-        <div class="blog-tags">
-          <span *ngFor="let tag of blog.tags" class="tag">{{ tag }}</span>
-        </div>
-      </div>
-      <div class="blog-footer">
-        <a [routerLink]="['/blogs', blog.slug]" class="read-more-btn">Read Full Article →</a>
-      </div>
-    </div>
+  <div *ngFor="let month of groupedMonthKeys" class="month-group">
+    <h2 class="month-heading">🔗{{ month }}</h2>
+    <ul class="blog-listing">
+<li *ngFor="let blog of groupedBlogsByMonth[month]">
+  <a [routerLink]="['/blogs', blog.slug]" class="title-link">{{ blog.title }}</a>
+  <span class="blog-date-inline"> - {{ blog.date }}</span>
+  <span class="blog-tags-inline">
+    <ng-container *ngFor="let tag of blog.tags">
+      <span class="blog-tag">{{ tag }}</span>
+    </ng-container>
+  </span>
+</li>
+    </ul>
   </div>
 </div>

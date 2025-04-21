@@ -23,7 +23,6 @@ The former is the topic of this blog (I was thinking of leaving the latter for a
 As always, emacs looks for an initialization file from which it can evaluate configurations. I've kept mine quite minimal this time, focussing on the essentials:
 
 ```elisp
-
 (setq custom-file "~/.emacs.d/custom.el")
 (load-file custom-file)
 
@@ -58,7 +57,6 @@ You may notice that the `custom-set-variables` are stored in another file. I had
 The file has the following contents:
 
 ```elisp
-
 ;; Corfu (Completion UI)
     (use-package corfu
       :ensure t
@@ -192,8 +190,6 @@ The file has the following contents:
    ivy-rich-path-style 'abbrev))
 
 (provide 'auto-comp)
-
-
 ```
 
 You can see in this file, there are many things being done. The first is setting up `corfu`; I had an issue with this clashing with `company` so I disabled the latter and stuck with this for code completion. Next is `lsp-mode`, this is where the magic happens when working with C and Java files. Essentially, lsp stands for **Language Server Protocol**, and is a standardised way for code editors and IDE's to communicate with the language server, thereby providing them with features like code completion and error detection. The code above is setup for c, c++ (although I don't really use this), and Java. The screenshot below shows what it looks like with Java (the theme looks good doesn't it [^2])
@@ -209,12 +205,10 @@ Below is a screenshot of a c programme:
 One other thing to point out is the `compile` feature in emacs. I had no idea how feature rich this thing is; I've actually re-mapped some keybindings to make it easier to use this:
 
 ```elisp
-
   (dt/leader-keys
     "x" '(:ignore t :wk "Compilation")
     "x x" '(compile :wk "compile")
     ) 
-
 ```
 
 Thanks for reading!
