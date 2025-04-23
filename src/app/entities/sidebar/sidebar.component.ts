@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   showSidebar = true;  // Default to false for small screens
   isLargeScreen = window.innerWidth >= 768;
   private resizeListener: any;
-  lastUpdated: Date = new Date('2025-04-21T08:50:01.714Z');
+  lastUpdated: Date = new Date('2025-04-23T20:35:00.759Z');
 
   constructor(private router: Router) {}
 
