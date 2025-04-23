@@ -25,5 +25,7 @@
 
     { "id": 13, "title": "Sadness", "slug": "sadness", "summary": "Looking at emotions from a different angle", "date": "13-04-2025", "readingTime": "1 minutes", "tags": ["Learning", "Personal Growth"] },
   { "id": 14, "title": "Redoing emacs config", "slug": "redoing-emacs", "summary": "Completely re-doing my emacs config", "date": "20-04-2025", "readingTime": "1 minutes", "tags": ["Technology", "Development"] },
-    { "id": 15, "title": "Creating a Digital Garden", "slug": "digital-garden", "summary": "What does it mean to create a digital garden", "date": "21-04-2025", "readingTime": "1 minutes", "tags": ["Technology", "Personal Growth"] }
+  { "id": 15, "title": "Creating a Digital Garden", "slug": "digital-garden", "summary": "What does it mean to create a digital garden", "date": "21-04-2025", "readingTime": "1 minutes", "tags": ["Technology", "Personal Growth"] },
+  
+    { "id": 16, "title": "The loss of someone", "slug": "death", "summary": "What does it mean to create a digital garden", "date": "21-04-2025", "readingTime": "1 minutes", "tags": [] }
 ]
