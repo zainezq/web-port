@@ -25,5 +25,6 @@
 - Redo my PKMS (Personal Knowledge Management System) [✔]
 - Fix the domain for this website (migrating registrars to krystal.io) [✔]
 - Migrate from vercel to netlify (https://heroic-mochi-234f1e.netlify.app) [✔]
+- Working on the [Garden](https://garden.zainezq.com)
 
 ---
