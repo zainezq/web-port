@@ -42,3 +42,16 @@ fs.writeFile(targetPath, envFile, (err) => {
     console.log(successColor, `${checkSign} Successfully generated environment.development.ts`);
   }
 });
+
+const source = '_redirects';
+const destination = path.join('dist', 'web-port-frontend', '_redirects');
+
+fs.copyFile(source, destination, (err) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log('File copied successfully');
+  }
+})
+
+console.log(successColor, `${checkSign} Successfully copied ${source} to ${destination}`);
