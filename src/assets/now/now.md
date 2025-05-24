@@ -26,5 +26,6 @@
 - Fix the domain for this website (migrating registrars to krystal.io) [✔]
 - Migrate from vercel to netlify then to cloudflare [✔]
 - Working on the [Garden](https://garden.zainezq.com)
+  - Using Quartz to set this up
 
 ---
