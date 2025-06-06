@@ -184,5 +184,18 @@
       "Technology",
       "Personal Growth"
     ]
+  },
+  {
+    "id": 16,
+    "title": "Reading Many Books",
+    "slug": "reading-many-books",
+    "summary": "Some thoughts related to a discovery made",
+    "date": "08-06-2025",
+    "readingTime": "x minutes",
+    "tags": [
+      "Personal Growth",
+      "Learning"
+    ],
+    "underConstruction": "true"
   }
 ]
