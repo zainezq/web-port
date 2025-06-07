@@ -6,7 +6,7 @@ I recently stumbled across this [Website](https://sachachua.com/blog/) and I fou
 
 The main goal of a digital garden is to essentially jot down findings, research and other miscellaneous things that are stumbled across so that whenever something new is learned, the person can then come back and update the knowledge that they previously *had* with their new findings.
 
-I just realised the link to below uses the terms "planted" and "last tended" instead of "created" and "last updated". 
+I just realised the link to below uses the terms "planted" and "last tended" instead of "created" and "last updated".
 
 Anyways thanks for reading this Monday morning post.
 
