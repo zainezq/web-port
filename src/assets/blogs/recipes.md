@@ -22,9 +22,9 @@ total files: 3
 
 randomised: yes (will remove)
 
-{cv_sent}
+{cv_sent_latest}
 
--- converting cv_sent from raw to md...
+-- converting cv_sent_latest from raw to md...
 
 -- success!
 
@@ -94,6 +94,8 @@ Father: 07909061040
 Mother: 07405174151
 
 -- sent to 5 places, 1 London, 1 Birmingham, rest up north on 22/05/25
+
+-- 0 responses as of 07/06/25
 ```
 
 {advanced-networking.md}
