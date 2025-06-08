@@ -132,9 +132,9 @@ The following core topics were covered:
 
 ```
 
-{Dokerfile}
+{Dockerfile}
 
--- converting Dokerfile from raw to md...
+-- converting Dockerfile from raw to md...
 
 -- success!
 
