@@ -1,1 +1,3 @@
-TBC when i figure out how to make this script work and not spew out nonsense
+script abandoned. resorting to manual input.
+
+just contact and send the message if you see this
