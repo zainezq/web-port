@@ -2,4 +2,4 @@ I recently came across a link to a notion page which showed a student's reading 
 
 My primary goal with this is to store all the books and articles I read, and to use the [Garden](https://garden.zainezq.com) as the place to talk about (some of) them. At the moment it's still in its infancy, but with time, this can quickly turn into one like that student's reading log.
 
-Plus, now that I've got a few months off, I hope to use this time to read more books, but at the same time complement this with some output (through writing). 
+Plus, now that I've got a few months off, I hope to use this time to read more books, but at the same time complement this with some output (through writing). Also need to complete the goals I've set for myself for this year, no better time to do them than now!
