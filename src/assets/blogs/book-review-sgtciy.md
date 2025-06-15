@@ -19,8 +19,8 @@ What I liked most about this book is the personas, each chapter contained real-l
 
 Below is a personal summary of the four rules, which is also posted on the [garden](https://garden.zainezq.com/Books/so-good-they-cant-ignore-you).
 
-Some of these points have been inspired from the
-[website](https://jasonkwanhc.medium.com/book-summary-of-so-good-they-cant-ignore-you-58cb236fef0d)
+Some of these points have been inspired from this
+[website](https://jasonkwanhc.medium.com/book-summary-of-so-good-they-cant-ignore-you-58cb236fef0d).
 
 
 ### Rule #1: **Don’t Follow Your Passion**
