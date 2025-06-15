@@ -187,27 +187,15 @@
   },
   {
     "id": 16,
-    "title": "Reading Many Books",
-    "slug": "reading-many-books",
-    "summary": "Some thoughts related to a discovery made",
-    "date": "08-06-2025",
-    "readingTime": "1 minutes",
+    "title": "Book Review: So Good They Can't Ignore You",
+    "slug": "book-review-sgtciy",
+    "summary": "A review of the book So Good They Can't Ignore You by Cal Newport",
+    "date": "15-06-2025",
+    "readingTime": "",
     "tags": [
+      "Development",
       "Personal Growth",
       "Learning"
-    ]
-  },
-  {
-    "id": 17,
-    "title": "Perfecting One Recipe At a Time",
-    "slug": "recipes",
-    "summary": "Is it better to perfect one recipe at a time or try multiple recipes without perfecting them?",
-    "date": "15-06-2025",
-    "readingTime": "2 minutes",
-    "tags": [
-      "Personal Growth",
-      "Learning",
-      "Research & Insights"
     ]
   }
 ]
