@@ -6,7 +6,7 @@ import {ProjectPost, ProjectServiceService} from '../../services/project-service
 
 @Component({
   selector: 'app-projects',
-  imports: [NgIf, NgForOf, RouterLink, RouterLinkActive, DatePipe],
+  imports: [NgIf, NgForOf, RouterLink, DatePipe],
   templateUrl: './projects.component.html',
   standalone: true,
   styleUrl: './projects.component.scss'
@@ -26,7 +26,6 @@ export class ProjectsComponent implements OnInit {
       this.projects = data;
     })
 
-    console.log('projects component initialized' + this.projects);
     this.githubService.fetchRepositories().subscribe({
       next: (data) => {
         this.githubRepositories = data;
@@ -39,6 +38,13 @@ export class ProjectsComponent implements OnInit {
         console.log('Repositories fetched successfully');
       }
     });
+
+    //wait for the repositories to be fetched
+    setTimeout(() => {
+      console.log(this.projects);
+    }, 1000);
+
+
 
   }
 

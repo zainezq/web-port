@@ -1,59 +1,60 @@
 <div class="project-main">
 
-<div class="project-list">
-  <h1 class="project-header">My Projects</h1>
+  <div class="project-list">
+    <h1 class="project-header">Projects</h1>
 
-  <div *ngFor="let project of projects" class="project-row">
-    <div class="project-card">
-      <!-- Under Construction Badge -->
-      <img *ngIf="project.underConstruction" src="assets/pixil-frame-0.png" alt="Under Construction" class="under-construction-badge">
+    <div *ngFor="let project of projects" class="project-row">
+      <div class="project-card">
+        <!-- Under Construction Badge -->
+        <img *ngIf="project.underConstruction" src="assets/pixil-frame-0.png" alt="Under Construction"
+             class="under-construction-badge">
 
-      <div class="project-content">
-        <h2 class="project-title">
-          <a class="project-title-link" [routerLink]="['/projects', project.slug]">{{ project.title }}</a>
-        </h2>
-        <p class="project-summary">{{ project.summary }}</p>
+        <div class="project-content">
+          <h2 class="project-title">
+            <a class="project-title-link" [routerLink]="['/projects', project.slug]">{{ project.title }}</a>
+          </h2>
+          <p class="project-summary">{{ project.summary }}</p>
 
-        <div class="project-footer">
-          <a [routerLink]="['/projects', project.slug]" class="read-more-btn">Read Full Article →</a>
+          <div class="project-footer">
+            <a [routerLink]="['/projects', project.slug]" class="read-more-btn">Read Full Article →</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- d GitHub Projects Section -->
-<div class="github-projects">
-  <div class="github-row">
-    <h3>GitHub Repositories</h3>
-    <p class="git-text">Check out my GitHub profile for more projects and contributions: <a
-      href="https://github.com/zainezq" target="_blank">zainezq</a></p>
-    <div *ngIf="visibleGithubRepos.length > 0; else loading">
-      <div class="projects-container">
-        <div *ngFor="let repo of visibleGithubRepos" class="project-card">
-          <h3 class="github-title">
-            <a class="github-title-link" [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
-          </h3>
-          <p class="github-date"><strong>Last Updated:</strong> {{ repo.updated_at | date: 'medium' }}</p>
-          <p class="github-description">{{ repo.description || 'No description available.' }}</p>
-          <a class="github-link" [href]="repo.html_url" target="_blank">View on GitHub</a>
+  <!-- d GitHub Projects Section -->
+  <div class="github-projects">
+    <div class="github-row">
+      <h3>GitHub Repositories</h3>
+      <p class="git-text">Check out my GitHub profile for more projects and contributions: <a
+        href="https://github.com/zainezq" target="_blank">zainezq</a></p>
+      <div *ngIf="visibleGithubRepos.length > 0; else loading">
+        <div class="projects-container">
+          <div *ngFor="let repo of visibleGithubRepos" class="project-card">
+            <h3 class="github-title">
+              <a class="github-title-link" [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+            </h3>
+            <p class="github-date"><strong>Last Updated:</strong> {{ repo.updated_at | date: 'medium' }}</p>
+            <p class="github-description">{{ repo.description || 'No description available.' }}</p>
+            <a class="github-link" [href]="repo.html_url" target="_blank">View on GitHub</a>
+          </div>
         </div>
       </div>
-    </div>
 
 
-    <!-- Loading State -->
-    <ng-template #loading>
-      <p>Loading GitHub repositories...</p>
-    </ng-template>
+      <!-- Loading State -->
+      <ng-template #loading>
+        <p>Loading GitHub repositories...</p>
+      </ng-template>
 
-    <!-- Pagination Controls -->
-    <div class="pagination">
-      <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
-      <span>Page {{ currentPage }}</span>
-      <button (click)="nextPage()" [disabled]="currentPage * reposPerPage >= githubRepositories.length">Next
-      </button>
+      <!-- Pagination Controls -->
+      <div class="pagination">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+        <span>Page {{ currentPage }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage * reposPerPage >= githubRepositories.length">Next
+        </button>
+      </div>
     </div>
   </div>
-</div>
 </div>

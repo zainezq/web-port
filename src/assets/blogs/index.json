@@ -112,56 +112,6 @@
     ]
   },
   {
-    "id": 10,
-    "title": "12 Week Reflection",
-    "slug": "week-12-reflections",
-    "summary": "A reflection on the past 12 weeks.",
-    "date": "23-03-2025",
-    "readingTime": "2 minutes",
-    "tags": [
-      "Personal Growth",
-      "Learning",
-      "Research & Insights"
-    ]
-  },
-  {
-    "id": 11,
-    "title": "2 Modules Completed",
-    "slug": "2-modules-done",
-    "summary": "Reflection on the completion of 2 modules.",
-    "date": "30-03-2025",
-    "readingTime": "1 minutes",
-    "tags": [
-      "Learning",
-      "Personal Growth"
-    ]
-  },
-  {
-    "id": 12,
-    "title": "The vibe coding disease",
-    "slug": "vibe-coding-disease",
-    "summary": "What vibe coding is and why it's a disease",
-    "date": "06-04-2025",
-    "readingTime": "1 minutes",
-    "tags": [
-      "Learning",
-      "Technology",
-      "Development"
-    ]
-  },
-  {
-    "id": 13,
-    "title": "Sadness",
-    "slug": "sadness",
-    "summary": "Looking at emotions from a different angle",
-    "date": "13-04-2025",
-    "readingTime": "1 minutes",
-    "tags": [
-      "Learning",
-      "Personal Growth"
-    ]
-  },
-  {
     "id": 14,
     "title": "Redoing emacs config",
     "slug": "redoing-emacs",
@@ -171,18 +121,6 @@
     "tags": [
       "Technology",
       "Development"
-    ]
-  },
-  {
-    "id": 15,
-    "title": "Creating a Digital Garden",
-    "slug": "digital-garden",
-    "summary": "What does it mean to create a digital garden",
-    "date": "21-04-2025",
-    "readingTime": "1 minutes",
-    "tags": [
-      "Technology",
-      "Personal Growth"
     ]
   },
   {
